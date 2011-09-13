@@ -1,0 +1,59 @@
+/* 公共 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote{padding:0; margin:0;}
+fieldset,img{border:0;}   
+address,caption,cite,code,dfn,em,strong,var{font-weight:normal; font-style:normal;}   
+ol,ul,li{list-style:none;}   
+caption{text-align:left;}   
+h1,h2,h3,h4,h5,h6{font-weight:normal; font-size:100%;}   
+q:before,q:after{content:'';}   
+abbr,acronym{border:0;}
+a{text-decoration:none; color:#286bcc;cursor:pointer;}
+a:hover{text-decoration:underline; color:#286bcc;}
+
+/* 清除浮动 */
+.clearfix:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.clearfix{display:inline;}
+* html .clearfix{height:1%;}
+.clearfix{display:block;}
+
+/* 常用 */
+body{font-size:12px; padding:0; margin:0;}
+.float_left{float:left;}
+.float_right{float:right;}
+.f_747474{color:#747474;}
+.bg_ffffff{background-color:#fff;}
+.bg_fffce2{background-color:#fffce2;}
+.global_height{height:10px; line-height:10px; clear:both; font-size:0;}
+.global_big_height{height:20px; line-height:20px; clear:both; font-size:0; clear:both;}
+.both{clear:both;}
+
+/* 图片调用 */
+.close {background:url(../images/popclose.gif);}
+.btn a, .btn a:hover{background:url(../images/popbtn.gif);}
+
+/* 1像素圆角（蓝色） */
+.blue_top_box{height:1px; width:auto; margin:0 auto; line-height:1px; border-bottom:1px solid #80a0b9; font-size:0;}
+.blue_center_box{width:auto; border-left:1px solid #80a0b9; border-right:1px solid #80a0b9; height:auto; overflow:hidden;}
+.blue_bottom_box{height:1px; width:auto; margin:0 auto; line-height:1px; border-top:1px solid #80a0b9; font-size:0;}
+
+/* 公共 */
+.title{height:26px; line-height:26px; background:#E2F4FF; padding-left:10px;}
+.title span{float:left; font-weight: bold;}
+.title .close{float:right; height:26px; width:26px; background-repeat:no-repeat;cursor:pointer; padding: 0;}
+.all_width{width:100%; text-align:center; padding-top:10px; margin-bottom:10px;}
+.btn a{ line-height:33px; width:96px; display:inline-block; font-size:14px; text-align:center; font-weight:bold; color:#000; margin:0 auto; }
+.btn a:hover{background-position:-100px -424px;}
+
+/* 协议 */
+.x_main{width:580px; height:460px;}
+.x_main_width{width:578px;}
+.x_k{border:1px solid #80a0b9; height:460px;}
+.x_info{margin:10px 15px; line-height:1.8em; height:360px; overflow-y:auto;}
+
+/* 充值成功提示 */
+.c_main{width:340px; height:170px;}
+.c_main_width{width:340px;}
+.c_k{border-top:1px solid #80a0b9; border-bottom:1px solid #80a0b9; height:170px;}
+.c_info{margin:10px 15px; text-align:center;}
+	.c_info span{font-weight:bold;}
+	.c_info .ok{font-size:14px;}

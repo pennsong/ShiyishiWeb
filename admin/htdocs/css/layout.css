@@ -1,0 +1,34 @@
+@import "base.css";
+html { overflow: hidden; }
+/* Top */
+#Top { background: url(/images/top_bar_bg.gif); height: 45px; width: 100%; position: absolute; top: 0; left: 0; z-index: 9; }
+#Top .logo { padding: 0 0 0 20px; float: left; }
+#Top #Menu { float: left; }
+#Top #Menu ul { padding: 0 0 0 50px; }
+#Top #Menu ul li { float: left; zoom: 1; }
+#Top #Menu ul li a { color: #FFF; text-decoration: underline; font-size: 14px; font-weight: bold; display: block; float: left; padding: 0 20px; height: 45px; line-height: 45px; }
+#Top #Menu ul li a:hover, #Top #Menu ul li a.hov { color: #2C2C2C; text-decoration: none; background: #FFEFD7; }
+
+/* Func */
+#Func { background: url(/images/l.gif) repeat-x bottom; height: 32px; line-height: 32px; overflow: hidden; width: 100%; position: absolute; top: 45px; left: 0; }
+#Func .nav { float: left; padding: 0 0 0 20px; }
+#Func .nav dl { overflow: hidden; }
+#Func .nav dl dt { float: left; }
+#Func .nav dl dd { background: url(/images/nav_line.gif) no-repeat left center; float: left; padding: 0 0 0 17px; margin: 0 0 0 10px; }
+#Func .passpost { float: right; }
+#Func .passpost p { float: left; padding: 0 15px 0 0; }
+/* Side */
+#Side { background: #F0F8FF url(/images/l.gif) repeat-y right; width: 140px; position: absolute; top: 77px; left: 0; }
+#Side dl { font-size: 14px; padding: 15px 10px 15px 25px; }
+#Side dl dt { font-weight: bold; margin: 0 0 10px 0; }
+#Side dl dd { background: url(/images/d.gif) no-repeat 0 6px; text-indent: 10px; margin: 0 0 10px 0; }
+/* Side Button */
+#SideBtn { background: #003A67 url(/images/side_a.gif) no-repeat 3px center; width: 11px; height: 40px; position: absolute; top: 87px; left: 140px; cursor: pointer; z-index: 2; }
+#SideBtn.hide { background: #003A67 url(/images/side_a.gif) no-repeat -23px center; }
+/* Main */
+#Main { position: absolute; top: 77px; *top:77px; left: 140px; }
+#Main iframe { width: 100%; height: 100%; }
+
+#showmenu {z-index:2000; background: #FFEFD7; padding: 2px 0; border-right: 1px solid #DBBE94; border-bottom: 1px solid #DBBE94; position: absolute; width: 120px;}
+#showmenu a { padding-left:18px;font-size: 12px; font-weight: normal; color: #069; height: 26px; line-height: 26px; display: block; float: none; white-space: nowrap; }
+#showmenu a:hover { color: #FFF; background: #FF6201; }

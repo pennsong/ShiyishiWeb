@@ -1,0 +1,1 @@
+<div class="bread_crumb"> <!--{if $cityinfo}--><a href="<!--{$weburl}-->/">首页</a><!--{elseif $cookiecity}--><a href="http://<!--{$cookiecity.area_en}--><!--{$webdomain}-->/">首页</a><!--{else}--><a href="<!--{$baseurl}-->/">首页</a><!--{/if}--><!--{if $pagemodel=='my'}--> &raquo; <a href="<!--{$baseurl}-->/my/">我的账户</a><!--{/if}--> &raquo; <!--{$crumb}--> </div>

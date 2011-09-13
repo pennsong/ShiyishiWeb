@@ -1,0 +1,12 @@
+@import "base.css";
+html { overflow: hidden; }
+body { background: #F0F8FF; }
+.login { background: #FFF; width: 380px; height: 200px; top: 50%; left: 50%; margin: -150px 0 0 -213px; padding: 20px; position: absolute; border: 3px solid #D0DDE9; border-radius: 10px; -moz-border-radius: 10px; behavior: url(src/border-radius.htc); }
+.login h1 { font-size: 14px; padding: 0 0 20px 5px; border-bottom: 1px solid #CCC; }
+.login .form { padding: 25px 0 0 0; overflow: hidden; }
+.login .form .item { clear: both; padding: 0 0 15px 0; clear: both; overflow: hidden; zoom: 1; }
+.login .form label { font-size: 14px; width: 75px; height: 24px; line-height: 24px; padding: 0 0 0 5px; display: block; float: left; }
+.login .form input.inpt { display: block; float: left; width: 185px; padding: 3px; border: solid 2px; border-color: #666 #CCC #CCC #666; }
+.login .form a.btn span { padding: 0 27px 0 22px; }
+.login .form .do { padding: 10px 0 0 80px; clear: both; }
+.copy { color: #999; position: absolute; text-align: center; width: 100%; top: 50%; margin: 120px 0 0 0; }

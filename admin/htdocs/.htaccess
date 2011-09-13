@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} \.do$
+RewriteRule .+ index.php [L]

@@ -1,0 +1,69 @@
+/*全局*/
+body{padding:0;margin:0;font-size:12px;background:#fff url(../images/navbg.gif) 0 3px repeat-x;;font-family:Verdana;color:#333;}
+img{border:0}
+table{ border-collapse:collapse;}
+th{ text-align:left;font-size:12px;}
+td{font-size:12px;}
+html{height:100%}
+*{margin:0;padding:0;}
+ul{list-style-type:none;}
+a{color:#067098;text-decoration:none; outline:none;blr:expression(this.onFocus=this.blur()) }
+a:hover{color:#FF6600;}
+.input{border: 1px solid;border-color: #c0c0c0 #ededed #ededed #c0c0c0;padding:2px 0px 1px 1px;font-size:1.0em;vertical-align:middle;color:#000;}
+.btn{background:#d9d9d9;border-width:1px;vertical-align:middle;height:21px;padding-left:0.15em;padding-right:0.15em;border: 1px solid; border-color: #c0c0c0 #555 #555 #c0c0c0;}
+.fr{float:right}
+.fl{float:left}
+.c{clear:both;height:0;overflow:hidden;}
+.cc{clear:both;margin-right:1em;border-top:1px solid #91c900;height:10px;}
+/*字体颜色*/
+.s1{color:#006699;} /*蓝*/
+.s2{color:#1e5494;} /*深蓝*/
+.s3{color:#da8030;}
+/*头部*/
+#header{border-top:3px solid #3ca1d6;height:80px;position:absolute;top:0px;left:0px;width:100%;overflow:hidden;}
+.guide{overflow:hidden;margin-top:45px;}
+.guide a:hover{text-decoration:underline;}
+.guide ul{height:35px;line-height:32px;margin-right:1em;}
+.guide ul li{float:left;margin-right:.5em;padding-left:1.5em;background:url(../images/toptool-li.png) .3em .7em no-repeat;}
+.guide ul .home{background:none;padding-left:.5em;}
+#showmenu {z-index:2000; position: absolute;margin-top:13px;}
+#showmenu dl{display:block; line-height: 15px;width:115px;*width:119px; padding:0 1px 1px; background:#ffffff;border:#b9e6f5 1px solid;border-top:0px;}
+#showmenu dl dd{padding:5px 0;background:#e6f5ff url(../images/showmenu.gif) center top repeat-x;}
+#showmenu dd a{margin:0 2px;border:#e6f5ff 1px solid;color:#666;display: list-item;list-style:none;padding:3px 8px 2px; height:auto!important; height:12px;}
+#showmenu dd a:hover{background:#fff; text-decoration:none; color:#006699;border:#b9e6f5 1px solid;margin:0 2px;}
+/*logo*/
+.logo{width:160px;}
+.logo .png{height:43px;text-align:center;}
+.logo .lun{line-height:35px;height:36px;text-align:center;color:#067098;}
+/*一级导航*/
+.nav{height:35px;padding-top:.8em;position:absolute;left:159px;width:838px;}
+.nav li{float:left; height:35px; line-height:35px; width:65px; text-align:center;}
+.nav li a{color:#FFFFFF; text-decoration:none; letter-spacing:2px; background:url(../images/nav_main_bg.png) no-repeat left top; width:65px; height:35px; display:block;}
+.nav li a:hover{ color:#000000; font-weight:bold; background:url(../images/nav_main_bg.png) no-repeat left -35px;}
+.nav li .current{ color:#000000; font-weight:bold; background:url(../images/nav_main_bg.png) no-repeat left -35px;}
+.nav .home{width:60px;}
+.nav .home a{width:60px; height:35px; display:block; background:url(../images/nav_home_bg.png) no-repeat left top;}
+.nav .home a:hover{background:url(../images/nav_home_bg.png) no-repeat left -35px;}
+.nav .more{width:60px;}
+.nav .more a{width:60px; height:35px; display:block; background:url(../images/nav_more_bg.jpg) no-repeat left top;letter-spacing:normal; color:#FFFFFF; font-weight:normal;}
+.nav .more a:hover{background:url(../images/nav_more_bg.jpg) no-repeat left -35px; letter-spacing:normal; color:#FFFFFF; font-weight:normal;}
+/*位置*/
+.wei{height:32px;line-height:30px;padding-left:1em;}
+/*搜索*/
+.value{margin:.3em 1em;_margin:.3em 1em 0;}
+.value input{width:80px;*height:20px;}
+/*左边*/
+#main-fl{background:#f5fcff url(../images/main-left.gif) right top repeat-y;width:160px;}
+#leftmenu{margin:.2em 0 1em 1em; height:100%; overflow-y:auto }
+#leftmenu h1{float:left;font-size:12px;height:30px;line-height:32px;padding:0 .8em 0 .8em;border-bottom:3px solid #91c900;color:#376585;}
+#leftmenu h2{font-size:12px;height:25px;line-height:25px;text-align:center;color:#888;}
+#leftmenu ul{padding:0 0 .8em 0;margin:0px;}
+#leftmenu ul li{height:24px;line-height:24px;}
+#leftmenu a{display:block;background:url(../images/main-left-a.gif) 1.5em .7em no-repeat;padding-left:2.8em;color:#555;}
+#leftmenu a:hover{background:url(../images/main-left-hover.gif) 6px top no-repeat;}
+#leftmenu ul .one{height:24px;}
+#leftmenu ul .one a,#leftmenu ul .one a:hover{height:24px;background:url(../images/main-left-home.gif) 6px top no-repeat;}
+
+.pop_header {background:url(../images/boxt_bg.gif) repeat-x;height:28px;}
+.pop_close {float:right;margin-right:4px;border:0px;background:url(../images/popupclose.gif) no-repeat;width:48px;height:22px;cursor:pointer;}
+.pop_title {padding:5px;}

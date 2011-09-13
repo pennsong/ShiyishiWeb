@@ -1,0 +1,19 @@
+/* Base Tags */
+* { margin: 0; padding: 0; }
+html, body { height:100%; }
+body { font-family: "宋体"; color: #000; }
+body, input, textarea, select { font-family: Verdana; font-size: 12px; }
+body, h1, h2, h3, h4, ul, li, dl, dt, dd, p, form { display: block; margin: 0; padding: 0; }
+a { color: #039; text-decoration: underline; }
+a:hover { color: #F60; text-decoration: none; }
+img { border: none; }
+ul { list-style-type: none; }
+/* Buttons */
+a.btn { color: #000; text-decoration: none; background: url(/images/btn.gif) no-repeat left 0; display: inline-block; }
+a.btn span { font-size: 14px; background: url(/images/btn.gif) no-repeat right 0; padding: 0 17px 0 12px; margin: 0 0 0 5px; height: 33px; line-height: 30px; display: inline-block; cursor: pointer; }
+a.btn:hover { background: url(/images/btn.gif) no-repeat left -33px; }
+a.btn:hover span { color: #FFF; background: url(/images/btn.gif) no-repeat right -33px; }
+a.btn1 { color: #000; text-decoration: none; background: url(/images/btn1.gif) no-repeat left 0; display: inline-block; }
+a.btn1 span { font-size: 14px; background: url(/images/btn1.gif) no-repeat right 0; padding: 0 17px 0 12px; margin: 0 0 0 5px; height: 33px; line-height: 30px; display: inline-block; cursor: pointer; }
+a.btn2 { color: #FFF; text-decoration: none; background: url(/images/btn2.gif) no-repeat left 0; display: inline-block; }
+a.btn2 span { font-size: 14px; background: url(/images/btn2.gif) no-repeat right 0; padding: 0 17px 0 12px; margin: 0 0 0 5px; height: 33px; line-height: 30px; display: inline-block; cursor: pointer; }
