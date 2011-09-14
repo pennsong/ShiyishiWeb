@@ -118,7 +118,106 @@ class do_Controller extends Controller{
 		$backurl = $this->_get('r',BASE_URL.'/member/');
 		$this->showmsg('恭喜，登录成功',$backurl);
 	}
+	
+	//by penn 视频工具登录
+	function uVideologinAction(){
+		$this->postCheck($_POST);
+		$loginusername = $this->_get('uemail');
+		$loginpassword = $this->_get('upassword');
+		if(!$loginusername){
+			exit ("登录账号不能为空");
+		}
+		if(!$loginpassword){
+			exit ("登录密码不能为空");
+		}
+		//判断填写的用户名 email 还是会员卡
+		if(!strpos($loginusername,'@')){
+			exit ("登录账号为您注册时填写的Email");
+		}
 
+		$userinfo = $this->user->checkuserinfo(array('email'=>$loginusername));
+
+		if(empty($userinfo)){
+			exit ("您的用户名填写错误或不存在！");
+		}
+		if($userinfo['password']!=md5($loginpassword)){
+			exit ("您的密码输入错误！");
+		}
+		echo "登录成功";
+	}	
+
+	//视频工具上传视频
+	function videoAddvodAction(){
+		//check login
+		$this->postCheck($_POST);
+		$loginusername = $this->_get('uemail');
+		$loginpassword = $this->_get('upassword');
+		if(!$loginusername){
+			exit ("登录账号不能为空");
+		}
+		if(!$loginpassword){
+			exit ("登录密码不能为空");
+		}
+		//判断填写的用户名 email 还是会员卡
+		if(!strpos($loginusername,'@')){
+			exit ("登录账号为您注册时填写的Email");
+		}
+
+		$userinfo = $this->user->checkuserinfo(array('email'=>$loginusername));
+		if(empty($userinfo)){
+			exit ("您的用户名填写错误或不存在！");
+		}
+		if($userinfo['password']!=md5($loginpassword)){
+			exit ("您的密码输入错误！");
+		}
+		$resume_vod = Load::model('resume_vod');
+		$resume = $resume_vod->fetchRow("uid='".$userinfo['id']."'");
+			
+		$id = $resume['id'];
+		$hasvodurl = false;
+		if(isset($_FILES['vodurl'])&&$_FILES['vodurl']['name']){
+			$upload = Load::lib('upload');
+			$upload->max_size = 10485760;//10M
+			$upload->allowed_types = explode('|', "flv|swf");
+			if($upload->run('vodurl',$st)){
+				$filedata = $upload->data();
+				$info['vodurl'] = $filedata['file_url'];
+			}else{
+				$this->showmsg($upload->display_errors(),1);
+			}
+			$hasvodurl = true;
+		}
+		$vodmodel = Load::model('resume_vod');
+		if($id>0){
+			$info['id'] = $id;
+			$msg = '';
+			if($hasvodurl){
+				$info['status'] = 0;
+				if($vodmodel->save($info) === false){
+					EXIT ($vodmodel->getError());
+				}
+			}else{
+				EXIT ('没有上传新的视频,视频简历更新失败');
+			}
+			ECHO ('恭喜，视频简历更新成功!');
+		}else{
+			if(!$hasvodurl){
+				EXIT ("请选择要上传的视频");
+			}
+			$info['uid'] = $userinfo['id'];
+			$info['status'] = 0;
+			$info['vodimg'] = 'images/msdatu.jpg';
+			if($vodmodel->save($info) === false){
+				EXIT ($vodmodel->getError());
+			}
+			$uinfo['id'] = $userinfo['id'];
+			$uinfo['resume_vod'] = 1;
+			$this->user->save($uinfo);
+			//F::setlogininfo('resume_vod',1);
+			ECHO ('恭喜，视频简历新添成功!');
+		}
+	}
+	
 	//3. 找回密码
 	function getpwdAction(){
 		$this->postCheck($_POST);

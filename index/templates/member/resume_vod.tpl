@@ -13,7 +13,7 @@
     <!--{include file="m_left.tpl"}-->
     <div id="gcenterright">
       <div id="gcenterrightc">
-        <div id="grr"><a href="#">在线录制视频</a> <a href="<!--{$baseurl}-->/images/视频简历问题提示.xls">录制简历提示问题</a></div>
+        <div id="grr"><a href="<!--{$baseurl}-->/images/SYSPlayer.exe">在线录制视频</a> <a href="<!--{$baseurl}-->/images/视频简历问题提示.xls">录制简历提示问题</a></div>
         <h2>视频简历</h2>
 		<form id="addVodResume" name="addVodResume" class="cmxform" method="post" enctype="multipart/form-data" action="<!--{$baseurl}-->/member/do/addvod.do">
         <!--{if $info}-->
@@ -45,7 +45,7 @@
             <li><span class="glogintext">&nbsp;</span>视频文件必须是FLV格式，大小不能超过10M</li>
             <li><span class="glogintext">&nbsp;</span><input type="image" src="<!--{$baseurl}-->/images/shangchuan.gif" style="cursor:pointer;" onclick="return checkUpvod()"/></li>
             <li>&nbsp;</li>
-            <li><span class="glogintext">提示：</span> <img src="<!--{$baseurl}-->/images/Icon1.gif" /> 您可以通过本站提供的<a href="#">在线录制视频</a>工具来完成视频简历</li>
+            <li><span class="glogintext">提示：</span> <img src="<!--{$baseurl}-->/images/Icon1.gif" /> 您可以通过本站提供的<a href="<!--{$baseurl}-->/images/SYSPlayer.exe">在线录制视频</a>工具来完成视频简历</li>
             <div class="clearfix"></div>
             <li><span class="glogintext">&nbsp;</span> <img src="<!--{$baseurl}-->/images/Icon1.gif" /> 建议您用DV等更高级的摄像设备录制、编辑您的视频简历，精美的视频简历能大幅提高您的个人形象、吸引招聘单位的关注、更多地获取面试机会，从而大大提高您的应聘效率、获取满意的工作。</li>
             <li><span class="glogintext red">隐私保护：</span> <img src="<!--{$baseurl}-->/images/Icon1.gif" /> 您的视频简历，本站采用专业安保公司设计密钥，仅限本站工作人员及本站会员招聘单位使用，保证您的隐私安全。</li>

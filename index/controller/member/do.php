@@ -255,7 +255,7 @@ class do_Controller extends Controller{
 
 		$this->showmsg('恭喜，'.$tname.'简历'.($info['id']>0 ? '更新' : '新建').'成功',BASE_URL."/member/");
 	}
-
+	
 	//上传视频简历
 	function addvodAction(){
 		$id = $this->_get('id',0);
@@ -302,7 +302,7 @@ class do_Controller extends Controller{
 			$this->showmsg('恭喜，视频简历新添成功',BASE_URL."/member/resume/vod.html");
 		}
 	}
-
+	
 	function myjobAction()
 	{
 		$act = trim($this->_get('act','pos'));

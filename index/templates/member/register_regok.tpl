@@ -21,7 +21,7 @@
           <h3 style="border:none;padding:10px 0 0 0;"><img src="<!--{$baseurl}-->/images/Icon1.gif" /> 职位搜索</h3>
           <li>个性化搜索，帮您更快更准找工作!</li>
           <h3 style="border:none;padding:10px 0 0 0;"><img src="<!--{$baseurl}-->/images/Icon1.gif" /> 视频简历</h3>
-          <li>您可通过本站免费提供的<a href="#">在线录制视频</a>工具录制您的视频简历，以便让招聘单位更全面、直观地了解您</li>
+          <li>您可通过本站免费提供的<a href="<!--{$baseurl}-->/images/SYSPlayer.exe">在线录制视频</a>工具录制您的视频简历，以便让招聘单位更全面、直观地了解您</li>
           <li>您也可使用自己更高级的录像设备，使您的视频简历更完美</li>
           <li>&nbsp;</li>
           <li><span class="glogintext">&nbsp;</span><a href="<!--{$baseurl}-->/member/resume/doc.html"><img src="<!--{$baseurl}-->/images/newjianli.gif" /></a> <a href="<!--{$baseurl}-->/member/"><img src="<!--{$baseurl}-->/images/gloginss.gif" /></a></li>
