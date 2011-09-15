@@ -42,6 +42,11 @@ class user_Controller extends Controller{
 		$s['status'] = $status;
 		$url .= empty($urls) ? '' : '?'.implode('&',$urls);
 		$rows = $this->user->pageAll($page, 20, $url,$wheres,$orderby);
+		$tmpResumeVod = Load::model('resume_vod');
+		foreach ($rows as &$row) {
+			$tmpResumeVodArray = $tmpResumeVod->fetchRow("uid='".$row['id']."'");
+			$row['auth'] = $tmpResumeVodArray['status'];
+		}
 		$this->assign('page',$page);
 		$this->assign('s',$s);
 		$this->assign('count',$count);
