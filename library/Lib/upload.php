@@ -11,6 +11,9 @@ class upload_Lib {
     var $allowed_types  = "";
     var $file_temp      = "";
     var $file_name      = "";
+    //add by penn for file jiami
+    var $file_name_jiama = "";
+    //end by penn
     var $orig_name      = "";
     var $file_type      = "";
     var $file_size      = "";
@@ -140,6 +143,7 @@ class upload_Lib {
         }
 
         $this->file_name = substr(md5($this->file_name.time()),0,16).".".$this->file_ext;
+        $this->file_name_jiami = $this->file_name.'shiyishi';
 
         if ( ! @copy($this->file_temp, $this->upload_path.$this->file_name)){
             if ( ! @move_uploaded_file($this->file_temp, $this->upload_path.$this->file_name)){
@@ -148,6 +152,51 @@ class upload_Lib {
             }
         }
 
+        //add by penn for jiami
+        $file = file_get_contents($this->upload_path.$this->file_name, "rb");
+		$fileLen = mb_strlen($file);
+		$filePartNum = floor($fileLen / 1024);
+		$filePartLeft = mb_substr($file, $filePartNum*1024);
+		$passKey = "songpengcheng";
+		$passKeyLen = mb_strlen($passKey);
+		$sign = 'pennsongSigned';
+		$signLen =  mb_strlen($sign);
+		
+		if (file_exists($this->upload_path.$this->file_name_jiami)) {
+		   // yes the file does exist 
+		   unlink($this->upload_path.$this->file_name_jiami);
+		}
+		
+		$fp = fopen($this->upload_path.$this->file_name_jiami, "wb");
+		fwrite($fp, $sign);
+		for ($part=0; $part<$filePartNum; $part++)
+		{
+			$filePart = mb_substr($file, $part*1024, 1024);
+			$byteArr = str_split($filePart);
+			$i=0;
+			$tmpStr='';
+			foreach ($byteArr as $val) 
+			{ 
+				$passKeyChar = substr($passKey, (($part*1024 + $i) % $passKeyLen), 1);
+				$tmpStr .= chr(ord($val)^ord($passKeyChar)); 
+				$i++;
+			}
+			fwrite($fp, $tmpStr);
+		}
+		
+		$byteArr = str_split($filePartLeft);
+		$i=0;
+		$tmpStr='';
+		foreach ($byteArr as $val) 
+		{ 
+			$passKeyChar = substr($passKey, (($filePartNum*1024 + $i) % $passKeyLen), 1);
+			$tmpStr .= chr(ord($val)^ord($passKeyChar)); 
+			$i++;
+		}
+		fwrite($fp, $tmpStr);
+		fclose($fp);
+		        
+		//end by penn        
         if($smallimg)$this->set_image_properties();
 
         return TRUE;
