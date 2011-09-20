@@ -1119,9 +1119,12 @@ class resume_Controller extends Controller{
 				if(isset($resume_download['id']) && $resume_download['id']){
 					$video = $this->resume_vod->fetchRow(" uid = ".$val['uid']." and status=1" );
 					$rows[$key]['video'] = IMG_DOMAIN."/".$video['vodurl'];
+					$rows[$key]['videoShiyishi'] = IMG_DOMAIN."/".$video['vodurl'].'shiyishi';					
 				}else{
 					$rows[$key]['video'] = '';
+					$rows[$key]['videoShiyishi'] = '';
 				}
+				
 			}
 		}
 

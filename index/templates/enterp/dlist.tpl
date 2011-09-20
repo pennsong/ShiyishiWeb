@@ -37,7 +37,8 @@
 	<!--{if $item.rtype==3}-->
 		<a  href="/enterp/resume/video.html?id=<!--{$item.id}-->" target="_blank" >在线观看</a> 
 		<!--{if $item.video}-->
-		<a  href="<!--{$item.video}-->" target="_blank" >下载本地</a> 
+		<!--{$item.videoshiyishi}-->
+		<a  href="<!--{$item.videoShiyishi}-->" target="_blank" >下载本地</a> 
 		<!--{/if}-->
 	<!--{/if}-->
 		
