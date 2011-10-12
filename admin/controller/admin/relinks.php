@@ -3,6 +3,7 @@ class relinks_Controller extends Controller{
 
 	function init(){
 		$this->relinks = Load::model('relink');
+		$this->eUser = Load::model('e_user');
 		$this->assign('status',$this->flstatus);
 	}
 	
@@ -14,12 +15,21 @@ class relinks_Controller extends Controller{
 		$url = $this->getPageUrl().'/list.do';
 		$page = $this->_get('page',1);
 		$rows = $this->relinks->pageAll($page, 20, $url,'',' id desc ');
+		foreach($rows as &$item)
+		{
+			$companyInfo = $this->eUser->find($item['id']);
+			$item['company'] = $companyInfo['company'];
+			$item['id'] = $companyInfo['id'];
+			$item['logo'] = $companyInfo['logo'];			
+		}
 		$this->assign('page',$page);
 		$this->assign('rows', $rows);
 		$this->display();
 	}
 
 	function addAction(){
+		$companyList = $this->eUser->fetchAllCompanyName();
+		$this->assign('companyList', $companyList);
 		$this->display('relinks_info.tpl');
 	}
 

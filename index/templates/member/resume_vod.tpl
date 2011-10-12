@@ -21,7 +21,7 @@
         <div id="gloginrightmain">
           <ul>
             <li><span class="glogintext">预览简历：</span>
-              <script type="text/javascript">VideoPlayer("<!--{$imgsurl}-->/<!--{$info.vodurl}-->","<!--{$baseurl}-->/<!--{$info.vodimg}-->","300","249","&autostart=false");</script>
+              <script type="text/javascript">VideoPlayer("<!--{$imgsurl}-->/<!--{$info.vodurl}-->","<!--{$baseurl}-->/<!--{$info.vodimg}-->","320","265","&autostart=false");</script>
             </li>
             <li><span class="glogintext">更新视频：</span>
               <input class="file" name="vodurl" type="file"/>
@@ -46,6 +46,9 @@
             <li><span class="glogintext">&nbsp;</span><input type="image" src="<!--{$baseurl}-->/images/shangchuan.gif" style="cursor:pointer;" onclick="return checkUpvod()"/></li>
             <li>&nbsp;</li>
             <li><span class="glogintext">提示：</span> <img src="<!--{$baseurl}-->/images/Icon1.gif" /> 您可以通过本站提供的<a href="<!--{$baseurl}-->/images/SYSPlayer.exe">在线录制视频</a>工具来完成视频简历</li>
+            <li><span class="glogintext"></span> <img src="<!--{$baseurl}-->/images/Icon1.gif" /> 您在使用在线录制工具（SYSplayer）时需<span style="color:red">在线</span>状态</li>
+            <li><span class="glogintext"></span> <img src="<!--{$baseurl}-->/images/Icon1.gif" /> 录制时请保持您电脑的麦克风状态为“非静音”。</li>
+            <li><span class="glogintext"></span><img src="<!--{$baseurl}-->/images/mic.gif" /></li>
             <div class="clearfix"></div>
             <li><span class="glogintext">&nbsp;</span> <img src="<!--{$baseurl}-->/images/Icon1.gif" /> 建议您用DV等更高级的摄像设备录制、编辑您的视频简历，精美的视频简历能大幅提高您的个人形象、吸引招聘单位的关注、更多地获取面试机会，从而大大提高您的应聘效率、获取满意的工作。</li>
             <li><span class="glogintext red">隐私保护：</span> <img src="<!--{$baseurl}-->/images/Icon1.gif" /> 您的视频简历，本站采用专业安保公司设计密钥，仅限本站工作人员及本站会员招聘单位使用，保证您的隐私安全。</li>

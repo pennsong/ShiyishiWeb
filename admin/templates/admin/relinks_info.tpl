@@ -15,19 +15,17 @@
 <table cellspacing="0" cellpadding="0" width="100%">
 <tr class="tr4">
 	<td class="td3" width="145">企业名称：</td>
-	<td class="td4" ><input name="info[title]" type="text" id="title" value="<!--{$info.title}-->" alt="企业名称:无内容" style="width:300px;"/><span id="showResult_title"></span></td>
-</tr>
-<tr class="tr4">
-	<td class="td3" width="145">链接地址：</td>
-	<td class="td4" ><input name="info[url]" type="text" id="url" value="<!--{$info.url}-->" alt="链接地址:无内容" style="width:300px;"/><span id="showResult_url"></span></td>
-</tr>
-<tr class="tr4">
-	<td class="td3" width="145">图片：</td>
-	<td class="td4" >
-	<input name="info[img]" id="photo" type="hidden" value="<!--{$info.img}-->" />
-	<img id="uploadimg" src="<!--{$info.img}-->" />
-	<iframe src="<!--{$pageurl}-->/upload.do" frameborder="no" border="0" marginwidth="0" scrolling="no" width="300" height="30" ></iframe> 大小 192*60 px
-	</td>
+	<td class="td4" >            
+	<!--{if $info}-->
+    <input type="label" name="info[id]" value="<!--{$info.id}-->" disabled="disabled" />
+    <!--{else}-->
+    		<select name="info[id]" alt="企业名称:无内容" style="width:300px;"><span id="showResult_title"></span>
+                <!--{foreach from=$companyList key=key item=item}-->
+                <option value="<!--{$item.id}-->"><!--{$item.company}--></option>
+                <!--{/foreach}-->
+              </select>
+    <!--{/if}-->
+    </td>
 </tr>
 <tr class="tr4">
 	<td class="td3" width="145">排序：</td>

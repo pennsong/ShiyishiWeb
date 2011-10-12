@@ -947,7 +947,7 @@ class resume_Controller extends Controller{
 				foreach($works as $k=>$row){
 					//$row['fromdate']." - ".$row['todate']."  ".$row['company']." ".$row['position']." ".$this->companytypes[$rtype][$row['companytype']]." ".$this->salarys[$rtype][$row['income']]." ".$row['responsiblity'];
 
-					$tmp[] = '<tr><td align="center" width=100px>'.$row['fromdate'].' - '.$row['todate'].' </td><td>'.$row['company'].'</td></tr><tr><td align="center">&nbsp;</td><td>'.$row['position'].'</td></tr><tr><td align="center">&nbsp;</td><td>'.$this->companytypes[$rtype][$row['companytype']].'</td></tr><tr><td align="center">&nbsp;</td><td>'.$row['responsiblity'].'</td></tr><tr><td colspan="2" align="center">&nbsp;</td></tr>';
+					$tmp[] = '<tr><td width=100px>'.$row['fromdate'].' - '.$row['todate'].' </td><td>'.$row['company'].'</td></tr><tr><td>企业性质：</td><td>'.$this->companytypes[$rtype][$row['companytype']].'</td></tr><tr><td>职位：</td><td>'.$row['position'].'</td></tr><tr><td>工作描述：</td><td>'.$row['responsiblity'].'</td></tr><tr><td colspan="2" align="center">&nbsp;</td></tr>';
 				}
 				$works = $tmp;
 			}

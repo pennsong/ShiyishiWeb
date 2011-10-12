@@ -17,6 +17,11 @@ class e_user_Model extends Model{
 		return $this->e_user->fetchAll($where,$order);
 	}
 
+	function fetchAllCompanyName()
+	{
+		return $this->e_user->fetchAll(null,null,'id, company');
+	}
+	
 	function fetchRow($where,$order=""){
 		return $this->e_user->fetchRow($where,$order);
 	}

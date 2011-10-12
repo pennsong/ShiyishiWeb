@@ -133,7 +133,7 @@
     	                        <td><!--{$info.dustrytype_2_name}--></td>
   	                        </tr>
     	                      <tr>
-    	                        <td nowrap="nowrap" align="right">期望工作地区：</td>
+    	                        <td nowrap="nowrap" align="right">期望工作地点：</td>
     	                        <td><!--{$info.work_gnd_name}--></td>
   	                        </tr>
     	                      <tr></tr>
@@ -183,7 +183,7 @@
     	              <div>
     	                <div class="grh2">工作经历</div>
     	                <div class="grmain">
-                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0">2
 							<!--{foreach from=$works key=key item=item}-->
 								<!--{$item}-->
 							<!--{/foreach}-->

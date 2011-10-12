@@ -115,9 +115,9 @@
                                 </li>
 
                                 <li><span class="glogintext">职位性别：</span>
-									<input name="info[gender]" type="radio" checked="checked" value="1"<!--{if $info.gender=='0'}--> checked<!--{/if}--> />不限
-									<input name="info[gender]" type="radio" value="2"<!--{if $info.gender=='1'}--> checked<!--{/if}--> />男
-									<input name="info[gender]" type="radio" value="3"<!--{if $info.gender=='2'}--> checked<!--{/if}--> />女
+									<input name="info[gender]" type="radio" checked="checked" value="1"<!--{if $info.gender=='1'}--> checked<!--{/if}--> />不限
+									<input name="info[gender]" type="radio" value="2"<!--{if $info.gender=='2'}--> checked<!--{/if}--> />男
+									<input name="info[gender]" type="radio" value="3"<!--{if $info.gender=='3'}--> checked<!--{/if}--> />女
 								</li>
 
                                 <li><span class="glogintext">职位性质：</span>

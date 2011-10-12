@@ -126,8 +126,8 @@
           <tr>
             <td width="12%" align="center" bgcolor="#f9f9f9">职位性质：</td>
             <td width="38%"><!--{if $item.jobterm==1 }-->全职<!--{/if}--><!--{if $item.jobterm==2 }-->兼职<!--{/if}--><!--{if $item.jobterm==3 }-->实习<!--{/if}--></td>
-            <td align="center" bgcolor="#f9f9f9">简历语言：</td>
-            <td>中文</td>
+            <td align="center" bgcolor="#f9f9f9">招聘职位：</td>
+            <td><!--{$item.title}--></td>
           </tr>
           <tr align="center">
             <td height="1" colspan="4" bgcolor="#dddddd"></td>
@@ -154,14 +154,14 @@
             <td width="12%" align="center" bgcolor="#f9f9f9">学历要求：</td>
             <td width="38%"><!--{$item.degree}--></td>
             <td width="12%" align="center" bgcolor="#f9f9f9">工作经验：</td>
-            <td width="38%"><!--{$item.work_exp}-->年</td>
+            <td width="38%"><!--{if $item.work_exp==0 }-->不限<!--{/if}--><!--{if $item.work_exp==1 }-->无经验<!--{/if}--><!--{if $item.work_exp==2 }-->1年以下<!--{/if}--><!--{if $item.work_exp==3 }-->1-3年<!--{/if}--><!--{if $item.work_exp==4 }-->3-5年<!--{/if}--><!--{if $item.work_exp==5 }-->5-10年<!--{/if}--><!--{if $item.work_exp==6 }-->10年以上<!--{/if}--></td>
           </tr>
           <tr align="center">
             <td height="1" colspan="4" bgcolor="#dddddd"></td>
           </tr>
           <tr>
             <td width="12%" align="center" bgcolor="#f9f9f9">性别要求：</td>
-            <td width="38%"><!--{if $item.gender>2 || $item.gender<1 }-->不限<!--{/if}--><!--{if $item.gender==1 }-->男<!--{/if}--><!--{if $item.gender==2 }-->女<!--{/if}--></td>
+            <td width="38%"><!--{if $item.gender==1 }-->不限<!--{/if}--><!--{if $item.gender==2 }-->男<!--{/if}--><!--{if $item.gender==3 }-->女<!--{/if}--></td>
             <td width="12%" align="center" bgcolor="#f9f9f9">语言能力：</td>
             <td width="38%"><!--{$item.language}--></td>
           </tr>
@@ -176,7 +176,7 @@
       <table border="0" cellpadding="4" cellspacing="1" width="100%">
         <tbody>
           <tr>
-            <td width="12%" align="center" bgcolor="#f9f9f9">工作地区：</td>
+            <td width="12%" align="center" bgcolor="#f9f9f9">工作地点：</td>
             <td width="88%"><!--{$item.proname}-->-<!--{$item.cityname}--><!--{if $item.live_address}-->-<!--{$item.live_address}--><!--{/if}--></td>
           </tr>
           <tr align="center">

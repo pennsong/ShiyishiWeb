@@ -119,7 +119,7 @@
 					<table border="0" cellpadding="4" cellspacing="1" width="100%">
                       <tbody>
                         <tr>
-                          <td bgcolor="#f9f9f9" width="12%">工作地区：</td>
+                          <td bgcolor="#f9f9f9" width="12%">工作地点：</td>
                           <td width="88%">北京大兴区;北京丰台区;上海卢湾区;福建莆田;浙江温州</td>
                         </tr>
                         <tr>

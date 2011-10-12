@@ -179,7 +179,7 @@ $(document).ready(function(){
     <h2>推荐企业</h2>
     <ul>
 	<!--{foreach from=$relinks key=key item=item}-->
-		  <li><a href="<!--{$item.url}-->" target="_blank"><img  src="<!--{$item.img}-->" onerror="this.src='http://www.shiyishi.cn/images/no_e_user.jpg';" /></a>
+		  <li><a href="<!--{$item.companyUrl}-->" target="_blank"><img  src="<!--{$item.companyLogo}-->" onerror="this.src='http://www.shiyishi.cn/images/no_e_user.jpg';" /></a>
 			<p><!--{if $item.title}--><a href="<!--{$item.url}-->" target="_blank"><!--{$item.title}--></a><!--{/if}--></p>
 		  </li>
 	<!--{/foreach}-->

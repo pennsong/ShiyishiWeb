@@ -44,7 +44,12 @@ class index_Controller extends Controller{
 			//热点招聘
 			$hotjobs = $this->job->getHotJobs(6);
 		}
-		$relinks =$this->relinks->pageAll(1,8,'','',' id desc ');
+		$relinks =$this->relinks->pageAll(1,8,'','',' orid');
+		foreach ($relinks as &$item) {
+			$tmpCompanyInfo = $this->e_user->find($item[id]);
+			$item['companyLogo'] = $tmpCompanyInfo['logo'];
+			$item['companyUrl'] = BASE_URL.'/company/view/'.$item[id].'.html';
+		}
 		$company = $this->e_user->fetchAll(" username!='' and password!='' "," createtime desc "," id,company,logo",8);
 
 		$this->assign('jobnum',$jobnum);

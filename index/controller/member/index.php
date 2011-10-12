@@ -34,6 +34,7 @@ class index_Controller extends Controller{
 		$vodresume = $resume_vod->fetchRow("uid='".$uid."'");
 		
 		$hadlq = 0;
+		F::setlogininfo('resume_status',$myinfo['resume_status']);
 		//判断是否录用
 		$check = $this->enrolllog->fetchRow("uid = ".$uid,'id desc');
 		if($check&&$check['status']==1){

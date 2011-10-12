@@ -14,7 +14,7 @@
 							<h2>视频简历</h2>
 							<div class="clearfix"></div>                    
 							<div id="fengge" style="text-align: center;">
-									<script type="text/javascript">VideoPlayer("<!--{$img_domain}--><!--{$video.vodurl}-->","<!--{$img_domain}--><!--{$video.vodimg}-->","640","480","&autostart=false");</script>
+									<script type="text/javascript">VideoPlayer("<!--{$img_domain}--><!--{$video.vodurl}-->","<!--{$img_domain}--><!--{$video.vodimg}-->","320","265","&autostart=false");</script>
 							</div>
 							<div class="clearfix"></div>
 						</div>

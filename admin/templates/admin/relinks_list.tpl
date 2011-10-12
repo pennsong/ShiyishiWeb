@@ -21,7 +21,7 @@ function msg(_m,_s){
 	<tr class="tr3 s3">
 		<td class="tal" width="50">排序</td>
 		<td class="tal">名称</td>
-		<td class="tal">链接地址</td>
+		<td class="tal">公司id</td>
 		<td class="tal">图片</td>
 		<td class="tal" width="10%" style="text-align:center">操作</td>
 	</tr>
@@ -29,8 +29,8 @@ function msg(_m,_s){
 	<tr class="tr3">
 		<td class="tal"><input class="input tac" name="orid[<!--{$item.id}-->]" value="<!--{$item.orid}-->" size="2" type="text"></td>
 		<td><!--{if $item.title}--><!--{$item.title}--><!--{else}-->无<!--{/if}--></td>
-		<td><!--{$item.url}--></td>
-		<td><!--{if $item.img}--><img src="<!--{$item.img}-->" border="0" height="60" width="192" /><!--{else}-->无<!--{/if}--></td>
+		<td><!--{$item.id}--></td>
+		<td><!--{if $item.logo}--><img src="<!--{$item.logo}-->" border="0" height="60" width="192" /><!--{else}-->无<!--{/if}--></td>
 		<td><a class="fourm-two" href="<!--{$pageurl}-->/edit.do?id=<!--{$item.id}-->">编辑</a> | <a class="fourm-two" href="<!--{$pageurl}-->/remove.do?id=<!--{$item.id}-->" onclick="return confirm('确定删除?')" target="post_main">删除</a></td>
 	</tr>
 <!--{/foreach}-->

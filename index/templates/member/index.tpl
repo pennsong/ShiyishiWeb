@@ -77,7 +77,7 @@
         <ul>
           <li><img src="<!--{$baseurl}-->/images/Icon1.gif" /> 职位申请记录：共申请 <a href="<!--{$baseurl}-->/member/myjob/pos.html" class="red"><!--{$posnum}--></a> 条职位 ,其中有 <a href="<!--{$baseurl}-->/member/myjob/pos.html?e=1" class="red"><!--{$posnum_e}--></a> 条职位已过期 <a href="<!--{$baseurl}-->/member/myjob/pos.html">点此查看</a></li>
           <li><img src="<!--{$baseurl}-->/images/Icon1.gif" /> 我的面试机会：共收到 <a href="<!--{$baseurl}-->/member/myjob/int.html" class="red"><!--{$intnum}--></a> 条面试通知 ,其中有 <a href="<!--{$baseurl}-->/member/myjob/int.html?isnew=1" class="red"><!--{$intnum_n}--></a> 条新面试通知 <a href="<!--{$baseurl}-->/member/myjob/int.html">点此查看</a></li>
-          <li><img src="<!--{$baseurl}-->/images/Icon1.gif" /> 简历被查看记录：共记录 <a href="<!--{$baseurl}-->/member/myjob/rviewd.html" class="red"><!--{$viewdnum}--></a> 家企业查看我的简历 <a href="<!--{$baseurl}-->/member/myjob/rviewd.html">点此查看</a></li>
+          <li><img src="<!--{$baseurl}-->/images/Icon1.gif" /> 简历被查看记录：共记录 <a href="<!--{$baseurl}-->/member/myjob/rviewd.html" class="red"><!--{$viewdnum}--></a> 次企业查看我的简历 <a href="<!--{$baseurl}-->/member/myjob/rviewd.html">点此查看</a></li>
         </ul>
       </div>
     </div>

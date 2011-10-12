@@ -93,10 +93,12 @@ class e_user_Controller extends Controller{
 				}
 				$userinfo = $usermodel->find($check['uid']);
 				if($userinfo){
-					$uinfo['id'] = $userinfo['uid'];
+					$uinfo['id'] = $userinfo['id'];
 					$uinfo['eid'] = 0;
 					$uinfo['resume_status'] = 0;
 					$uinfo['edatetime'] = 0;
+					$uinfo['jobid'] = 0;
+					$uinfo['etimes'] = 0;
 					$usermodel->update($uinfo);
 					$ename = $this->user->getCompanyName($eid);
 					//判断是否存在上级

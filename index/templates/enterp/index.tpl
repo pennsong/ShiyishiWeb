@@ -32,7 +32,7 @@
                     	<div id="hrcenterrightc" style="padding:15px 10px 0 10px;">
 							
                             <h2 style="line-height:180%;">您如需下载求职者的联系方式及视频简历，请与本网站客服人员联系获得下载额度。<br>联系方式：电话：010-51316156
-                                                                       邮件：zhaopin@shiyishi.cn</h2>
+                                                                       邮件：<span style="font-size:15pt; border-bottom-style:hidden;">zhaopin@shiyishi.cn</span></h2>
                             </div>
                     	<div id="hrcenterrightc">
 							

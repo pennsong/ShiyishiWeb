@@ -25,7 +25,7 @@
       <ul>
         <li class="name">职位名称</li>
         <li class="company">公司名称</li>
-        <li class="add">工作地区</li>
+        <li class="add">工作地点</li>
         <li class="gold">职位月薪</li>
         <li class="date">更新日期</li>
       </ul>
@@ -41,7 +41,6 @@
         <div id="jobadd"><!--{$item.proname}-->-<!--{$item.cityname}--></div>
         <div id="jobgold"><!--{$item.money}--></div>
         <div id="jobdate"><!--{$item.modifydate|date_format:"%Y-%m-%d"}--></div>
-        <div id="jobshuxing"><span class="bold">公司性质：</span><!--{$item.company_properties|default:'未填'}--> | <span class="bold">公司规模：</span><!--{$item.company_scale|default:'未填'}--> | <span class="bold">学历要求：</span><!--{$item.degree|default:'无要求'}--> | <span class="bold">招聘人数：</span><!--{$item.pnum|default:'不限'}--></div>
         <div id="jobzhai"><!--{$item.jtext}--></div>
         <div id="jobbutton2"><a href="<!--{$baseurl}-->/member/do/applyjob.do?jobid=<!--{$item.id}-->"><img src="<!--{$baseurl}-->/images/Button_Apply.gif" /></a></div>
       </div>
