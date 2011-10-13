@@ -13,7 +13,7 @@
     <!--{include file="m_left.tpl"}-->
     <div id="gcenterright">
       <div id="gcenterrightc">
-        <div id="grr"><a href="<!--{$baseurl}-->/images/SYSPlayer.exe">在线录制视频</a> <a href="<!--{$baseurl}-->/images/视频简历问题提示.xls">录制简历提示问题</a></div>
+        <div id="grr"><a href="<!--{$baseurl}-->/images/SYSPlayer.exe">在线录制视频</a> <a href="<!--{$baseurl}-->/images/录制工具操作指南.pdf">录制工具操作指南</a> <a href="<!--{$baseurl}-->/images/视频简历问题提示.xls">录制简历提示问题</a></div>
         <h2>视频简历</h2>
 		<form id="addVodResume" name="addVodResume" class="cmxform" method="post" enctype="multipart/form-data" action="<!--{$baseurl}-->/member/do/addvod.do">
         <!--{if $info}-->
