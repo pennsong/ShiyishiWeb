@@ -25,6 +25,7 @@
       <ul>
         <li class="name">职位名称</li>
         <li class="company">公司名称</li>
+        <li class="subcompany">所属部门</li>
         <li class="add">工作地点</li>
         <li class="gold">职位月薪</li>
         <li class="date">更新日期</li>
@@ -38,6 +39,7 @@
         </div>-->
         <div id="jobppname"><a href="<!--{$baseurl}-->/jobs/view/<!--{$item.id}-->.html"><!--{$item.title}--></a></div>
         <div id="jobcom"><a href="<!--{$baseurl}-->/jobs/view/<!--{$item.id}-->.html"><!--{$item.ename}--></a></div>
+        <div id="jobsubcompany"><!--{$item.subcompany}--></div>        
         <div id="jobadd"><!--{$item.proname}-->-<!--{$item.cityname}--></div>
         <div id="jobgold"><!--{$item.money}--></div>
         <div id="jobdate"><!--{$item.modifydate|date_format:"%Y-%m-%d"}--></div>

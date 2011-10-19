@@ -69,6 +69,7 @@ class jobs_Controller extends Controller{
 		$wheres[] = "b.status=2";
 		$rows = $this->jobs->pageUnionAll($page, 20, $url,'e_user','a.cid=b.id',$wheres,'a.id desc','a.*');
 		foreach($rows as $k=>$v){
+			$v['subcompany'] = $this->subcompany->getName($v['scid']);
 			$v['ename'] = $this->e_user->getCompanyName($v['cid']);
 			$v['proname'] = $this->area->getName($v['live_gnd_p']);
 			$v['company_properties'] = $this->companyproperties[$v['company_properties']];
@@ -153,7 +154,7 @@ class jobs_Controller extends Controller{
 		if($info['language']<10)
 			$info['language'] = "0".$info['language'];
 		$info['language'] = $this->languages[$info['language']];
-		$info['subcompany'] = isset($subcompany['name'])?$subcompany['name']:"未定";
+		$info['subcompany'] = isset($subcompany['name'])?$subcompany['name']:"无";
 
 		//$v['jtext'] = F::getstr(str_replace(array("　",' '),"",strip_tags($v['jtext'])),268,'..');
 

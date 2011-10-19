@@ -126,9 +126,10 @@ li{list-style:none;}
 #joblisttitle ul{}
 #joblisttitle ul li{display:inline;}
 #joblisttitle ul li.name{padding:0 0 0 40px;}
-#joblisttitle ul li.company{padding:0 0 0 130px;}
-#joblisttitle ul li.add{padding:0 0 0 190px;}
-#joblisttitle ul li.gold{padding:0 0 0 45px;}
+#joblisttitle ul li.company{padding:0 0 0 80px;}
+#joblisttitle ul li.subcompany{padding:0 0 0 80px;}
+#joblisttitle ul li.add{padding:0 0 0 60px;}
+#joblisttitle ul li.gold{padding:0 0 0 110px;}
 #joblisttitle ul li.date{padding:0 0 0 35px;}
 
 #hrlisttitle{background:url(../images/indexh2bg.jpg) repeat-x;height:28px;line-height:28px;color:#0173A7;font-weight:bold;margin:0px 0 0 0;}
@@ -147,10 +148,11 @@ li{list-style:none;}
 #joblistmain{ position:relative;height:100px;border-bottom:2px solid #CCCCCC;}
 	#jobppname{ position:absolute;top:10px;left:40px;}
 	#jobppname a{color:#f00;font-weight:bold;}
-	#jobcom{position:absolute;top:10px;left:230px;}
+	#jobcom{position:absolute;top:10px;left:170px;}
 	#jobcom a{color:#f00;font-weight:bold;}
-	#jobadd{position:absolute;top:10px;left:470px;}
-	#jobgold{position:absolute;top:10px;left:560px;}
+	#jobsubcompany{position:absolute;top:10px;left:300px;}
+	#jobadd{position:absolute;top:10px;left:410px;}
+	#jobgold{position:absolute;top:10px;left:550px;}
 	#jobdate{position:absolute;top:10px;left:660px;}
 	#jobshuxing{position:absolute;top:30px;left:40px;}
 	#jobzhai{position:absolute;top:50px;left:40px;line-height:22px;width:600px;}

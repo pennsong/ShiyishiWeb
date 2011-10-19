@@ -25,6 +25,14 @@
                         	<h3>职位详细信息</h3>
                         	<ul>
 							<input  name="info[id]" type="hidden" value="<!--{$info.id}-->" />
+							    <li><span class="glogintext">所属部门：</span>
+								  <select name="info[scid]"  id="scid">
+								  <option value="0">无</option>
+									<!--{foreach from=$subcompany key=key item=item}-->
+										<option value="<!--{$item.id}-->" <!--{if $info.scid==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
+									<!--{/foreach}-->
+								  </select><span id="showResult_scid"></span>
+                                </li>
                                 <li><span class="glogintext">职位名称：</span><input class="k" name="info[title]" id="title" type="text" value="<!--{$info.title}-->" alt="职位名称:空" /><span id="showResult_title"></span></li>
                                 <li><span class="glogintext">工作地点：</span>
 									  <select name="info[live_gnd_p]" onchange="setCity(this,'live_gnd_c');$('#showResult_live_gnd_c').html('');" id="live">
@@ -41,14 +49,7 @@
 										<!--{/if}-->
 									  </select>&nbsp;<input name="info[live_address]" id="live_address" class="k" value="<!--{$info.live_address}-->" title="公司地址:空"/><span class="red bold">（无需填写省、市、区县）</span><span id="showResult_live_gnd_c"></span>
                                 </li>
-                                <!--<li><span class="glogintext">分支机构：</span>
-								  <select name="info[scid]"  id="scid">
-								  <option value="0">无分支机构</option>
-									<!--{foreach from=$subcompany key=key item=item}-->
-										<option value="<!--{$item.id}-->" <!--{if $info.scid==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-									<!--{/foreach}-->
-								  </select><span id="showResult_scid"></span>
-                                </li>-->
+
 
                                 <li><span class="glogintext">职位类别：</span>
 								  <select name="info[funtype_1]" id="funtype_o" onchange="setSubData(this,'funtype');$('#showResult_funtype_t').html('');">

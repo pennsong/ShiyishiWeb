@@ -126,8 +126,8 @@
           <tr>
             <td width="12%" align="center" bgcolor="#f9f9f9">职位性质：</td>
             <td width="38%"><!--{if $item.jobterm==1 }-->全职<!--{/if}--><!--{if $item.jobterm==2 }-->兼职<!--{/if}--><!--{if $item.jobterm==3 }-->实习<!--{/if}--></td>
-            <td align="center" bgcolor="#f9f9f9">招聘职位：</td>
-            <td><!--{$item.title}--></td>
+            <td align="center" bgcolor="#f9f9f9">所属部门：</td>
+            <td><!--{$item.subcompany}--></td>
           </tr>
           <tr align="center">
             <td height="1" colspan="4" bgcolor="#dddddd"></td>

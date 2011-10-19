@@ -40,6 +40,10 @@ class subcompany_Model extends Model{
 		return $this->subcompany->count($where);
 	}
 
+	function getName($id){
+		$info = $this->subcompany->find($id);
+		return $info['name'];
+	}
 
 }
 ?>

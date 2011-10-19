@@ -24,7 +24,7 @@
 		<dl>
 			<dd>・<a href="/enterp/editpasswod/">修改密码</a></dd>
 			<dd>・<a href="/enterp/company/info.html">修改公司设置</a></dd>
-			<!--<dd>・<a href="/enterp/company/list.html">新建分支机构</a></dd>-->
+			<dd>・<a href="/enterp/company/list.html">新建分支机构</a></dd>
 			<dd>・<a href="/enterp/contract/">合同执行情况</a></dd>
 	  </dl>
 		<li><a href="/enterp/do/logout.do">退出</a></li>
