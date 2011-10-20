@@ -34,7 +34,31 @@
 								  </select><span id="showResult_scid"></span>
                                 </li>
                                 <li><span class="glogintext">职位名称：</span><input class="k" name="info[title]" id="title" type="text" value="<!--{$info.title}-->" alt="职位名称:空" /><span id="showResult_title"></span></li>
-                                <li><span class="glogintext">工作地点：</span>
+     
+
+
+                                <li><span class="glogintext">职位属性：</span>
+								  <select name="info[funtype_1]" id="funtype_o" onchange="setSubData(this,'funtype');">
+									<option value="0">请选择</option>
+									<!--{foreach from=$ftdatas key=key item=item}-->
+									<option value="<!--{$item.id}-->"<!--{if $info.funtype_1==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
+									<!--{/foreach}-->
+								  </select>
+								  <span id="showResult_funtype_o"></span>
+								</li>
+								<li>
+								<span class="glogintext">职位类别：</span>
+								  <select name="info[funtype_2]" id="funtype_t">
+								  <option value="">请选择</option>
+									<!--{if $subftdatas}-->
+									<!--{foreach from=$subftdatas key=key item=item}-->
+									<option value="<!--{$item.id}-->"<!--{if $info.funtype_2==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
+									<!--{/foreach}-->
+									<!--{/if}-->
+								  </select>
+								  <span id="showResult_funtype_t"></span>
+								  </li>
+                          		 <li><span class="glogintext">工作地点：</span>
 									  <select name="info[live_gnd_p]" onchange="setCity(this,'live_gnd_c');$('#showResult_live_gnd_c').html('');" id="live">
 									  <option value="0">请选择</option>
 										<!--{foreach from=$adatas key=key item=item}-->
@@ -49,25 +73,6 @@
 										<!--{/if}-->
 									  </select>&nbsp;<input name="info[live_address]" id="live_address" class="k" value="<!--{$info.live_address}-->" title="公司地址:空"/><span class="red bold">（无需填写省、市、区县）</span><span id="showResult_live_gnd_c"></span>
                                 </li>
-
-
-                                <li><span class="glogintext">职位类别：</span>
-								  <select name="info[funtype_1]" id="funtype_o" onchange="setSubData(this,'funtype');$('#showResult_funtype_t').html('');">
-									<option value="">请选择</option>
-									<!--{foreach from=$ftdatas key=key item=item}-->
-									<option value="<!--{$item.id}-->"<!--{if $info.funtype_1==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-									<!--{/foreach}-->
-								  </select>
-								  <select name="info[funtype_2]" id="funtype_t"<!--{if !$subftdatas}-->  style="display:none;"<!--{/if}--> alt="职位类别:空">
-									<!--{if $subftdatas}-->
-									<!--{foreach from=$subftdatas key=key item=item}-->
-									<option value="<!--{$item.id}-->"<!--{if $info.funtype_2==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-									<!--{/foreach}-->
-									<!--{/if}-->
-								  </select>
-								  <span id="showResult_funtype_t"></span>
-								  </li>
-
                                 <li><span class="glogintext">公司类型：</span>
                                     <select name="info[company_type]" id="company_type"  alt="公司类型:空" onchange="$('#showResult_company_type').html('');">
 										<option value="0">请选择</option>
@@ -89,22 +94,7 @@
                                 </li>
 
 								<input type="hidden" name="info[company_properties]" id="company_properties" value="0">
-								<li><span class="glogintext">所属行业：</span>
-								  <select name="info[dustrytype_1]" id="dustrytype_o" onchange="setSubData(this,'dustrytype');$('#showResult_dustrytype_t').html('');">
-									<option value="">请选择</option>
-									<!--{foreach from=$dtdatas key=key item=item}-->
-									<option value="<!--{$item.id}-->"<!--{if $info.dustrytype_1==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-									<!--{/foreach}-->
-								  </select>
-								  <select name="info[dustrytype_2]" id="dustrytype_t"<!--{if !$subdtdatas}--> style="display:none;"<!--{/if}--> alt="所属行业:空">
-									<!--{if $subdtdatas}-->
-									<!--{foreach from=$subdtdatas key=key item=item}-->
-									<option value="<!--{$item.id}-->"<!--{if $info.dustrytype_2==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-									<!--{/foreach}-->
-									<!--{/if}-->
-								  </select>
-								   <span id="showResult_dustrytype_t"></span>
-                                </li>
+				
                                 <li><span class="glogintext">薪资待遇：</span>
 								  <select name="info[money]" id="money" alt="薪资待遇:空"  onchange="$('#showResult_money').html('');">
 								  <option value="">请选择</option>
@@ -229,7 +219,9 @@ function setSubData(_o,_t){
 	var tobj = document.getElementById(_tid);
 	$("#"+_tid).hide();
 	tobj.options.length = 0;
+	tobj.options.add(new Option("请选择","0"));
 	if(!pid || pid<=0){
+		$("#"+_tid).show();
 		alert("请选择有效信息！！！");
 	}else{
 		$.ajax({
@@ -275,26 +267,21 @@ function submitCheck(){
 //	}else{
 //		$('#showResult_scid').html('');
 //	}
+
+	if($('#funtype_o').val() == 0){
+		$('#showResult_funtype_o').html(str);
+		return false;
+	}else{
+		$('#showResult_funtype_o').html('');
+	}
+
+	if($('#funtype_t').val() == 0){
+		$('#showResult_funtype_t').html(str);
+		return false;
+	}
 	if( document.getElementById('live_gnd_c').style.display=="none" ){
 		$('#showResult_live_gnd_c').html(str);
 		return false;
-	}
-
-	if( document.getElementById('funtype_t').style.display=="none" ){
-		$('#showResult_funtype_t').html(str);
-		return false;
-	}
-
-	if( document.getElementById('dustrytype_t').style.display=="none" ){
-		$('#showResult_dustrytype_t').html(str);
-		return false;
-	}
-
-	if($('#funtype_o').val() == 0){
-		$('#showResult_funtype_t').html(str);
-		return false;
-	}else{
-		$('#showResult_funtype_t').html('');
 	}
 
 	if($('#company_type').val() == 0){
@@ -310,7 +297,6 @@ function submitCheck(){
 	}else{
 		$('#showResult_company_scale').html('');
 	}
-
 //	if($('#company_properties').val() == 0){
 //		$('#showResult_company_properties').html(str);
 //		return false;
@@ -318,13 +304,12 @@ function submitCheck(){
 //		$('#showResult_company_properties').html('');
 //	}
 
-	if($('#dustrytype_o').val() == 0){
-		$('#showResult_dustrytype_t').html(str);
-		return false;
-	}else{
-		$('#showResult_dustrytype_t').html('');
-	}
-
+//	if($('#dustrytype_o').val() == 0){
+//		$('#showResult_dustrytype_t').html(str);
+//		return false;
+//	}else{
+//		$('#showResult_dustrytype_t').html('');
+//	}
 	if($('#money').val() == 0){
 		$('#showResult_money').html(str);
 		return false;
@@ -345,7 +330,6 @@ function submitCheck(){
 	}else{
 		$('#showResult_degree').html('');
 	}
-
 	return true;
 }
 </script>

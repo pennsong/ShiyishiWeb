@@ -9,14 +9,23 @@
         <li><span class="floatLeft">地区：</span><a onclick="OpenW('city');" style="cursor:pointer;" class="indexinputbg" id="s_city" ><!--{if $c}--><!--{$c}--><!--{else}--><!--{$cityinfo.area_name|default:'请选择城市'}--><!--{/if}--></a><input type="hidden" name="cid" id="s_cityid" value="<!--{if $cid}--><!--{$cid}--><!--{else}--><!--{$cityinfo.id}--><!--{/if}-->"/>
 		<input type="hidden" name="s_city" id="s_city_1" value="<!--{$c}-->" />
 		</li>
-        <li><span class="floatLeft">行业：</span><a onclick="OpenW('dustrytype');" style="cursor:pointer;" class="indexinputbg" id="s_dustrytype"><!--{if $d}--><!--{$d}--><!--{else}-->请选择行业<!--{/if}--></a><input type="hidden" name="dt" id="s_dustrytypeid" value="<!--{$dt}-->" />
-		<input type="hidden" name="s_dustrytype" id="s_dustrytype_1" value="<!--{$d}-->" />
+
+		<li><span class="">职位属性:</span>
+		<select name="zhiweishuxin" id="zhiweishuxin" onchange="setZhiweileibie();">
+		<option>请选择行业</option>
+		 <!--{foreach from=$funtype item=item}-->
+		 <option value="<!--{$item.id}-->" <!--{if $zhiweishuxin==$item.id}--> selected<!--{/if}-->><!--{$item.thename}--></option>
+		 <!--{/foreach}-->
+		</select>
 		</li>
-        <li><span class="floatLeft">职位：</span><a onclick="OpenW('funtype');" style="cursor:pointer;" class="indexinputbg" id="s_funtype"><!--{if $f}--><!--{$f}--><!--{else}-->请选择岗位<!--{/if}--></a><input type="hidden" name="ft" id="s_funtypeid" value="<!--{$ft}-->"/>
-		<input type="hidden" name="s_funtype" id="s_funtype_1" value="<!--{$f}-->" />
+		<li><span class="">职位类别:</span>
+		<select name="ft" id="ft">
+		<option>请选择岗位</option>
+		</select>
 		</li>
+		
         <li>时间:<input type="tetx" name="jd" class="Wdate" onClick="WdatePicker()" style="width:80px;" value="<!--{$jd}-->" /></li>
-        <li>关键字:<input type="text" name="kw" id="s_keyword" value="<!--{if $kw}--><!--{$kw}--><!--{else}-->输入公司或者职位<!--{/if}-->" style="width:105px;"/></li>
+        <li>关键字:<input type="text" name="kw" id="s_keyword" value="<!--{if $kw}--><!--{$kw}--><!--{else}-->输入公司或者职位<!--{/if}-->" style="width:80px;"/></li>
         <li><input type="image" src="<!--{$baseurl}-->/images/Button_Search.gif" align="absmiddle" /></li>
       </ul></form>
     </div>
@@ -100,6 +109,13 @@ function checkLogin(){
 }
 
 function checkSjob(){
+	if (($("#zhiweishuxin").val() > 0) && !($("#ft").val() > 0))
+	{
+		alert("请选择职位类别！");
+
+		return false;
+	} 
+	
 	var kw = $("#s_keyword").val();
 	if(kw=='输入公司或者职位'){
 		$("#s_keyword").val('');
@@ -130,6 +146,40 @@ function close(){
 	$.box.close();
 }
 
+function setZhiweileibie(_val){
+	_val = typeof(_val) != 'undefined' ? _val : null;
+	var tobj = document.getElementById("ft");
+	tobj.options.length = 0;
+	tobj.options.add(new Option("请选择岗位",""));
+	$.ajax({
+		type:"POST",
+		url:"/ajax/getZhiweileibie.do",
+		dataType:"html",
+		data:'zhiweishuxin='+$("#zhiweishuxin").val(),
+		success:function(msg)
+		{
+			if (msg.length>0)
+			{
+				msg = msg.split(":");
+				if(msg.length>0){
+					for(var i=0;i<msg.length;i++){
+						var val = msg[i].split("|");
+						if (val[0] == _val)
+						{
+							tobj.options.add(new Option(val[1],val[0], false, true));
+						}
+						else
+						{
+							tobj.options.add(new Option(val[1],val[0]));
+						}
+					}
+				}
+			}
+
+		}
+	});
+}
+
 $(document).ready(function(){
 	$("#uemail").css({color:"#3c3c3c"});
 	$("#uemail").focus(function(){
@@ -157,6 +207,7 @@ $(document).ready(function(){
 			$("#s_keyword").val('输入公司或者职位');
 		}
 	});
+	setZhiweileibie(<!--{$ft}-->);
 });	
 </script>
 <!--{include file="include/footer.tpl"}-->

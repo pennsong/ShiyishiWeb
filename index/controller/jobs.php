@@ -8,6 +8,7 @@ class jobs_Controller extends Controller{
 		$this->jobs = Load::model('jobs');
 		$this->e_user = Load::model('e_user');
 		$this->area = Load::model('area');
+		$this->funtype=Load::model('funtype');
 		$this->subcompany = Load::model('subcompany');
 		$this->adata = $this->cache->getAreaDatas('area_province');//省份
 		$this->ftdata = $this->cache->getFuntypeDatas('funtype_level1');//一级职位
@@ -30,6 +31,7 @@ class jobs_Controller extends Controller{
 	{
 		$cid = (int)$this->_get('cid',$this->cityinfo['id']);
 		$dt = (int)$this->_get('dt',0);
+		$zhiweishuxin = (int)$this->_get('zhiweishuxin', 0);
 		$ft = (int)$this->_get('ft',0);
 		$jd = trim($this->_get('jd'));
 		$kw = trim($this->_get('kw'));
@@ -99,9 +101,12 @@ class jobs_Controller extends Controller{
 			$this->assign('f',$f);
 		}
 		$news = $this->jobs->pageAll(1, 10, ''," status=1 ",'modifydate desc');
+		$funtype = $this->funtype->fetchAll('parent_id = 0');
 
+		$this->assign('funtype', $funtype);
 		$this->assign('news',$news);
 		$this->assign('dt',$dt);
+		$this->assign('zhiweishuxin', $zhiweishuxin);
 		$this->assign('ft',$ft);
 		$this->assign('cid',$cid);
 		$this->assign('jd',$jd);

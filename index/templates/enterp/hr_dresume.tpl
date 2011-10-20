@@ -31,7 +31,7 @@ var user=[];
                             <div id="panes">
                               <div id="fenggemain" style="display: block;">
                               	<div class="red" id="fenges">标准简历(<!--{$total}-->)</div>
-                              	<span style="color: red">提示：如您需要将视频简历下载本地观看，请点击<a href="<!--{$baseurl}-->/images/SYSPlayer.exe">SYSplayer</a>下在本站专用播放器播放。</span>
+                              	<span style="color: red">提示：如您需要将视频简历下载本地观看，请点击<a href="<!--{$baseurl}-->/images/SYSPlayer.exe">SYSplayer</a>下载本站专用播放器播放。</span>
                                 <table width="100%" cellspacing="1" cellpadding="0" border="0" id="recordtable" class="listTab">
                                   <tbody>
 									<tr class="list2">

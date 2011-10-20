@@ -42,6 +42,7 @@ class openw_Controller extends Controller{
 		$this->display('openw.tpl');
 	}
 
+	//选择职位属性
 	function dustrytypeAction()
 	{
 		$datas = array();

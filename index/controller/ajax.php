@@ -20,6 +20,19 @@ class ajax_Controller extends Controller{
 		}
 		$this->ajaxmsg(implode(":",$html));
 	}
+	
+	function getZhiweileibieAction(){
+		$zhiweishuxin = intval($this->_get('zhiweishuxin',0));
+		$this->zhiweileibie=Load::model('funtype');
+		$rows = $this->zhiweileibie->fetchAll("parent_id=$zhiweishuxin and parent_id<>0");
+		if(!empty($rows)){
+			foreach($rows as $k1=>$v1){
+				$html[] = $v1['id'].'|'.$v1['thename'];
+			}
+		}
+		$this->ajaxmsg(implode(":",$html));
+	}
+	
 	//根据一级分类获取二级分类
 	function getsubdatabypidAction(){
 		$pid = intval($this->_get('pid',0));
