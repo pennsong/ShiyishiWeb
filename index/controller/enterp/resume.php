@@ -7,6 +7,7 @@ class resume_Controller extends Controller{
 //		session_unregister();
 //		session_destroy();
 		$this->logincheck("enterp");
+		$this->funtype=Load::model('funtype');
 		$this->resume_box = Load::model('resume_box');
 		$this->resume = Load::model('resume');
 		$this->major = Load::model('major');
@@ -769,6 +770,10 @@ class resume_Controller extends Controller{
 		}
 		$url .= empty($urls) ? '' : '?'.implode('&',$urls);
 		$totalpage = @ceil($total / 25);
+		
+		$funtype = $this->funtype->fetchAll('parent_id = 0');
+
+		$this->assign('funtype', $funtype);
 		$this->assign('totalpage',$totalpage);
 		$this->assign('total',$total);
 		$this->assign('page',$page);

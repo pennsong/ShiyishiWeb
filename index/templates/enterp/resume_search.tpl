@@ -11,37 +11,21 @@
                         <div id="hrjlss">
 							<form name="form1" method="post" action="/enterp/resume/search.html">
                             <ul>
-                            	<li style="padding:5px 0 5px 0;">搜索简历：
-
-							  <select name="dustrytype_1" id="dustrytype_o" onchange="setSubData(this,'dustrytype');" >
-								<option selected="" value="0">按行业搜索</option>
-								<!--{foreach from=$dtdatas key=key item=item}-->
-								<option value="<!--{$item.id}-->"<!--{if $dustrytype_1==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-								<!--{/foreach}-->
-							  </select>
-							  <select name="dustrytype_2" id="dustrytype_t"<!--{if !$subdtdatas}--> style="display:none;"<!--{/if}-->>
-								<!--{if $subdtdatas}-->
-								<!--{foreach from=$subdtdatas key=key item=item}-->
-								<option value="<!--{$item.id}-->"<!--{if $dustrytype_2==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-								<!--{/foreach}-->
-								<!--{/if}-->
-							  </select>
-
-								<select name="funtype_1" id="funtype_o" onchange="setSubData(this,'funtype');">
-								<option selected="" value="0">按职位名称搜索</option>
-								<!--{foreach from=$ftdatas key=key item=item}-->
-								<option value="<!--{$item.id}-->" <!--{if $funtype_1==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-								<!--{/foreach}-->
+                                <li style="padding:5px 0 5px 0;">Resume Searching Condition：
+                            	</li>
+                            	<li style="padding:5px 0 5px 0;">搜索简历:
+								<select name="funtype_1" id="zhiweishuxin" onchange="setZhiweileibie();">
+								<option value="">按行业搜索(Select Industry)</option>
+								 <!--{foreach from=$funtype item=item}-->
+								 <option value="<!--{$item.id}-->" <!--{if $funtype_1==$item.id}--> selected<!--{/if}-->><!--{$item.thename}-->(<!--{$item.enname}-->)</option>
+								 <!--{/foreach}-->
 								</select>
-								<select name="funtype_2" id="funtype_t"<!--{if !$subftdatas}-->  style="display:none;"<!--{/if}-->>
-								<!--{if $subftdatas}-->
-								<!--{foreach from=$subftdatas key=key item=item}-->
-								<option value="<!--{$item.id}-->"<!--{if $funtype_2==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-								<!--{/foreach}-->
-								<!--{/if}-->
-							  </select>
+								<select name="funtype_2" id="ft">
+								</select>
+
 							</li>
-								
+
+
                               <li>工作年限：<select  id="year" name="year">
 										<option value="0" <!--{if $year==0}--> selected<!--{/if}-->>不限</option>
                                         <option value="-1" <!--{if $year==-1}--> selected<!--{/if}-->>无经验</option>
@@ -231,7 +215,43 @@ function setCity(_o,_tid){
 	}
 }
 
+function setZhiweileibie(_val){
+	_val = typeof(_val) != 'undefined' ? _val : null;
+	var tobj = document.getElementById("ft");
+	tobj.options.length = 0;
+	tobj.options.add(new Option("按职位名称搜索(Select Position)",""));
+	$.ajax({
+		type:"POST",
+		url:"/ajax/getZhiweileibieWithEn.do",
+		dataType:"html",
+		data:'zhiweishuxin='+$("#zhiweishuxin").val(),
+		success:function(msg)
+		{
+			if (msg.length>0)
+			{
+				msg = msg.split(":");
+				if(msg.length>0){
+					for(var i=0;i<msg.length;i++){
+						var val = msg[i].split("|");
+						if (val[0] == _val)
+						{
+							tobj.options.add(new Option(val[1],val[0], false, true));
+						}
+						else
+						{
+							tobj.options.add(new Option(val[1],val[0]));
+						}
+					}
+				}
+			}
 
+		}
+	});
+}
+
+$(document).ready(function(){
+	setZhiweileibie(<!--{$funtype_2}-->);
+});	
 
 
 </script>

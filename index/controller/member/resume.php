@@ -4,6 +4,7 @@ class resume_Controller extends Controller{
 	
 	function init(){
 		$this->logincheck();
+		$this->funtype=Load::model('funtype');
 		$this->user = Load::model('user');
 		$this->resume = Load::model('resume');
 		$this->resume_ctf = Load::model('resume_ctf');
@@ -176,6 +177,9 @@ class resume_Controller extends Controller{
 				$ctfs[$k] = $row;
 			}
 		}
+		$funtype = $this->funtype->fetchAll('parent_id = 0');
+
+		$this->assign('funtype', $funtype);
 
 		$this->assign('years',F::getYears());//年
 		$this->assign('months',F::getMonths());//月

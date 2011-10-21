@@ -7,7 +7,7 @@
     <!--{include file="m_left.tpl"}-->
     <div id="gcenterright">
       <form id="resumeAddForm" name="resumeAddForm" action="<!--{$baseurl}-->/member/do/addresume.do" method="post">
-	  <input type="hidden" value="<!--{$info.id|default:0}-->" name="info[id]"/><input type="hidden" value="cn" name="rtype"/>
+	  <input type="hidden" value="<!--{$info.id|default:0}-->" name="info[id]"/><input type="hidden" value="en" name="rtype"/>
 	  <div id="gcenterrightc">
         <h2>我的简历-<!--{$pagetitle}--></h2>
         <div id="gloginrightmain">
@@ -129,35 +129,20 @@
                 <!--{/foreach}-->
               </select>
             </li>
-            <li><span class="glogintexteng">Desired Industry：</span>
-              <select name="info[dustrytype_1]" id="dustrytype_o" onchange="setSubData(this,'dustrytype');" title="Desired Industry:空">
-                <option value="">Select</option>
-				<!--{foreach from=$dtdatas key=key item=item}-->
-                <option value="<!--{$item.id}-->"<!--{if $info.dustrytype_1==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-                <!--{/foreach}-->
-              </select>
-              <select name="info[dustrytype_2]" id="dustrytype_t"<!--{if !$info.subdtdatas}--> style="display:none;"<!--{/if}-->>
-			    <!--{if $info.subdtdatas}-->
-				<!--{foreach from=$info.subdtdatas key=key item=item}-->
-                <option value="<!--{$item.id}-->"<!--{if $info.dustrytype_2==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-                <!--{/foreach}-->
-				<!--{/if}-->
-              </select><span id="showResult_dustrytype_o"></span>
+            <li><span class="glogintext">Desired Industry：</span>
+       		<select name="info[funtype_1]" id="zhiweishuxin" onchange="setZhiweileibie();">
+				<option value="">Select</option>
+				 <!--{foreach from=$funtype item=item}-->
+				 <option value="<!--{$item.id}-->" <!--{if $info.funtype_1==$item.id}--> selected<!--{/if}--> ><!--{$item.thename}--></option>
+				 <!--{/foreach}-->
+				</select>
+              </select><span class="red bold">（必填）</span><span id="showResult_dustrytype_o"></span>
             </li>
-            <li><span class="glogintexteng">Desired Position：</span>
-              <select name="info[funtype_1]" id="funtype_o" onchange="setSubData(this,'funtype');" title="Desired Position:空">
-                <option value="">Select</option>
-				<!--{foreach from=$ftdatas key=key item=item}-->
-                <option value="<!--{$item.id}-->"<!--{if $info.funtype_1==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-                <!--{/foreach}-->
-              </select>
-              <select name="info[funtype_2]" id="funtype_t"<!--{if !$info.subftdatas}-->  style="display:none;"<!--{/if}-->>
-			    <!--{if $info.subftdatas}-->
-				<!--{foreach from=$info.subftdatas key=key item=item}-->
-                <option value="<!--{$item.id}-->"<!--{if $info.funtype_2==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-                <!--{/foreach}-->
-				<!--{/if}-->
-              </select><span id="showResult_funtype_o"></span>
+            <li><span class="glogintext">Desired Position：</span>
+		 		<select name="info[funtype_2]" id="funtype_t">
+				<option value="">Select</option>
+				</select>
+              </select><span class="red bold">（必填）</span><span id="showResult_funtype_o"></span>
             </li>
             <li><span class="glogintexteng">Expected Salary：</span>
               <select name="info[salary]">
@@ -441,6 +426,40 @@ var edui = <!--{$edunum}-->;
 var ctfi = <!--{$ctfnum}-->;
 var langi = <!--{$langnum}-->;
 var iti = <!--{$itnum}-->;
+function setZhiweileibie(_val){
+	_val = typeof(_val) != 'undefined' ? _val : null;
+	var tobj = document.getElementById("funtype_t");
+	tobj.options.length = 0;
+	tobj.options.add(new Option("Select",""));
+	$.ajax({
+		type:"POST",
+		url:"/ajax/getZhiweileibie.do",
+		dataType:"html",
+		data:'zhiweishuxin='+$("#zhiweishuxin").val(),
+		success:function(msg)
+		{
+			if (msg.length>0)
+			{
+				msg = msg.split(":");
+				if(msg.length>0){
+					for(var i=0;i<msg.length;i++){
+						var val = msg[i].split("|");
+						if (val[0] == _val)
+						{
+							tobj.options.add(new Option(val[1],val[0], false, true));
+						}
+						else
+						{
+							tobj.options.add(new Option(val[1],val[0]));
+						}
+					}
+				}
+			}
+
+		}
+	});
+}
+
 function checkPostResume(_t){
 	if(fm_chk(oo('resumeAddForm'))){
 		if(_t){
@@ -660,5 +679,8 @@ function initLen(name1,name2,maxlen)
 initLen('introduction','tn0',500);
 initLen('interest','tn1',500);
 initLen('zycourse','tn2',500);
+$(document).ready(function(){
+	setZhiweileibie(<!--{$info.funtype_2}-->);
+});
 </script>
 <!--{include file="include/footer.tpl"}-->

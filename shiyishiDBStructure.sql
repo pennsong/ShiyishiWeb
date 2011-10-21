@@ -82,7 +82,7 @@ CREATE TABLE `zp_admin_log` (
   PRIMARY KEY (`id`),
   KEY `model` (`model`),
   KEY `action` (`action`)
-) ENGINE=MyISAM AUTO_INCREMENT=361 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=364 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -572,7 +572,7 @@ CREATE TABLE `zp_funtype` (
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -635,8 +635,8 @@ CREATE TABLE `zp_jobs` (
   `live_address` varchar(254) DEFAULT NULL,
   `funtype_1` int(11) NOT NULL COMMENT '职位1',
   `funtype_2` int(11) NOT NULL COMMENT '职位2',
-  `dustrytype_1` int(11) NOT NULL,
-  `dustrytype_2` int(11) NOT NULL,
+  `dustrytype_1` int(11) DEFAULT NULL,
+  `dustrytype_2` int(11) DEFAULT NULL,
   `company_type` int(11) NOT NULL,
   `company_scale` int(11) NOT NULL,
   `company_properties` int(11) NOT NULL,
@@ -666,7 +666,7 @@ CREATE TABLE `zp_jobs` (
   KEY `modifydate` (`modifydate`),
   KEY `company_type` (`company_type`,`company_scale`,`company_properties`),
   KEY `gender` (`gender`,`language`)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1064,9 +1064,8 @@ CREATE TABLE `zp_resume` (
   `views` int(10) NOT NULL DEFAULT '0',
   `modifydate` int(10) NOT NULL DEFAULT '0',
   `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uid` (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1172,7 +1171,7 @@ CREATE TABLE `zp_resume_edu` (
   `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `rtype` (`rtype`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1214,7 +1213,7 @@ CREATE TABLE `zp_resume_lang` (
   `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `rtype` (`rtype`)
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1315,7 +1314,7 @@ CREATE TABLE `zp_resume_work` (
   `modifydate` int(10) NOT NULL DEFAULT '0',
   `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1332,7 +1331,7 @@ CREATE TABLE `zp_subcompany` (
   `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `cid` (`cid`,`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1367,7 +1366,7 @@ CREATE TABLE `zp_user` (
   PRIMARY KEY (`id`),
   KEY `status` (`status`),
   KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1446,4 +1445,4 @@ CREATE TABLE `zp_user_point` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-10-18 16:41:04
+-- Dump completed on 2011-10-21 17:24:05
