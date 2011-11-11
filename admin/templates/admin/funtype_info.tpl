@@ -31,7 +31,7 @@
 	</tr>
 	<tr class="tr4">
 		<td class="td3" width="130">英文:</td>
-		<td class="td4"><input type="text" id="enname" class="input" name="info[enname]" value="<!--{$info.enname}-->" alt="英文:4-50/无内容/有全角/有空格"/>
+		<td class="td4"><input type="text" id="enname" class="input" name="info[enname]" value="<!--{$info.enname}-->" alt="英文:4-50/无内容/有全角"/>
 		<span id="showResult_enname"></span></td>
 	</tr>
 	<tr class="tr4">
