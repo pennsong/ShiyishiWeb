@@ -18,7 +18,7 @@
 				<input value="<!--{$info.id}-->" type="hidden" name="PositionID[]"/>
     	      <tbody>
 			  <!--{if !$down || $rtype}-->
-		<!--{if $wordnum==0 || $videonum==0}-->
+		<!--{if $wordnum<=30 }-->
     	        <tr>
     	          <td></td>
     	          <td style="line-height:180%;"><p>
