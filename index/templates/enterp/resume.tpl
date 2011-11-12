@@ -22,7 +22,7 @@
     	        <tr>
     	          <td></td>
     	          <td style="line-height:180%;"><p>
-				  您目前求职者联系方式下载余额为<span class="red"><!--{$wordnum}--></span>份及视频简历下载余额为<span class="red"><!--{$videonum}--></span>份。<br />请联系我们的销售人员获得新的下载数，联系方式如下：
+				  您目前的下载积分余额:<span class="red"><!--{$wordnum}--></span>分。<br />请联系我们的销售人员获得新的下载积分，联系方式如下：
 				  </p>
                               <ul class="num">
                                 <li><img src="/images/Icon1.gif" /> 电话：010-51316156</li>
@@ -32,35 +32,31 @@
 				  </td>
   	          </tr>
 <!--{/if}-->
-			  <!--{if !$rtype}-->
+			  <!--{if !$rtype || $rtype == 2}-->
     	        <tr> 
     	          <td width="1%" nowrap="nowrap" align="right"></td>
-    	          <td><p>下载该求职者的联系方式。下载余额<span class="red"><!--{$wordnum}--></span>份。</p></td>
+    	          <td><p>下载该求职者的联系方式。</p></td>
   	          </tr>
 
     	        <tr>
     	          <td> </td>
     	          <td>
-					<input value=" 确 定 " type="submit"  onclick="$('#type').val('doc');document.forms[0].action='/enterp/resume/down.do';" />
+					<input value=" 确 定 " type="submit"  onclick="show_confirm_doc()" />
 				</td>
   	          </tr>
 			  <!--{/if}-->
 
-			  <!--{if $rtype!=3 }-->
+			  <!--{if $rtype!=3 && $rtype != 2 }-->
 				<!--{if $info.video==1 }-->
     	        <tr>
     	          <td nowrap="nowrap" align="right"></td>
-					<!--{if $rtype==1 }-->
-    					<td><p>下载该求职者的视频简历。您的视频简历下载余额还有<span class="red"><!--{$videonum}--></span>份。</p></td>
-					<!--{else}-->
-    					<td><p>下载该求职者的联系方式和视频简历。下载余额<span class="red"><!--{$videonum}--></span>份。</p></td>
-					<!--{/if}-->
+    	             <td><p>下载该求职者的视频简历。</p></td>
   				</tr>
 
     	        <tr>
     	          <td> </td>
     	          <td>
-    	            <input value=" 确 定 " type="submit"  onclick="$('#type').val('all');document.forms[0].action='/enterp/resume/down.do';" />
+    	            <input value=" 确 定 " type="submit"  onclick="show_confirm_vod()" />
 				</tr>
 				<!--{/if}-->
 
@@ -83,7 +79,7 @@
    	            </tr>
     	        <tr>
     	          <td colspan="2">联系方式：
-						<!--{if $down}-->
+						<!--{if $rtype == 1 || $rtype == 3}-->
 						<!--{$info.phone}--> 
 						<!--{$info.email}-->
 						<!--{/if}-->
@@ -250,6 +246,32 @@
 </div>
 <script type="text/javascript">
 	$("#gerenjl input:button").attr("disabled",'disabled');
+	
+	function show_confirm_doc()
+	{
+	var r=confirm("下载该求职者的联系方式，您的下载积分将被扣除10分，是否继续？");
+	if (r==true)
+	  {
+		$('#type').val('doc');document.forms[0].action='/enterp/resume/down.do';
+	  }
+	else
+	  {
+		document.forms[0].action='#';
+	  }
+	}
+
+	function show_confirm_vod()
+	{
+	var r=confirm("下载该求职者的视频简历，您的下载积分将被扣除20分，是否继续？");
+	if (r==true)
+	  {
+		$('#type').val('vod');document.forms[0].action='/enterp/resume/down.do';
+	  }
+	else
+	  {
+		document.forms[0].action='#';
+	  }
+	}
 </script>
 </body>
 </html>

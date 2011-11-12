@@ -23,10 +23,8 @@
                                 <table width="100%" cellspacing="1" cellpadding="0" border="0" id="recordtable" class="listTab">
                                   <tbody><tr class="tabHead">
                                         <th width="299">合同号</th>
-                                        <th width="133" nowrap="" class=" centerAlign">文字简历总量</th>
-                                        <th width="130" nowrap="" class=" centerAlign">文字简历剩余数</th>
-                                    <th width="124" nowrap="" class=" centerAlign">视频简历总量</th>
-                                    <th width="107" nowrap="" class=" centerAlign">视频简历剩余数</th>
+                                        <th width="133" nowrap="" class=" centerAlign">积分总量</th>
+                                        <th width="130" nowrap="" class=" centerAlign">积分剩余数</th>
                                         <th width="128" nowrap="" class=" centerAlign">有效期</th>
                                         </tr>
 										 <!--{foreach from=$contract key=key item=item}-->
@@ -34,8 +32,6 @@
                                         <td style="word-wrap: break-word;" class="bolditem"><a href="/enterp/contract/info.html?id=<!--{$item.id}-->"><!--{$item.code}--></a></td>
                                         <td nowrap="" class=" centerAlign"><!--{$item.wordall}--></td>
                                         <td nowrap="" class=" centerAlign"><!--{$item.word}--></td>
-                                        <td nowrap="" class=" centerAlign"><!--{$item.videoall}--></td>
-                                        <td nowrap="" class=" centerAlign"><!--{$item.video}--></td>
                                         <td class=" centerAlign"><!--{$item.startdate|date_format:"%Y-%m-%d"}-->～<!--{$item.enddate|date_format:"%Y-%m-%d"}--></td>
                                         </tr>
 										<!--{/foreach}-->

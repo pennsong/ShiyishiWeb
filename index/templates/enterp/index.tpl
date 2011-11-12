@@ -22,8 +22,8 @@
                             </div>
                         	<div id="hrindex3">
                             	<ul>
-                                	<li><img src="/images/Icon1.gif" /> 剩余文字简历下载数：<a href="/enterp/contract/"><span class="red bold"><!--{$dwnum|default:0}--></span></a> 份</li>
-                                	<li><img src="/images/Icon1.gif" /> 剩余视频简历下载数：<a href="/enterp/contract/"><span class="red bold"><!--{$dvnum|default:0}--></span></a> 份</li>
+                                	<li><img src="/images/Icon1.gif" /> 剩余下载积分：<a href="/enterp/contract/"><span class="red bold"><!--{$dwnum|default:0}--></span></a> 分</li>
+                                	<li>&nbsp;</li>
                                     <li><a href="/enterp/resume/search.html" class="hrindexbutton3"></a></li>
                                 </ul>
                             </div>

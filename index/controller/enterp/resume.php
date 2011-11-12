@@ -485,37 +485,47 @@ class resume_Controller extends Controller{
 				//print_r($rows);exit;
 				if($type=='doc'){
 					$info['rtype'] = 1;
+					$contract = $this->contract->fetchAll(" uid = ".$this->uid." and enddate >= ".time()." and word>10 ", " enddate asc");
 					if(!isset($rows['rtype'])){
-						$contract = $this->contract->fetchAll(" uid = ".$this->uid." and enddate >= ".time()." and word>0 ", " enddate asc");
-						if(count($contract) && $contract[0]['word']>1){
+						if(count($contract) && $contract[0]['word']>10){
 							$contract = $contract[0];
-							$contract['word'] = $contract['word']-1;
+							$contract['word'] = $contract['word']-10;
 							$this->contract->save($contract);
 							$is_contract = 1;
 						}
 					}else{
-						if($rows['rtype']>=1){
+						if($rows['rtype']==1 || $rows['rtype'] == 3){
 							$is_contract = 1;
+						}
+						else if($rows['rtype']==2)
+						{
+							$info['rtype'] = 3;
+							if(count($contract) && $contract[0]['word']>10){
+								$contract = $contract[0];
+								$contract['word'] = $contract['word']-10;
+								$this->contract->save($contract);
+								$is_contract = 1;
+							}
 						}
 					}
-				}else if ($type=='all'){
-					$info['rtype'] = 3;
-					$contract = $this->contract->fetchAll(" uid = ".$this->uid." and enddate >= ".time()." and  word>0 and video>0   ", " enddate asc");
+				}else if ($type=='vod'){
+					$info['rtype'] = 2;
+					$contract = $this->contract->fetchAll(" uid = ".$this->uid." and enddate >= ".time()." and  word>20 ", " enddate asc");
 					if(!isset($rows['rtype'])){
-						if(count($contract) && $contract[0]['word']>1 && $contract[0]['video']>1){
+						if(count($contract) && $contract[0]['word']>20){
 							$contract = $contract[0];
-							$contract['word'] = $contract['word']-1;
-							$contract['video'] = $contract['video']-1;
+							$contract['word'] = $contract['word']-20;
 							$this->contract->save($contract);
 							$is_contract = 1;
 						}
 					}else{
-						if($rows['rtype']==3){
+						if($rows['rtype']==2 || $rows['rtype']==3){
 							$is_contract = 1;
 						}else if($rows['rtype']==1){
-							if(count($contract) && $contract[0]['video']>1){
+							$info['rtype'] = 3;
+							if(count($contract) && $contract[0]['word']>20){
 								$contract = $contract[0];
-								$contract['video'] = $contract['video']-1;
+								$contract['word'] = $contract['word']-20;
 								$this->contract->save($contract);
 								$is_contract = 1;
 							}
@@ -1045,7 +1055,7 @@ class resume_Controller extends Controller{
 		$id = intval($this->_get('id',0));
 		if($id){
 			$resume = $this->resume->fetchRow(" id = ".$id );
-			$row = $this->resume_download->fetchRow(" rid = ".$id." and cid = ".$this->uid." and status = 1 and rtype=3 ");
+			$row = $this->resume_download->fetchRow(" rid = ".$id." and cid = ".$this->uid." and status = 1 and (rtype=3 or rtype=2)");
 			if(isset($row['id']) && $row['id']){
 				$video = $this->resume_vod->fetchRow(" uid = ".$resume['uid']." and status=1" );
 				$this->assign('video',$video);
@@ -1120,7 +1130,7 @@ class resume_Controller extends Controller{
 				$re = $this->resume->queryAll($query);
 				$rows[$key]['rtype'] = isset($re[0]["rtype"])?$re[0]["rtype"]:0;
 
-				$resume_download = $this->resume_download->fetchRow(" rid = ".$val['id']." and cid = ".$this->uid." and status = 1 and rtype=3 ");
+				$resume_download = $this->resume_download->fetchRow(" rid = ".$val['id']." and cid = ".$this->uid." and status = 1 and (rtype=3 or rtype=2) ");
 				if(isset($resume_download['id']) && $resume_download['id']){
 					$video = $this->resume_vod->fetchRow(" uid = ".$val['uid']." and status=1" );
 					$rows[$key]['video'] = IMG_DOMAIN."/".$video['vodurl'];

@@ -25,27 +25,15 @@
 		</td>
     </tr>
 	<tr class="tr4">
-      <td class="td33">文字简历下载总量:</td>
+      <td class="td33">下载积分总量:</td>
       <td class="td4"><input id="wordall" name="info[wordall]" type="text" value="<!--{$info.wordall}-->" style="width:150px;" alt="文字简历下载总量:无内容" />
         <span id="showResult_wordall"></span></td>
     </tr>
 	<!--{if $info.word}-->
 	<tr class="tr4">
-      <td class="td33">文字简历剩余下载量:</td>
+      <td class="td33">剩余积分:</td>
       <td class="td4"><input id="word" name="info[word]" type="text" value="<!--{$info.word}-->" style="width:150px;"  alt="文字简历剩余下载量:无内容"/>
         <span id="showResult_word"></span></td>
-    </tr>
-	<!--{/if}-->
-	<tr class="tr4">
-      <td class="td33">视频简历下载总量:</td>
-      <td class="td4"><input id="videoall" name="info[videoall]" type="text" value="<!--{$info.videoall}-->" style="width:150px;" alt="视频简历下载总量:无内容" />
-        <span id="showResult_videoall"></span></td>
-    </tr>
-	<!--{if $info.video}-->
-	<tr class="tr4">
-      <td class="td33">视频简历剩余下载量:</td>
-      <td class="td4"><input id="video" name="info[video]" type="text" value="<!--{$info.video}-->" style="width:150px;"  alt="视频简历剩余下载量:无内容"/>
-        <span id="showResult_video"></span></td>
     </tr>
 	<!--{/if}-->
 
