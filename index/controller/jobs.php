@@ -102,7 +102,6 @@ class jobs_Controller extends Controller{
 		}
 		$news = $this->jobs->pageAll(1, 10, ''," status=1 ",'modifydate desc');
 		$funtype = $this->funtype->fetchAll('parent_id = 0');
-
 		$this->assign('funtype', $funtype);
 		$this->assign('news',$news);
 		$this->assign('dt',$dt);
