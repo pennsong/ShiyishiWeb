@@ -126,11 +126,11 @@ li{list-style:none;}
 #joblisttitle ul{}
 #joblisttitle ul li{display:inline;}
 #joblisttitle ul li.name{padding:0 0 0 40px;}
-#joblisttitle ul li.company{padding:0 0 0 80px;}
-#joblisttitle ul li.subcompany{padding:0 0 0 80px;}
-#joblisttitle ul li.add{padding:0 0 0 60px;}
-#joblisttitle ul li.gold{padding:0 0 0 110px;}
-#joblisttitle ul li.date{padding:0 0 0 35px;}
+#joblisttitle ul li.company{padding:0 0 0 72px;}
+#joblisttitle ul li.subcompany{padding:0 0 0 70px;}
+#joblisttitle ul li.add{padding:0 0 0 52px;}
+#joblisttitle ul li.gold{padding:0 0 0 80px;}
+#joblisttitle ul li.date{padding:0 0 0 55px;}
 
 #hrlisttitle{background:url(../images/indexh2bg.jpg) repeat-x;height:28px;line-height:28px;color:#0173A7;font-weight:bold;margin:0px 0 0 0;}
 #hrlisttitle ul{}

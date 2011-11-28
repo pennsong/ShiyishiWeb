@@ -56,13 +56,36 @@ class jobs_Controller extends Controller{
 			$wheres[] = "a.funtype_2 = $ft";
 			$urls[] = 'ft='.$ft;
 		}
-		if($jd){
+/*		if($jd){
 			$jobdate = strtotime($jd);
 			if($jobdate>0){
 				$wheres[] = "a.startdate <= {$jobdate} AND a.enddate>= ".($jobdate+86400)." ";
 				$urls[] = 'jd='.$jd;
 			}
+		}*/
+		//区分最近3天，最近1周，最近2周，最近1个月，所有日期
+		if($jd)
+		{
+			switch ($jd)
+			{
+				case 1: //最近3天
+					$wheres[] = "a.createtime <= ".strtotime(now)." AND a.createtime >= ".strtotime("3 days ago")." ";
+					break;
+				case 2: //最近1周
+					$wheres[] = "a.createtime <= ".strtotime(now)." AND a.createtime >= ".strtotime("7 days ago")." ";					
+					break;
+				case 3: //最近2周
+					$wheres[] = "a.createtime <= ".strtotime(now)." AND a.createtime >= ".strtotime("14 days ago")." ";					
+					break;
+				case 4: //最近1个月
+					$wheres[] = "a.createtime <= ".strtotime(now)." AND a.createtime >= ".strtotime("1 month ago")." ";					
+					break;
+				default://所有日期
+					
+			}
+			
 		}
+		
 		if($kw){
 			$wheres[] = "a.title LIKE '%".$kw."%'";
 			$urls[] = 'kw='.$kw;

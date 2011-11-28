@@ -23,8 +23,14 @@
 		<option>请选择岗位</option>
 		</select>
 		</li>
-		
-        <li>时间:<input type="tetx" name="jd" class="Wdate" onClick="WdatePicker()" style="width:80px;" value="<!--{$jd}-->" /></li>
+        <li>时间:<select name="jd" class="" style="width:80px;">
+             	<option value="5" <!--{if $jd==5}--> selected<!--{/if}-->>所有日期</option>    
+        		<option value="1" <!--{if $jd==1}--> selected<!--{/if}-->>最近3天</option>
+        		<option value="2" <!--{if $jd==2}--> selected<!--{/if}-->>最近1周</option>
+        		<option value="3" <!--{if $jd==3}--> selected<!--{/if}-->>最近2周</option>
+        		<option value="4" <!--{if $jd==4}--> selected<!--{/if}-->>最近1个月</option>       		        		        		
+        		</select>
+        </li>
         <li>关键字:<input type="text" name="kw" id="s_keyword" value="<!--{if $kw}--><!--{$kw}--><!--{else}-->输入公司或者职位<!--{/if}-->" style="width:80px;"/></li>
         <li><input type="image" src="<!--{$baseurl}-->/images/Button_Search.gif" align="absmiddle" /></li>
       </ul></form>
