@@ -173,13 +173,15 @@ class resume_Controller extends Controller{
 					$rows[$key]['work'] = '无';
 				}
 
-				$query = "select schoolname from ".$this->dbpre."resume_edu  
-				where uid= ".$val['uid']." order by todate desc limit 1 ";
+				$query = "select schoolname, degree, major from ".$this->dbpre."resume_edu  
+				where uid= ".$val['uid']." and rtype='cn' order by degree limit 1 ";
 				$re = $this->resume->queryAll($query);
 				$rows[$key]['schoolname'] = $re[0]["schoolname"]?$re[0]["schoolname"]:'无';
+				$rows[$key]['degree'] = $re[0]["degree"]?$re[0]["degree"]:'无';
+				$rows[$key]['major'] = $re[0]["major"]?$re[0]["major"]:'无';				
+				
 			}
 		}
-
 		$url .= empty($urls) ? '' : '?'.implode('&',$urls);
 
 		$totalpage = @ceil($total / 25);

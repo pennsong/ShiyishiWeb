@@ -270,7 +270,7 @@
               </select>日</span><span class="red bold">（必填）</span>
             </li>
             <li><span class="glogintext">毕业院校：</span>
-              <input class="k" name="einfo[<!--{$e}-->][schfm_lname]" type="text" id="schoolname_<!--{$e}-->" value="<!--{$edu.schoolname}-->" alt="毕业院校:空/长度@4-50"/><span class="red bold">（必填）</span><span id="showResult_schoolname_<!--{$e}-->"></span>
+              <input class="k" name="einfo[<!--{$e}-->][schoolname]" type="text" id="schoolname_<!--{$e}-->" value="<!--{$edu.schoolname}-->" alt="毕业院校:空/长度@4-50"/><span class="red bold">（必填）</span><span id="showResult_schoolname_<!--{$e}-->"></span>
             </li>
             <li><span class="glogintext">专业：</span>
 				<input name="einfo[<!--{$e}-->][major]" id="major_o_<!--{$e}-->" class="k" value="<!--{$edu.major}-->" title="专业:空"/>

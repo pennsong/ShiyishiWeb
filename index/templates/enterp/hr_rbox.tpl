@@ -55,8 +55,9 @@
                                         <th width="62" nowrap="" class=" centerAlign">性别</th>
                                         <th width="70" nowrap="">工作年限</th>
 										<th width="124" nowrap="" class="centerAlign">毕业院校</th>
-                                        <th width="62" nowrap="" class=" centerAlign">年龄</th>
+										<th width="124" nowrap="" class="centerAlign">专业</th>
                                         <th width="62" nowrap="" class=" centerAlign">学历</th>
+                                        <th width="62" nowrap="" class=" centerAlign">年龄</th>
                                         <th width="68" nowrap="" class=" centerAlign">现居住地</th>
                                         <th width="87" nowrap="" id="suspendAnchor" class=" centerAlign">投递日期</th>
                                         <th width="87" nowrap="" class="centerAlign">操作</th>
@@ -70,8 +71,9 @@
                                         <td nowrap="" class=" centerAlign"><!--{if $item.gender==1}-->男<!--{else}-->女<!--{/if}--></td>
                                         <td style="word-wrap: break-word;"><!--{$item.work}--></td>
                                         <td nowrap="" class=" centerAlign"><!--{$item.schoolname}--></td>
+                                        <td nowrap="" class=" centerAlign"><!--{$item.major}--></td>
+                                        <td nowrap="" class=" centerAlign"><!--{$degrees.cn[$item.degree]}--></td>
                                         <td nowrap="" class=" centerAlign"><!--{$item.age}--></td>
-                                        <td nowrap="" class=" centerAlign"> <!--{$degrees.cn[$item.degree]}-->
 										</td>
                                         <td class=" centerAlign"><!--{$item.area}--></td>
                                         <td class=" centerAlign"><!--{$item.posttime|date_format:"%y-%m-%d"}--></td>
@@ -83,7 +85,7 @@
                                     <tr class="list2">
                                       <td bgcolor="#FFE8D2" class="tdCheckbox"><input type="checkbox" onclick="unChkSelectAll('fengge','chkall')" id="chkall" value="CC000427542J90250041000" name="PositionID2" /></td>
                                       <td bgcolor="#FFE8D2" class="bolditem" style="word-wrap: break-word;">全选</td>
-                                      <td colspan="9" nowrap="" bgcolor="#FFE8D2" class=" centerAlign">
+                                      <td colspan="10" nowrap="" bgcolor="#FFE8D2" class=" centerAlign">
 										<!--{if $totalpage>1}-->
                                         <div align="right">
 										<a href="<!--{$url}-->">首页</a> <a href="<!--{$url}--><!--{if $page>1}-->&page=<!--{$page-1}--><!--{/if}-->">上页</a> <a href="<!--{$url}--><!--{if $page<$totalpage}-->&page=<!--{$page+1}--><!--{/if}-->">下页</a> <a href="<!--{$url}-->&page=<!--{$totalpage}-->">尾页</a> 第<span class="red"><!--{$page}--></span>/<span class="red"><!--{$totalpage}--></span>页，去
