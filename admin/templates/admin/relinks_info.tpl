@@ -1,6 +1,26 @@
 <!--{include file=header.tpl}-->
 <script src="<!--{$baseurl}-->/js/checkform.js" type="text/javascript"></script>
 <script src="<!--{$baseurl}-->/DatePicker/WdatePicker.js" type="text/javascript"></script>
+<script>
+	$(document).ready(function() {
+		$("#companyName").ready(function() {
+			showLogo();
+		}
+		);
+		$("#companyName").change(function() {
+			showLogo();
+				}
+				);
+	}
+	);
+	
+	function showLogo()
+	{
+		$("#logoImg").load('<!--{$pageurl}-->/getLogo.do?cid='+$("#companyName").val());
+
+	}	
+
+</script>
 <ul class="nav3">
 <li><a href="<!--{$pageurl}-->/index.do" class="btn2"><span>推荐企业管理</span></a></li>
 <!--{if $info}-->
@@ -19,13 +39,17 @@
 	<!--{if $info}-->
     <input type="label" name="info[id]" value="<!--{$info.id}-->" disabled="disabled" />
     <!--{else}-->
-    		<select name="info[id]" alt="企业名称:无内容" style="width:300px;"><span id="showResult_title"></span>
+    		<select id="companyName" name="info[id]" alt="企业名称:无内容" style="width:300px;"><span id="showResult_title"></span>
                 <!--{foreach from=$companyList key=key item=item}-->
                 <option value="<!--{$item.id}-->"><!--{$item.company}--></option>
                 <!--{/foreach}-->
               </select>
     <!--{/if}-->
     </td>
+</tr>
+<tr class="tr4">
+	<td class="td3" width="145">图标：</td>
+	<td class="td4" id="logoImg"></td>
 </tr>
 <tr class="tr4">
 	<td class="td3" width="145">排序：</td>

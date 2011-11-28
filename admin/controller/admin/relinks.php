@@ -20,7 +20,8 @@ class relinks_Controller extends Controller{
 			$companyInfo = $this->eUser->find($item['id']);
 			$item['company'] = $companyInfo['company'];
 			$item['id'] = $companyInfo['id'];
-			$item['logo'] = $companyInfo['logo'];			
+			$item['logo'] = $companyInfo['logo'];
+			$item['title'] = $companyInfo['username'];		
 		}
 		$this->assign('page',$page);
 		$this->assign('rows', $rows);
@@ -33,6 +34,13 @@ class relinks_Controller extends Controller{
 		$this->display('relinks_info.tpl');
 	}
 
+	function getLogoAction()
+	{
+		$id = $this->_get('cid');
+		$companyInfo = $this->eUser->find($id);
+		echo ('<img src = "'.$companyInfo['logo'].'"/>');
+	}
+	
 	function editAction(){
 		$id = $this->_get('id');
 		if(!$info = $this->relinks->find($id)){

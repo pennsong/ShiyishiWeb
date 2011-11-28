@@ -19,7 +19,7 @@ class e_user_Model extends Model{
 
 	function fetchAllCompanyName()
 	{
-		return $this->e_user->fetchAll(null,null,'id, company');
+		return $this->e_user->fetchAll(null,null,'id, company, logo');
 	}
 	
 	function fetchRow($where,$order=""){
