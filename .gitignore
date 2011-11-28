@@ -3,4 +3,5 @@
 .buildpath
 test.php
 tmp/
-data
+data/attachment
+data/cache
