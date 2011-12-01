@@ -732,7 +732,7 @@ class resume_Controller extends Controller{
 		
 		$sql = "select r.* from ".$this->dbpre."resume r 
 		left join ".$this->dbpre."user u on u.id = r.uid
-		where ".$where." and u.status = 1 and u.resume_status = 1  ".$select." ".(empty($no_ids)?'':' and r.id not in ('.implode(',',$no_ids).')')."order by ".$orderby;
+		where ".$where." and u.status = 1 and u.resume_status = 1 and rtype= 'cn' ".$select." ".(empty($no_ids)?'':' and r.id not in ('.implode(',',$no_ids).')')."order by ".$orderby;
 		$total = count($this->resume->queryAll($sql));
 		//echo "<!--{$sql}-->";
 		$sql .= " limit ".(($page-1)*25).", 25 ";
