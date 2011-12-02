@@ -7,7 +7,7 @@
     <div id="gcenterright">
       <div id="gcenterrightc">
         <h2>我的奖励</h2>
-        <li><img src="<!--{$baseurl}-->/images/Icon1.gif" /> 剩余奖励积分：<!--{$allmoney|default:0}-->分 (兑换￥<!--{$allmoney/10|default:0}-->元)；<!--{if $allmoney>=$web.txmoney}--><input type="button" value="申请领款" onclick="if(confirm('您确定要领取“￥<!--{$allmoney/10|default:0}-->元”吗')){this.disabled=true;window.frames['frame_main'].location.href='/member/do/ling.do';}"><!--{else}--><input type="button" value="申请领款" onclick="alert('提示：积分超过<!--{$web.txmoney}-->分后才可申请领款。')"><!--{/if}--></li>
+        <li><img src="<!--{$baseurl}-->/images/Icon1.gif" /> 剩余奖励积分：<!--{$allmoney|default:0}-->分 (兑换￥<!--{$allmoney/10|default:0}-->元)；<!--{if $allmoney>=100}--><input type="button" value="申请领款" onclick="if(confirm('您确定要领取“￥<!--{$allmoney/10|default:0}-->元”吗')){this.disabled=true;window.frames['frame_main'].location.href='/member/do/ling.do';}"><!--{else}--><input type="button" value="申请领款" onclick="alert('提示：积分超过1000分后才可申请领款。')"><!--{/if}--></li>
         <table width="100%" cellspacing="1" cellpadding="0" id="ftable">
           <tr>
             <th width="20%">奖励积分</th>
