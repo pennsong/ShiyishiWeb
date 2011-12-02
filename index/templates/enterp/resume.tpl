@@ -18,7 +18,7 @@
 				<input value="<!--{$info.id}-->" type="hidden" name="PositionID[]"/>
     	      <tbody>
 			  <!--{if !$down || $rtype}-->
-		<!--{if $wordnum<=30 }-->
+		<!--{if true }-->
     	        <tr>
     	          <td></td>
     	          <td style="line-height:180%;"><p>
