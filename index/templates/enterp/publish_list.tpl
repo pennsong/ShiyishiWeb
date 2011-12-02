@@ -75,8 +75,12 @@
 											<td class="centerAlign"><span><!--{$adata[$item.live_gnd_p].name}--> , <!--{$city[$item.live_gnd_p][$item.live_gnd_c].name}--></span></td>
 											<!--<td class=" centerAlign"><a href="">10</a></td>-->
 											<td nowrap="" class="action centerAlign">
+												<!--{if $t == 3}-->
+													<a  href="/enterp/publish_job/?jid=<!--{$item.id}-->" >修改</a> 
+												<!--{else}-->
 												<a  href="/jobs/view/<!--{$item.id}-->.html" target="_blank">查看</a> 
 												<a  href="/enterp/publish_job/?jid=<!--{$item.id}-->" >修改</a> 
+												<!--{/if}-->
 												<!--{if $item.status}-->
 													<a title="暂时停止职位" href="/enterp/publish_job/stop.do?id=<!--{$item.id}-->">暂停</a>
 												<!--{/if}-->
