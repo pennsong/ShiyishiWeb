@@ -44,6 +44,7 @@ class publish_job_Controller extends Controller{
 				$this->assign('jid',$jid);
 			}else{
 				$jobs_template = $this->jobs_template->fetchRow(" id = ".$tid." and cid = ".$this->uid);
+				unset($jobs_template['id']);
 				$this->assign('tid',$tid);
 			}
 			$jobs_template['startdate'] = date('Y-m-d',$jobs_template['startdate']);
