@@ -10,8 +10,9 @@
                             <div id="hrcentertop">
                                 <span>
                                     <ul>
+                                   		<li><a href="/enterp/resume/tmplist.html">简历暂存夹</a></li>
+                                   		<li><a href="/enterp/resume/enroll.html">已录取人员</a></li>
                                         <li><a href="/enterp/resume/downlist.html">已下载的简历</a></li>
-                                        <li><a href="/enterp/resume/alist.html">视频面试管理</a></li>
                                     </ul>
                                 </span>
                             </div>

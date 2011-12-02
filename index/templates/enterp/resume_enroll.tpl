@@ -9,9 +9,9 @@
                         <div id="hrcentertop">
                             <span>
                                 <ul>
+                                    <li><a href="/enterp/resume/tmplist.html">简历暂存夹</a></li>                                
 									<li><a href="/enterp/resume/downlist.html">已下载简历</a></li>
 									<li><a href="/enterp/resume/boxlist.html">简历收件箱</a></li>
-									<li><a href="/enterp/resume/alist.html">视频面试管理</a></li>
                                 </ul>
                             </span>
                         </div>
@@ -30,7 +30,7 @@
 											<tr class="tabHead">
 											<th width="50">编号</th>
 											<th width="165">姓名</th>
-											<th width="146" nowrap="" class=" centerAlign">应聘职位</th>
+											<th width="146" nowrap="" class=" centerAlign">录取职位</th>
 											<th width="62" nowrap="" class=" centerAlign">性别</th>
 											<th width="70" nowrap="">工作年限</th>
 											<th width="124" nowrap="" class="centerAlign">毕业院校</th>

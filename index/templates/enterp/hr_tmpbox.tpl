@@ -10,6 +10,8 @@
                         <div id="hrcentertop">
                             <span>
                                 <ul>
+                                	<li><a href="/enterp/resume/boxlist.html">简历收件箱</a></li>
+                                	<li><a href="/enterp/resume/enroll.html">已录取人员</a></li>
                                     <li><a href="/enterp/resume/downlist.html">已下载的简历</a></li>
                                 </ul>
                             </span>
