@@ -19,7 +19,7 @@ class index_Controller extends Controller{
 
 		$rnum = $this->resume_box->count("posttime >= '".strtotime("-3 day")."' and cid = ".$this->uid);
 
-		$rnumall = $this->resume_box->count(" cid = ".$this->uid);
+		$rnumall = $this->resume_box->count(" cid = ".$this->uid. " and status = 1");
 
 		$cnum = $this->contract->count("enddate > ".time()." and uid = ".$this->uid);
 
