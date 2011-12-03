@@ -135,8 +135,8 @@ class resume_Controller extends Controller{
 		}
 		$dids = implode(",",$tmp);
 
-		$sql = "select r.*,b.posttime,b.id as bid  from ".$this->dbpre."resume_box b 
-		left join ".$this->dbpre."resume r on r.id = b.rid 
+		$sql = "select r.*,b.posttime,b.id as bid, j.title from ".$this->dbpre."resume_box b 
+		left join ".$this->dbpre."resume r on r.id = b.rid left join ".$this->dbpre."jobs j on b.jid = j.id
 		where ".$where." ".($dids?'and b.rid not in('.$dids.')':'')." order by ".$orderby;
 
 		$total = count($this->resume->queryAll($sql));

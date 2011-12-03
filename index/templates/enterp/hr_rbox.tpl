@@ -68,7 +68,7 @@
                                         <td class="tdCheckbox"><input type="checkbox"  value="<!--{$item.id}-->" name="PositionID[]"/>
 										</td>
                                         <td style="word-wrap: break-word;" class="bolditem"><!--{$item.uid}--></td>
-                                        <td nowrap="" class=" centerAlign"><!--{$item.f2}--></td>
+                                        <td nowrap="" class=" centerAlign"><!--{$item.title}--></td>
                                         <td nowrap="" class=" centerAlign"><!--{if $item.gender==1}-->男<!--{else}-->女<!--{/if}--></td>
                                         <td style="word-wrap: break-word;"><!--{$item.work}--></td>
                                         <td nowrap="" class=" centerAlign"><!--{$item.schoolname}--></td>
