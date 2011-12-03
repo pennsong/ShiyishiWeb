@@ -569,7 +569,7 @@ class upload_Lib {
 				'so'	=>	'application/octet-stream',
 				'sea'	=>	'application/octet-stream',
 				'dll'	=>	'application/octet-stream',
-				'flv'	=>	'application/octet-stream',
+				'flv'	=>	'video/x-flv',
 				'oda'	=>	'application/oda',
 				'pdf'	=>	array('application/pdf', 'application/x-download'),
 				'ai'	=>	'application/postscript',
