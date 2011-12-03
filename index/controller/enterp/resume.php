@@ -770,7 +770,7 @@ class resume_Controller extends Controller{
 				}
 
 				$query = "select schoolname from ".$this->dbpre."resume_edu  
-				where uid= ".$val['uid']." order by todate desc limit 1 ";
+				where uid= ".$val['uid']." and rtype = 'cn' order by todate desc limit 1 ";
 				$re = $this->resume->queryAll($query);
 				$rows[$key]['schoolname'] = $re[0]["schoolname"]?$re[0]["schoolname"]:'无';
 			}
