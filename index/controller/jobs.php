@@ -92,7 +92,7 @@ class jobs_Controller extends Controller{
 		}
 		$wheres[] = "a.status=1";
 		$wheres[] = "b.status=2";
-		$rows = $this->jobs->pageUnionAll($page, 10, $url,'e_user','a.cid=b.id',$wheres,'a.id desc','a.*');
+		$rows = $this->jobs->pageUnionAll($page, 20, $url,'e_user','a.cid=b.id',$wheres,'a.id desc','a.*');
 		foreach($rows as $k=>$v){
 			$v['subcompany'] = $this->subcompany->getName($v['scid']);
 			$v['ename'] = $this->e_user->getCompanyName($v['cid']);
@@ -123,35 +123,7 @@ class jobs_Controller extends Controller{
 			$f = htmlspecialchars($f, ENT_QUOTES);
 			$this->assign('f',$f);
 		}
-		//区分最近3天，最近1周，最近2周，最近1个月，所有日期
-		if($jd)
-		{
-			switch ($jd)
-			{
-				case 1: //最近3天
-					$wheres = "status=1 and createtime <= ".strtotime(now)." AND createtime >= ".strtotime("3 days ago")." ";
-					$news = $this->jobs->pageAll(1, 10, '', $wheres,'modifydate desc');
-					break;
-				case 2: //最近1周
-					$wheres = "status=1 and createtime <= ".strtotime(now)." AND createtime >= ".strtotime("7 days ago")." ";
-					$news = $this->jobs->pageAll(1, 10, '', $wheres,'modifydate desc');				
-					break;
-				case 3: //最近2周
-					$wheres = "status=1 and createtime <= ".strtotime(now)." AND createtime >= ".strtotime("14 days ago")." ";
-					$news = $this->jobs->pageAll(1, 10, '', $wheres,'modifydate desc');				
-					break;
-				case 4: //最近1个月
-					$wheres = "status=1 and createtime <= ".strtotime(now)." AND createtime >= ".strtotime("1 month ago")." ";
-					$news = $this->jobs->pageAll(1, 10, '', $wheres,'modifydate desc');				
-					break;
-				default://所有日期
-					$wheres = "status=1";
-					$news = $this->jobs->pageAll(1, 10, '', $wheres,'modifydate desc');		
-					
-			}
-			
-		}
-
+		$news = $this->jobs->pageAll(1, 10, ''," status=1 ",'modifydate desc');
 		$funtype = $this->funtype->fetchAll('parent_id = 0');
 		$this->assign('funtype', $funtype);
 		$this->assign('news',$news);
