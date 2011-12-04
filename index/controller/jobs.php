@@ -66,6 +66,7 @@ class jobs_Controller extends Controller{
 		//区分最近3天，最近1周，最近2周，最近1个月，所有日期
 		if($jd)
 		{
+			$urls[] = 'jd='.$jd;
 			switch ($jd)
 			{
 				case 1: //最近3天
@@ -92,6 +93,7 @@ class jobs_Controller extends Controller{
 		}
 		$wheres[] = "a.status=1";
 		$wheres[] = "b.status=2";
+		$url .= empty($urls) ? '' : '?'.implode('&',$urls);
 		$rows = $this->jobs->pageUnionAll($page, 20, $url,'e_user','a.cid=b.id',$wheres,'a.id desc','a.*');
 		foreach($rows as $k=>$v){
 			$v['subcompany'] = $this->subcompany->getName($v['scid']);
@@ -123,7 +125,7 @@ class jobs_Controller extends Controller{
 			$f = htmlspecialchars($f, ENT_QUOTES);
 			$this->assign('f',$f);
 		}
-		$news = $this->jobs->pageAll(1, 10, ''," status=1 ",'modifydate desc');
+		$news = $this->jobs->fetchAll(" status=1 ",'modifydate desc', '' , 10);
 		$funtype = $this->funtype->fetchAll('parent_id = 0');
 		$this->assign('funtype', $funtype);
 		$this->assign('news',$news);

@@ -53,5 +53,5 @@
 <input type="text" style="width: 30px;" id="txt_FootPageNo" value="<!--{$page_arr.page}-->" name="txt_FootPageNo">
 <input type="button" id="btn_FootGo" value="GO" name="btn_FootGo" onclick="javascript: if($('#txt_FootPageNo').val()>0)){ location='<!--{$page_arr.url}-->page='+$('#txt_FootPageNo'.val()+'';return false;}">
 </span>
-显示<span class="red">20</span>条，当前第<span class="red"><!--{$page_arr.page}--></span>页，共<span class="red"><!--{$page_arr.pagesize}--></span>页，共<!--{$page_arr.total}-->条结果</div>
+显示<span class="red"><!--{$page_arr.count}--></span>条，当前第<span class="red"><!--{$page_arr.page}--></span>页，共<span class="red"><!--{$page_arr.pagesize}--></span>页，共<!--{$page_arr.total}-->条结果</div>
 <!--{/if}-->
