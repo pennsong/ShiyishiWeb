@@ -84,7 +84,7 @@ class company_Controller extends Controller{
 	function listAction(){
 		$page = $this->_get('page',1);
 		$url = $this->getPageUrl().'/list.html';
-		$orderby = " createdate asc ";
+		$orderby = " createdate desc ";
 		$where = " cid = ".$this->uid." " ;
 		$sql = "select * from ".$this->dbpre."subcompany 
 		where ".$where." order by ".$orderby;
@@ -147,7 +147,9 @@ class company_Controller extends Controller{
 				$str = "参数错误";
 			}
 		}
-		$this->_header(BASE_URL."/enterp/company/add.html");
+		$this->assign('result',$str);
+		$this->display('subcompanyAdd.tpl');
+		//$this->_header(BASE_URL."/enterp/company/add.html");
 		//$this->showmsg($str,BASE_URL."/enterp/company/add.html");
 	}
 
