@@ -47,10 +47,7 @@ class txtresume_Controller extends Controller{
 				$wheres[] = "a.".$key." = '$val'";
 			}
 		}
-		if($s['uid']<=0){
-			$aaa = array('qzresume'=>1,'mdrresume'=>0,'ylqresume'=>2);
-			$wheres[] = "b.resume_status =".$aaa[$this->mtype];
-		}
+
 		$url .= empty($urls) ? '' : '?'.implode('&',$urls);
 		$rows = $this->resume->pageUnionAll($page, 20, $url,'user','a.uid=b.id',$wheres,$orderby,'a.*');
 		foreach($rows as $k=>$v){
