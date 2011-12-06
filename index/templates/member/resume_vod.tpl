@@ -29,11 +29,7 @@
             <li class="red"><span class="glogintext">&nbsp;</span>提示：个人用户只能有一份视频简历，您更新的视频简历将覆盖原有的视频简历</li>
           </ul>
         </div>
-        <div id="gloginrightmain">
-          <ul>
-            <li><span class="glogintext">&nbsp;</span><input type="image" src="<!--{$baseurl}-->/images/shangchuan.gif" style="cursor:pointer;" onclick="return checkUpvod();"/></li>
-          </ul>
-        </div>
+ 
         <!--{else}-->
         <div id="gloginrightmain">
           <h3>上传视频简历</h3>
@@ -43,7 +39,15 @@
               <span id="showResult_vodurl"></span>
             </li>
             <li><span class="glogintext">&nbsp;</span>视频文件必须是FLV格式，大小不能超过10M</li>
-            <li><span class="glogintext">&nbsp;</span><input type="image" src="<!--{$baseurl}-->/images/shangchuan.gif" style="cursor:pointer;" onclick="return checkUpvod()"/></li>
+          </ul>
+        </div>
+        <!--{/if}-->
+        </form>
+        <div id="gloginrightmain">
+          <ul>
+            <li><span class="glogintext">&nbsp;</span><input type="image" src="<!--{$baseurl}-->/images/shangchuan.gif" style="cursor:pointer;" onclick="return checkUpvod();"/></li>
+             <!--{if $info}-->
+             <!--{else}-->
             <li>&nbsp;</li>
             <li><span class="glogintext">提示：<img src="<!--{$baseurl}-->/images/Icon1.gif" /></span> 您可以通过本站提供的<a href="<!--{$baseurl}-->/images/SYSPlayer.exe">在线录制视频工具</a>（SYSplayer）来完成视频简历的录制及上传； </li>
             <li><span class="glogintext"><img src="<!--{$baseurl}-->/images/Icon1.gif" /></span>您在使用<a href="<!--{$baseurl}-->/images/SYSPlayer.exe">在线录制视频工具</a>（SYSplayer）时需<span style="color:red">在线</span>状态；</li>
@@ -52,11 +56,10 @@
             <div class="clearfix"></div>
             <li><span class="glogintext"><img src="<!--{$baseurl}-->/images/Icon1.gif" /></span>建议您使用DV等更高级的摄像设备录制、编辑您的视频简历，精美的视频简历能大幅提高您的个人形象、吸引招聘单位的关注、更多地获取面试机会，从而大大提高您的应聘效率、获取满意的工作；</li>
             <li><span class="glogintext"><img src="<!--{$baseurl}-->/images/Icon1.gif" /></span>使用DV等摄像设备录制的视频简历，请使用本站<a href="<!--{$baseurl}-->/images/SYSPlayer.exe">在线录制视频工具</a>（SYSplayer）上传，<a href="<!--{$baseurl}-->/images/SYSPlayer.exe">在线录制视频工具</a>（SYSplayer） 会自动将您录制的文件转换为本站接受的文件格式，以确保您的视频简历顺利上传。</li>
-            <li><span class="glogintext red">隐私保护：<img src="<!--{$baseurl}-->/images/Icon1.gif" /></span>您的视频简历，本站采用专业安保公司设计密钥，仅限本站工作人员及本站会员招聘单位使用，保证您的隐私安全。 </li>
+            <li><span class="glogintext red">隐私保护：<img src="<!--{$baseurl}-->/images/Icon1.gif" /></span>您的视频简历，本站采用专业安保公司设计密钥，仅限本站工作人员及本站会员招聘单位使用，保证您的隐私安全。 </li>        
+         	<!--{/if}-->
           </ul>
         </div>
-        <!--{/if}-->
-        </form>
         <div class="topmargin10px"></div>
       </div>
     </div>
@@ -67,6 +70,7 @@
 function checkUpvod(){
 	if(fm_chk(oo('addVodResume'))){
 		$.box.show(null, '<div style="width:90%;line-height:25px;text-align:center;color:blue;font-weight:bold;margin:30px auto;">视频简历上传中...请稍后！这期间请不要刷新，不要关闭浏览器。</div>', 280, 120,2);
+		setTimeout("$('#addVodResume').submit()", 100);
 		return true;
 	}else{
 		return false;
