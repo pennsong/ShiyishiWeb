@@ -34,7 +34,6 @@ function msg(_m,_s){
 <input type="hidden" value="1" name='status' id='chkisactive'/>
 <table cellspacing="0" cellpadding="0" width="100%" id="ftable">
   <tr class="tr3 s3">
-    <td class="tal"></td>
     <td class="tal">UID</td>
 	<td class="tal">Email</td>
 	<td class="tal">手机号</td>
@@ -44,7 +43,6 @@ function msg(_m,_s){
   </tr>
   <!--{foreach from=$rows item=item}-->
   <tr class="tr3">
-    <td class="tal"><input type="checkbox" name="ids[]" value="<!--{$item.id}-->"></td>
     <td class="tal"><!--{$item.uid}--></td>
 	<td class="tal"><!--{$item.email}--></td>
 	<td class="tal"><!--{$item.mobile}--></td>
@@ -54,8 +52,6 @@ function msg(_m,_s){
   </tr>
   <!--{/foreach}-->
 </table>
-<div style="float:left;width:365px;margin-top:8px;"><input type="button" onclick="checkAll(true);" value="全选" class="btn"/> <input type="button" onclick="checkAll(false);" value="反选" class="btn"/> <!--{if $s.status==1}--><input type="submit" value="取消审核" onclick="if(confirm('确定取消审核选中的视频简历吗?')){document.getElementById('chkisactive').value='0';return true}else{return false}" class="btn" /> <!--{else}--><input type="submit" value="通过审核" onclick="if(confirm('确定通过审核选中的视频简历吗?')){document.getElementById('chkisactive').value='1';return true}else{return false}" class="btn" /> <!--{/if}--></div><div class="rpage"><!--{include file=page.tpl}--></div>
-</div>
 </form>
 </div>
 <script language="JavaScript">

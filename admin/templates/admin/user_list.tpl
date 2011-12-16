@@ -61,7 +61,7 @@ function msg(_m,_s){
     <td class="tal"><!--{$item.id}--></td>
 	<td class="tal"><!--{$item.email}--></td>
 	<td class="tal"><!--{$item.mobile}--></td>
-	<td class="tal"><!--{if $item.resume_txt==1 || $item.resume_txt==3}--><a class="fourm-two" href="<!--{$baseurl}-->/admin/txtresume.do?uid=<!--{$item.id}-->">文字</a><!--{/if}--><!--{if $item.resume_vod==1}--> | <a class="fourm-two" href="<!--{$baseurl}-->/admin/videoresume.do?uid=<!--{$item.id}-->">视频[<!--{$item.auth}-->]</a><!--{/if}--></td>
+	<td class="tal"><!--{if $item.resume_txt==1 || $item.resume_txt==3}--><a class="fourm-two" href="<!--{$baseurl}-->/admin/txtresume.do?uid=<!--{$item.id}-->">文字</a><!--{/if}--><!--{if $item.resume_vod==1 && $item.auth}--> | <a class="fourm-two" href="<!--{$baseurl}-->/admin/videoresume.do?uid=<!--{$item.id}-->">视频</a><!--{/if}--></td>
     <td><!--{$item.regdate|date_format:"%Y-%m-%d %H:%M:%S"}--></td>
 	<td width="60"><!--{if $item.resume_status==1}-->求职中<!--{elseif $item.resume_status==2}-->已录取<!--{else}-->免打扰<!--{/if}--></td>
     <td><a class="fourm-two" href="<!--{$baseurl}-->/admin/user/record.do?uid=<!--{$item.id}-->" title="查看朋友">朋友</a> | <a class="fourm-two" href="<!--{$baseurl}-->/admin/user/reward.do?uid=<!--{$item.id}-->" title="查看朋友被录入记录">朋友奖励</a> | <a class="fourm-two" href="<!--{$baseurl}-->/admin/user/rewardme.do?uid=<!--{$item.id}-->" title="查看自己被录入记录">录用记录</a> | <a class="fourm-two" href="<!--{$baseurl}-->/admin/user/bank.do?uid=<!--{$item.id}-->" title="查看银行账号">银行账号</a> | <a class="fourm-two" href="<!--{$baseurl}-->/admin/user_apply.do?uid=<!--{$item.id}-->" title="查看申领记录">申领记录</a> 
