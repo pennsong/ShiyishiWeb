@@ -147,10 +147,10 @@ class company_Controller extends Controller{
 				$str = "参数错误";
 			}
 		}
-		$this->assign('result',$str);
-		$this->display('subcompanyAdd.tpl');
+//		$this->assign('result',$str);
+//		$this->display('subcompanyAdd.tpl');
 		//$this->_header(BASE_URL."/enterp/company/add.html");
-		//$this->showmsg($str,BASE_URL."/enterp/company/add.html");
+		$this->showmsg($str,BASE_URL."/enterp/company/list.html");
 	}
 
 	function uploadAction(){

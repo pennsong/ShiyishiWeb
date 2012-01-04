@@ -9,7 +9,7 @@
                             <div id="hrcentertop">
                                 <span>
                                     <ul>
-                                        <li><a href="javascript:{};"  onclick="openwin('/enterp/company/add.html',title)">新建分支机构</a></li>
+                                        <li><a href="/enterp/company/add.html">新建分支机构</a></li>
                                     </ul>
                                 </span>
                             </div>
@@ -20,7 +20,7 @@
                         	
                             <div id="panes">
                               <div id="fenggemain" style="display: block;">
-                              	<div class="" id="fenges">您还可以下载<span class="red bold">123</span>份简历</div>
+
                                 <table width="100%" cellspacing="1" cellpadding="0" border="0" id="recordtable" class="listTab">
                                   <tbody><tr class="tabHead">
                                         <th width="39" class="blankTd"></th>
