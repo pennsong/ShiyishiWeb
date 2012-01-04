@@ -160,10 +160,11 @@
 
                                 <li><span class="glogintext">职位描述：</span><!--{$info.content}--></li>
                                 <li><span class="glogintext">&nbsp;</span>
-								<input type="image" onclick="<!--{if !$jid}-->$('#action').val('push');<!--{else}-->$('#action').val('savejob');<!--{/if}-->" src="/images/fabu.gif" />
+								<input type="image" onclick="<!--{if !$jid}-->$('#action').val('push');<!--{else}-->$('#action').val('savejob');<!--{/if}-->" <!--{if !$jid}--> src="/images/fabu.gif" <!--{else}-->src="/images/baocun.gif"<!--{/if}-->/>
 								<!--{if !$jid}-->
 									<input type="image" onclick="$('#action').val('save');" src="/images/zhiweimuban.gif" />
 								<!--{/if}-->
+								 <input type="hidden" name="type" id="type" value="<!--{$type}-->" />
 								 <input type="hidden" name="action" id="action" value="push" />
 								 <input type="hidden" name="info[cid]"  value="<!--{$logininfo.uid}-->" />
 								 </li>

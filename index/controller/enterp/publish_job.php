@@ -35,7 +35,8 @@ class publish_job_Controller extends Controller{
 			$this->showmsg('请先完善公司信息',BASE_URL."/enterp/company/info.html");
 			exit;
 		}
-
+		//add by penn use $type to record from witch page(公司职位管理中的页面)
+		$type = intval($this->_get('t'));
 		$tid = intval($this->_get('tid'));
 		$jid = intval($this->_get('jid'));
 		if($tid || $jid){
@@ -78,6 +79,7 @@ class publish_job_Controller extends Controller{
 
 		$jobstemplate = $this->jobs_template->fetchAll(" cid = ".$this->uid);
 		$subcompany = $this->subcompany->fetchAll(" cid = ".$this->uid);
+		$this->assign('type',$type);
 		$this->assign('adatas',$this->adata);
 		$this->assign('ftdatas',$this->ftdata);
 		$this->assign('dtdatas',$this->dtdata);
@@ -95,6 +97,7 @@ class publish_job_Controller extends Controller{
 
 	function saveAction(){
 		//error_reporting(E_ALL);
+		$type = $this->_get('type');
 		$info = $this->_get('info');
 		$pnum_x = $this->_get('pnum_x',0);
 		$info['jtext'] = $this->_get('content');
@@ -143,7 +146,7 @@ class publish_job_Controller extends Controller{
 			}
 			$str = '模板保存成功';
 		}else if($action=='savejob'){
-			$info['status'] = 1;
+//			$info['status'] = 1;
 			if($this->jobs->save($info) === false){
 				$this->showmsg($this->jobs->getError(),1);
 			}
@@ -151,7 +154,14 @@ class publish_job_Controller extends Controller{
 		}else{
 
 		}
-		$this->showmsg($str,BASE_URL."/enterp/");
+		if ($type != 0)
+		{
+			$this->showmsg($str,BASE_URL."/enterp/publish_job/list.do?t=".$type);			
+		}
+		else
+		{
+			$this->showmsg($str,BASE_URL."/enterp/");
+		}
 	}
 
 	function listAction(){
