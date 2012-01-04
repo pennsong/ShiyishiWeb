@@ -4,7 +4,7 @@
 		<li><a href="javascript:{}">职位管理</a></li>
 		<dl>
 			<dd>・<a href="/enterp/publish_job/">发布新职位</a></dd>
-			<dd>・<a href="/enterp/publish_job/list.html">管理职位列表</a></dd>
+			<dd>・<a href="/enterp/publish_job/list.html">职位管理</a></dd>
 			<dd>・<a href="/enterp/publish_job/tpl.html">设置职位模板</a></dd>
 		</dl>
 		<li><a href="javascript:{}">简历管理</a></li>
