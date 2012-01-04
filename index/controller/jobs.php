@@ -163,10 +163,31 @@ class jobs_Controller extends Controller{
 			$this->showmsg("该职位不存在","/");
 		}
 
-		foreach($this->dtdata as $k => $v){
-			if($v['id'] == $info['dustrytype_1']){
-				$info['dustrytype'] = $v['name'];
-			}	
+		//add by penn to get 公司行业
+		
+		$e_user_info = $this->e_user->find($info['cid']);
+		if(!$e_user_info || $e_user_info['username'] == ''){
+			$this->showmsg("没有对应的公司","/");
+		}
+		else
+		{
+			$info['dustrytype'] = $e_user_info['dustrytype'];
+		}
+		
+		if(strpos($info['dustrytype'],",")===false){
+		if($info['dustrytype'])
+				$darray[0] = $info['dustrytype'];
+		}else{
+			$darray = explode(",",$info['dustrytype']);
+		}
+
+		if($darray){
+			$info['dustrytype'] = "";
+			foreach($this->dtdata as $k => $v){
+				if(in_array($v['id'],$darray)){
+					$info['dustrytype'] .= $v['name']." ";
+				}
+			}
 		}
 
 		$subcompany = $this->subcompany->fetchRow(" cid = ".$info['cid']." and id = ".$info['scid']);
