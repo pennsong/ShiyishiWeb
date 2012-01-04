@@ -14,8 +14,8 @@ class index_Controller extends Controller{
 	{
 		$subftdatas = $this->cache->getFuntypeDatas('funtype_level2');
 		//print_r($subftdatas);
-
-		$jnum = $this->jobs->count("status = 1 and cid = ".$this->uid);
+		$currentTime = time();
+		$jnum = $this->jobs->count("status = 1 and startdate <= $currentTime and enddate >= $currentTime and cid = ".$this->uid);
 
 		$rnum = $this->resume_box->count("posttime >= '".strtotime("-3 day")."' and cid = ".$this->uid);
 
