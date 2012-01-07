@@ -9,7 +9,7 @@
       <dd>・<a href="<!--{$baseurl}-->/member/myjob/int.html">我的在线面试</a></dd>
       <dd>・<a href="<!--{$baseurl}-->/member/myjob/rviewd.html">简历被查看记录</a></dd>
     </dl>
-    <li><a href="<!--{$baseurl}-->/member/profile.html">资料管理</a></li>
+    <li><a href="<!--{$baseurl}-->/member/profile.html">修改登录密码</a></li>
     <li><a>推广计划</a></li>
     <dl id="myjob_dd">
       <dd>・<a href="<!--{$baseurl}-->/member/tg/code.html">我的推广代码</a></dd>
