@@ -20,12 +20,13 @@ class index_Controller extends Controller{
 			$cityid = $this->cityinfo['id'];
 			$where = $this->cityinfo['parent_id']<0 ? "live_gnd LIKE '".$cityid.",%'" : "live_gnd LIKE '%,".$cityid."%'";
 			$resumenum = $this->resume->count($where);
-			$resumenum_t = $this->resume->count($where." AND modifydate>'".$today_s."' AND modifydate<='".$today_e."'");
+//			$resumenum_t = $this->resume->count($where." AND modifydate>'".$today_s."' AND modifydate<='".$today_e."'");
+			$resumenum_t = $this->resume->count($where." AND createdate > FROM_UNIXTIME($today_s) AND createdate < FROM_UNIXTIME($today_e)");
 			$where = $this->cityinfo['parent_id']<0 ? "live_gnd_p = '".$cityid."'" : "live_gnd_c = '".$cityid."'";
-			$jobnum = $this->job->count($where);
-			$jobnum_t = $this->job->count($where." AND modifydate>'".$today_s."' AND modifydate<='".$today_e."'");
+			$jobnum = $this->job->count($where."AND status=1 AND enddate > $today_e");
+			$jobnum_t = $this->job->count($where." AND createtime>'".$today_s."' AND createtime<='".$today_e."'"." AND status=1 AND enddate > $today_e");
 			//热点招聘
-			$hotjobs = $this->job->fetchAll($where.' AND status=1',null,'id,title',6);
+			$hotjobs = $this->job->fetchAll($where." AND status=1 AND enddate > $today_e",'createtime DESC','id,title',6);
 		}else{
 			unset($_COOKIE['sys_cookie_city']);
 			$zdcitys = $this->area->fetchAll("type=1","order_id ASC",null,6);
@@ -36,13 +37,15 @@ class index_Controller extends Controller{
 				$zdcitys[$k] = $c;
 			}
 			$cityid = 0;
-			$resumenum_t = $this->resume->count("modifydate>'".$today_s."' AND modifydate<='".$today_e."'");
+			//$resumenum_t = $this->resume->count("modifydate>'".$today_s."' AND modifydate<='".$today_e."'");
+			$resumenum_t = $this->resume->count("createdate > FROM_UNIXTIME($today_s) AND createdate < FROM_UNIXTIME($today_e)");
 			$resumenum = $this->resume->count();
-			$jobnum = $this->job->count();
-			$jobnum_t = $this->job->count("modifydate>'".$today_s."' AND modifydate<='".$today_e."'");
+			$jobnum = $this->job->count("status=1 AND enddate > $today_e");
+			$jobnum_t = $this->job->count("createtime>'".$today_s."' AND createtime<='".$today_e."'"." AND status=1 AND enddate > $today_e");
 			$this->assign('zdcitys',$zdcitys);
 			//热点招聘
-			$hotjobs = $this->job->getHotJobs(6);
+			//$hotjobs = $this->job->getHotJobs(6);
+			$hotjobs = $this->job->fetchAll("status=1 AND enddate > $today_e",'createtime DESC','id,title',6);
 		}
 		$relinks =$this->relinks->pageAll(1,8,'','',' orid');
 		foreach ($relinks as &$item) {
