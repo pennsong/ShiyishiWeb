@@ -410,7 +410,7 @@
         </div>
         <div id="gloginrightmain">
           <ul>
-            <li><span class="glogintexteng">&nbsp;</span><input type="hidden" value="0" name="continue" id="continue"/><input type="image" onclick="return checkPostResume(false);" src="<!--{$baseurl}-->/images/shangchuan.gif" /></li>
+            <li><span class="glogintexteng">&nbsp;</span><input type="hidden" value="0" name="continue" id="continue"/><input type="image" onclick="return checkPostResume(false);" src="<!--{$baseurl}-->/images/shangchuan.gif" />&nbsp<a href="<!--{$baseurl}-->/member"><img src="<!--{$baseurl}-->/images/quxiao.gif" /></a></li>
           </ul>
         </div>
         <div class="topmargin10px"></div>

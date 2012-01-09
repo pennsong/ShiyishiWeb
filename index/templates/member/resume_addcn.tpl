@@ -384,7 +384,7 @@
         </div>
         <div id="gloginrightmain">
           <ul>
-            <li><span class="glogintext">&nbsp;</span><input type="hidden" value="0" name="continue" id="continue"/><input type="image" onclick="checktj();if(tj_value){return checkPostResume(false);}else{ alert('内容填写不完整');return false;}" src="<!--{$baseurl}-->/images/shangchuan.gif" /></li>
+            <li><span class="glogintext">&nbsp;</span><input type="hidden" value="0" name="continue" id="continue"/><input type="image" onclick="checktj();if(tj_value){return checkPostResume(false);}else{ alert('内容填写不完整');return false;}" src="<!--{$baseurl}-->/images/shangchuan.gif" />&nbsp<a href="<!--{$baseurl}-->/member"><img src="<!--{$baseurl}-->/images/quxiao.gif" /></a></li>
             <li><span class="glogintext">&nbsp;</span><span class="red">上传简历后，请您在个人中心首页中修改您的个人状态为"求职"时方可申请职位。</span> </li>
           </ul>
         </div>
