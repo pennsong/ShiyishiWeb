@@ -126,7 +126,7 @@
   	                        </tr>
     	                      <tr>
     	                        <td valign="top" nowrap="nowrap" align="right">期望从事行业：</td>
-    	                        <td><!--{$info.dustrytype_2_name}--></td>
+    	                        <td><!--{$info.funtype_1_name}--></td>
   	                        </tr>
     	                      <tr>
     	                        <td nowrap="nowrap" align="right">期望工作地点：</td>

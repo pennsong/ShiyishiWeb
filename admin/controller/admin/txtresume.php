@@ -17,6 +17,7 @@ class txtresume_Controller extends Controller{
 		$this->salarys = $this->conf['salarys'];
 		$this->companytypes = $this->conf['companytypes'];
 		$this->mtype = $this->getControllerUName();
+		$this->languages = $this->conf['languages'];
 	}
 	
 	function indexAction(){
@@ -122,6 +123,12 @@ class txtresume_Controller extends Controller{
 							$resume['funtype_2_name'] = $v['name'];
 					}
 				}
+				$topftdatas = $this->cache->getFuntypeDatas('funtype_level1');
+				foreach($topftdatas as $k => $v){
+					if($v['id'] == $tmp[0])
+						$resume['funtype_1_name'] = $v['name'];
+				}				
+				
 			}
 			if($resume['dustrytype']){
 				$subdtdatas = $this->cache->getFuntypeDatas('dustrytype_level2');
@@ -193,6 +200,7 @@ class txtresume_Controller extends Controller{
 			$this->assign('its',$its);
 			$this->assign('ctfs',$ctfs);
 			$this->assign('langs',$langs);
+			$this->assign('languages',$this->languages[$rtype]);
 			$this->assign('down',$down);
 			$this->assign('worknum',count($works));
 			$this->assign('edunum',count($edus));

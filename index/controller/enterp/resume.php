@@ -935,7 +935,11 @@ class resume_Controller extends Controller{
 				$tmp = explode(",",$resume['funtype']);
 				$resume['funtype_1'] = $tmp[0];
 				$resume['funtype_2'] = $tmp[1];
-				$resume['funtype_1_name'] = $this->ftdata[$tmp[0]]['name'];
+				$topftdatas = $this->cache->getFuntypeDatas('funtype_level1');
+				foreach($topftdatas as $k => $v){
+					if($v['id'] == $tmp[0])
+						$resume['funtype_1_name'] = $v['name'];
+				}				
 				foreach($subftdatas[$tmp[0]] as $k => $v){
 					if($v['id'] == $tmp[1])
 						$resume['funtype_2_name'] = $v['name'];

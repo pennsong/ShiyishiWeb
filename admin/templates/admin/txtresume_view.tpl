@@ -65,7 +65,7 @@
 				</tr>
 				  <tr>
 					<td valign="top" nowrap="nowrap" align="right">期望从事行业：</td>
-					<td><!--{$info.dustrytype_2_name}--></td>
+					<td><!--{$info.funtype_1_name}--></td>
 				</tr>
 				  <tr>
 					<td nowrap="nowrap" align="right">期望工作地区：</td>
@@ -129,18 +129,48 @@
 			</p>
 		  </div>
 		</div>
-
 		  <div>
 			<div class="grh2">语言能力</div>
 			<div class="grmain">
-				<!--{foreach from=$its key=key item=item}-->
-					<!--{$item}--><br/>
+				<!--{foreach from=$langs key=key item=lang}-->
+								<!--{$languages[$lang.language]}-->
+								读写能力：<!--{$lang.rwability}-->
+								听说能力：<!--{$lang.lsability}-->
+								<br />
 				<!--{foreachelse}-->
 					该求职者未填写语言能力。
 				<!--{/foreach}-->
 			</div>
 		</div>
-
+		  <div>
+			<div class="grh2">计算机操作技能</div>
+			<div class="grmain">
+				<!--{foreach from=$its key=key item=item}-->
+					<!--{$item}--><br/>
+				<!--{foreachelse}-->
+					该求职者未填计算机操作技能。
+				<!--{/foreach}-->
+			</div>
+		</div>
+		  <div>
+			<div class="grh2">兴趣爱好</div>
+			<div class="grmain">
+			  <!--{if $info.interest}-->
+			  <div><!--{$info.interest}--></div>
+			  <!--{else}-->
+			  	该求职者未填兴趣爱好。
+			  <!--{/if}-->
+		  </div>
+		  <div>
+			<div class="grh2">专业课程</div>
+			<div class="grmain">
+			  <!--{if $info.zycourse}-->
+			  <div><!--{$info.zycourse}--></div>
+			  <!--{else}-->
+			  	该求职者未填专业课程。
+			  <!--{/if}-->
+		  </div>
+		</div>
 	  </div>
 	</div></td>
   </tr>
