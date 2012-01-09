@@ -179,7 +179,7 @@
     	              <div>
     	                <div class="grh2">工作经历</div>
     	                <div class="grmain">
-                          <table width="100%" border="0" cellspacing="0" cellpadding="0">2
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<!--{foreach from=$works key=key item=item}-->
 								<!--{$item}-->
 							<!--{/foreach}-->
