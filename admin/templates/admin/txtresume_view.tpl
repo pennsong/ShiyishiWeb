@@ -74,7 +74,7 @@
 				  <tr></tr>
 				  <tr>
 					<td width="1%" nowrap="nowrap" align="right">目前状况：</td>
-					<td>我目前处于离职状态，可立即上岗</td>
+					<td><!--{$info.nowzt}--></td>
 				</tr>
 			  </tbody>
 			</table>

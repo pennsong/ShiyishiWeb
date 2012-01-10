@@ -89,7 +89,7 @@
     	          <td colspan="2"><table border="0" cellspacing="0" cellpadding="0" width="600">
     	            <tbody>
     	              <tr>
-    	                <td><strong>应聘职位:<!--{$info.funtype_2_name}--></strong></td>
+    	                <td><strong>interested job:<!--{$info.funtype_2_name}--></strong></td>
     	                <td align="right" class="font14px bold">视一视招聘网</td>
   	                </tr>
   	              </tbody>
@@ -98,11 +98,11 @@
                       <tbody>
                         <tr>
                           <td width="81%">ID:<!--{$info.uid}--></td>
-                          <td width="19%"><a href="/enterp/resume/view.html?uid=<!--{$info.uid}-->&t=en">查看其英文简历</a></td>
+                          <td width="19%"><a href="/enterp/resume/view.html?uid=<!--{$info.uid}-->&t=cn">查看其中文简历</a></td>
                         </tr>
                         <tr>
                           <td colspan="2" style="border:1px solid #ccc"><div align="right">
-						  <!--{if $down}--><!--{$info.uname}-->  身份证号：<!--{$info.idcard}-->  <!--{/if}--><!--{if $info.gender==1}-->男<!--{else}-->女<!--{/if}--> | <!--{$info.age}-->岁 | 身高：<!--{$info.stature}-->CM | 体重：<!--{$info.weight}-->KG <br/><br/> 现居住于：<!--{$info.live_gnd_name}--><!--{$info.live_address}--> 
+						  <!--{if $down}--><!--{$info.uname}-->  id no：<!--{$info.idcard}-->  <!--{/if}--><!--{if $info.gender==1}-->male<!--{else}-->female<!--{/if}--> | <!--{$info.age}-->years old | height：<!--{$info.stature}-->CM | weight：<!--{$info.weight}-->KG <br/><br/> live add：<!--{$info.live_gnd_name}--><!--{$info.live_address}--> 
 						  </div></td>
                         </tr>
                       </tbody>
@@ -112,30 +112,30 @@
     	          <td colspan="2"><div  style="border:1px solid #ccc">
     	            <div>
     	              <div>
-    	                <div class="grh2">求职意向</div>
+    	                <div class="grh2">Career Objective</div>
     	                <div class="grmain">
     	                  <table width="100%" border="0" cellpadding="2" cellspacing="0">
     	                    <tbody>
     	                      <tr>
-    	                        <td nowrap="nowrap" align="right">期望工作性质：</td>
+    	                        <td nowrap="nowrap" align="right">desired type of employment：</td>
     	                        <td><!--{$info.jobterm}--></td>
   	                        </tr>
     	                      <tr>
-    	                        <td nowrap="nowrap" align="right">期望从事职业：</td>
+    	                        <td nowrap="nowrap" align="right">Desired Position：</td>
     	                        <td><!--{$info.funtype_2_name}--></td>
   	                        </tr>
     	                      <tr>
-    	                        <td valign="top" nowrap="nowrap" align="right">期望从事行业：</td>
+    	                        <td valign="top" nowrap="nowrap" align="right">Desired Industry：</td>
     	                        <td><!--{$info.funtype_1_name}--></td>
   	                        </tr>
     	                      <tr>
-    	                        <td nowrap="nowrap" align="right">期望工作地点：</td>
+    	                        <td nowrap="nowrap" align="right">Desired Working Place：</td>
     	                        <td><!--{$info.work_gnd_name}--></td>
   	                        </tr>
     	                      <tr></tr>
     	                      <tr>
-    	                        <td width="1%" nowrap="nowrap" align="right">目前状况：</td>
-    	                        <td><!--{$info.nowzt}--></td>
+    	                        <td width="1%" nowrap="nowrap" align="right">Working Situation：</td>
+    	       	                <td><!--{$info.nowzt}--></td>
   	                        </tr>
   	                      </tbody>
   	                    </table>
@@ -143,7 +143,7 @@
   	                </div>
 					<!--{if $info.introduction}-->
     	              <div>
-    	                <div class="grh2">自我评价</div>
+    	                <div class="grh2">Self-assessment</div>
     	                <div class="grmain">
     	                  <div><!--{$info.introduction}--></div>
   	                  </div>
@@ -152,7 +152,7 @@
 
 					<!--{if $edus}-->
     	              <div>
-    	                <div class="grh2">教育经历</div>
+    	                <div class="grh2">education background</div>
     	                <div class="grmain">
 							<!--{foreach from=$edus key=key item=item}-->
 								<!--{$item}--><br/>
@@ -163,7 +163,7 @@
 
 					<!--{if $ctfs}-->
     	              <div>
-    	                <div class="grh2">证书奖励</div>
+    	                <div class="grh2">certificate</div>
     	                <div class="grmain">
 							<!--{foreach from=$ctfs key=key item=item}-->
 								<!--{$item}--><br/>
@@ -177,7 +177,7 @@
 
 					<!--{if $works}-->
     	              <div>
-    	                <div class="grh2">工作经历</div>
+    	                <div class="grh2">Working Experience</div>
     	                <div class="grmain">
                           <table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<!--{foreach from=$works key=key item=item}-->
@@ -192,12 +192,12 @@
 
 					<!--{if $langs}-->
 					<div>
-						<div class="grh2">语言能力</div>
+						<div class="grh2">language skill</div>
 						<div class="grmain">
 							<!--{foreach from=$langs key=e item=lang}-->
 								<!--{$languages[$lang.language]}-->
-								读写能力：<!--{$lang.rwability}-->
-								听说能力：<!--{$lang.lsability}-->
+								reading&writing ability：：<!--{$lang.rwability}-->
+								listening&oral ability：<!--{$lang.lsability}-->
 								<br />
 							<!--{/foreach}-->
 						</div>
@@ -206,7 +206,7 @@
 
 					<!--{if $its}-->
 					<div>
-						<div class="grh2">计算机操作技能</div>
+						<div class="grh2">computer skill</div>
 						<div class="grmain">
 							<!--{foreach from=$its key=key item=item}-->
 								<!--{$item}--><br/>
@@ -217,7 +217,7 @@
 
 					<!--{if $info.interest}-->
 					<div>
-						<div class="grh2">兴趣爱好</div>
+						<div class="grh2">interests & hobbies</div>
 						<div class="grmain">
 							<!--{$info.interest}-->
 						</div>
@@ -226,7 +226,7 @@
 
 					<!--{if $info.zycourse}-->
 					<div>
-						<div class="grh2">专业课程</div>
+						<div class="grh2">main courses</div>
 						<div class="grmain">
 							<!--{$info.zycourse}-->
 						</div>

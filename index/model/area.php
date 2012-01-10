@@ -23,6 +23,11 @@ class area_Model extends Model{
 		$info = $this->area->find($id);
 		return $info['area_name'];
 	}
+	
+	function getNameEn($id){
+		$info = $this->area->find($id);
+		return $info['area_en'];
+	}
 
 	function getcache($key){
 		if(!$key) $key = $this->memkey;
@@ -61,6 +66,22 @@ class area_Model extends Model{
 			if($i>$limit)break;
 			if($vid<=0)continue;
 			$name = $this->getName($vid);
+			if($name)
+				$names[] = $name;
+			$i++;
+		}
+		return implode("，",$names);
+	}
+	
+	function getNameByIdsEn($ids,$limit=2){
+		if(!$ids)return null;
+		$tmparr = array_unique(explode(',',trim($ids,",")));
+		$names = array();
+		$i=1;
+		foreach($tmparr as $vid){
+			if($i>$limit)break;
+			if($vid<=0)continue;
+			$name = $this->getNameEn($vid);
 			if($name)
 				$names[] = $name;
 			$i++;

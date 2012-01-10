@@ -159,7 +159,9 @@
               <input name="info[nowzt]" type="radio" value="in service"<!--{if $info.nowzt!='dimission'}--> checked<!--{/if}-->/>
               in service
               <input name="info[nowzt]" type="radio" value="dimission"<!--{if $info.nowzt=='dimission'}--> checked<!--{/if}--> />
-              dimission</li>
+              dimission
+              <input name="info[nowzt]" type="radio" value="dimission"<!--{if $info.nowzt=='dimission'}--> checked<!--{/if}--> />
+              just graduated</li>
           </ul>
         </div>
         <div id="gloginrightmain">
@@ -172,7 +174,7 @@
           </ul>
         </div>
         <div id="gloginrightmain">
-          <h3><span class="floatRight"><img src="<!--{$baseurl}-->/images/jia.gif" align="absmiddle" /> <a onclick="AddHtml('work');" style="cursor:pointer;">Add working experience</a></span>Working Experience</h3>
+          <h3><span class="floatRight"><img src="<!--{$baseurl}-->/images/jia.gif" align="absmiddle" /> <a onclick="AddHtml('work');" style="cursor:pointer;">Add working experience</a></span>Working/Trainee Experience</h3>
           <!--{foreach from=$works key=e item=work}--><input type="hidden" name="winfo[<!--{$e}-->][id]" value="<!--{$work.id|default:0}-->"/>
 		  <ul id="resume_work_<!--{$e}-->">
             <li id="li_work_<!--{$e}-->"><span class="glogintexteng"><a id="close_work_<!--{$e}-->" style="cursor:pointer;<!--{if $e<1}-->display:none;<!--{/if}-->" onclick="closeIT(this);">delete</a> working period：</span>

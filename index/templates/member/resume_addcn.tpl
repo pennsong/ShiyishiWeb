@@ -155,7 +155,9 @@
               <input name="info[nowzt]" type="radio" value="在职"<!--{if $info.nowzt!='离职'}--> checked<!--{/if}-->/>
               在职
               <input name="info[nowzt]" type="radio" value="离职"<!--{if $info.nowzt=='离职'}--> checked<!--{/if}--> />
-              离职 <span class="red bold">（必填）</span></li>
+              离职
+              <input name="info[nowzt]" type="radio" value="离职"<!--{if $info.nowzt=='离职'}--> checked<!--{/if}--> />
+              应届毕业生 <span class="red bold">（必填）</span></li>
           </ul>
         </div>
         <div id="gloginrightmain">
@@ -168,7 +170,7 @@
           </ul>
         </div>
         <div id="gloginrightmain">
-          <h3><span class="floatRight"><img src="<!--{$baseurl}-->/images/jia.gif" align="absmiddle" /> <a onclick="AddHtml('work');" style="cursor:pointer;">增加工作经历</a></span>工作经历（如果您为应届毕业生，下面的时间请选择今天时间，内容都填写“无”）</h3><input type="hidden" id="delid_work" name="delete[work]" value=""/>
+          <h3><span class="floatRight"><img src="<!--{$baseurl}-->/images/jia.gif" align="absmiddle" /> <a onclick="AddHtml('work');" style="cursor:pointer;">增加工作经历</a></span>工作/实习 经历（如果您为应届毕业生，下面的时间请选择今天时间，内容都填写“无”）</h3><input type="hidden" id="delid_work" name="delete[work]" value=""/>
           <!--{foreach from=$works key=e item=work}--><input type="hidden" id="id_work_<!--{$e}-->" name="winfo[<!--{$e}-->][id]" value="<!--{$work.id|default:0}-->"/>
 		  <ul id="resume_work_<!--{$e}-->">
             <li id="li_work_<!--{$e}-->"><span class="glogintext"><a id="close_work_<!--{$e}-->" style="cursor:pointer;<!--{if $e<1}-->display:none;<!--{/if}-->" onclick="closeIT(this);">删除</a> 时间：</span>

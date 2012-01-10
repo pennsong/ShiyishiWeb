@@ -938,11 +938,23 @@ class resume_Controller extends Controller{
 				$topftdatas = $this->cache->getFuntypeDatas('funtype_level1');
 				foreach($topftdatas as $k => $v){
 					if($v['id'] == $tmp[0])
+					{
 						$resume['funtype_1_name'] = $v['name'];
+						if ($rtype == 'en')
+						{
+							$resume['funtype_1_name'] = $v['en'];							
+						}
+					}
 				}				
 				foreach($subftdatas[$tmp[0]] as $k => $v){
 					if($v['id'] == $tmp[1])
+					{
 						$resume['funtype_2_name'] = $v['name'];
+						if ($rtype == 'en')
+						{
+							$resume['funtype_2_name'] = $v['en'];							
+						}
+					}
 				}
 			}
 			if($resume['dustrytype']){
@@ -960,15 +972,25 @@ class resume_Controller extends Controller{
 			$resume['live_gnd_name'] = $this->area->getNameByIds($resume['live_gnd']);
 
 			$resume['work_gnd_name'] = $this->area->getNameByIds($resume['work_gnd']);
-			
+			if ($rtype=='en')
+			{
+				$resume['live_gnd_name'] = $this->area->getNameByIdsEn($resume['live_gnd']);				
+				$resume['work_gnd_name'] = $this->area->getNameByIdsEn($resume['work_gnd']);
+			}			
 			if(empty($works)){
 				$works = '';
 			}else{
 				$tmp = array();
 				foreach($works as $k=>$row){
 					//$row['fromdate']." - ".$row['todate']."  ".$row['company']." ".$row['position']." ".$this->companytypes[$rtype][$row['companytype']]." ".$this->salarys[$rtype][$row['income']]." ".$row['responsiblity'];
-
-					$tmp[] = '<tr><td width=100px>'.$row['fromdate'].' - '.$row['todate'].' </td><td>'.$row['company'].'</td></tr><tr><td>企业性质：</td><td>'.$this->companytypes[$rtype][$row['companytype']].'</td></tr><tr><td>职位：</td><td>'.$row['position'].'</td></tr><tr><td>工作描述：</td><td>'.$row['responsiblity'].'</td></tr><tr><td colspan="2" align="center">&nbsp;</td></tr>';
+					if ($rtype=='en')
+					{
+						$tmp[] = '<tr><td width=100px>'.$row['fromdate'].' - '.$row['todate'].' </td><td>'.$row['company'].'</td></tr><tr><td>The Nature of Firm：</td><td>'.$this->companytypes[$rtype][$row['companytype']].'</td></tr><tr><td>Position：</td><td>'.$row['position'].'</td></tr><tr><td>working description：</td><td>'.$row['responsiblity'].'</td></tr><tr><td colspan="2" align="center">&nbsp;</td></tr>';
+					}
+					else
+					{
+						$tmp[] = '<tr><td width=100px>'.$row['fromdate'].' - '.$row['todate'].' </td><td>'.$row['company'].'</td></tr><tr><td>企业性质：</td><td>'.$this->companytypes[$rtype][$row['companytype']].'</td></tr><tr><td>职位：</td><td>'.$row['position'].'</td></tr><tr><td>工作描述：</td><td>'.$row['responsiblity'].'</td></tr><tr><td colspan="2" align="center">&nbsp;</td></tr>';
+					}
 				}
 				$works = $tmp;
 			}
@@ -994,7 +1016,14 @@ class resume_Controller extends Controller{
 			}else{
 				$tmp = array();
 				foreach($its as $k=>$row){
-					$tmp[] = $row['skillname'] ." ".$row['ability']." ".$row['usetime']."月";
+					if ($rtype=='en')
+					{
+						$tmp[] = $row['skillname'] ." ".$row['ability']." ".$row['usetime']."months";						
+					}
+					else
+					{
+						$tmp[] = $row['skillname'] ." ".$row['ability']." ".$row['usetime']."月";
+					}
 				}
 				$its = $tmp;
 			}
@@ -1045,7 +1074,14 @@ class resume_Controller extends Controller{
 			$this->assign('itnum',count($its));
 			$this->assign('ctfnum',count($ctfs));
 			$this->assign('langnum',count($langs));
-			$this->display('resume.tpl');
+			if ($rtype=='en')
+			{
+				$this->display('resume_en.tpl');				
+			}
+			else
+			{
+				$this->display('resume.tpl');
+			}
 		}else{
 			$str = "参数错误";
 		}
