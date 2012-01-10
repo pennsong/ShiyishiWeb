@@ -90,19 +90,8 @@
               </select><span id="showResult_degree"></span>
             </li>
             <li><span class="glogintexteng">Major：</span>
-              <select name="info[speciality_1]" id="speciality_o" onchange="setSubData(this,'major');" title="Major:空">
-                <option value="">Select</option>
-				<!--{foreach from=$mjdatas key=key item=item}-->
-                <option value="<!--{$item.id}-->"<!--{if $info.speciality_1==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-                <!--{/foreach}-->
-              </select>
-              <select name="info[speciality_2]" id="speciality_t"<!--{if !$info.submjdatas}--> style="display:none;"<!--{/if}-->>
-			    <!--{if $info.submjdatas}-->
-				<!--{foreach from=$info.submjdatas key=key item=item}-->
-                <option value="<!--{$item.id}-->"<!--{if $info.speciality_2==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-                <!--{/foreach}-->
-				<!--{/if}-->
-              </select><span id="showResult_speciality_o"></span>
+            	<input name="info[speciality]" id="speciality_o" class="k" value="<!--{$info.speciality}-->" title="major:空"/>
+				<span class="red bold">（必填）</span><span id="showResult_speciality_o"></span>
             </li>
             <li><span class="glogintexteng">Mobile：</span>
               <input class="k" name="info[phone]" id="phone" type="text" value="<!--{$info.phone}-->" alt="Mobile:空/手机"/><span id="showResult_phone"></span>
@@ -133,7 +122,7 @@
        		<select name="info[funtype_1]" id="zhiweishuxin" onchange="setZhiweileibie();">
 				<option value="">Select</option>
 				 <!--{foreach from=$funtype item=item}-->
-				 <option value="<!--{$item.id}-->" <!--{if $info.funtype_1==$item.id}--> selected<!--{/if}--> ><!--{$item.thename}--></option>
+				 <option value="<!--{$item.id}-->" <!--{if $info.funtype_1==$item.id}--> selected<!--{/if}--> ><!--{$item.enname}--></option>
 				 <!--{/foreach}-->
 				</select>
               </select><span class="red bold">（必填）</span><span id="showResult_dustrytype_o"></span>
@@ -186,7 +175,8 @@
           <h3><span class="floatRight"><img src="<!--{$baseurl}-->/images/jia.gif" align="absmiddle" /> <a onclick="AddHtml('work');" style="cursor:pointer;">Add working experience</a></span>Working Experience</h3>
           <!--{foreach from=$works key=e item=work}--><input type="hidden" name="winfo[<!--{$e}-->][id]" value="<!--{$work.id|default:0}-->"/>
 		  <ul id="resume_work_<!--{$e}-->">
-            <li><span class="glogintexteng">working period：</span>
+            <li id="li_work_<!--{$e}-->"><span class="glogintexteng"><a id="close_work_<!--{$e}-->" style="cursor:pointer;<!--{if $e<1}-->display:none;<!--{/if}-->" onclick="closeIT(this);">delete</a> working period：</span>
+            
               <select name="winfo[<!--{$e}-->][from_year]" id="from_year_<!--{$e}-->">
                 <!--{foreach from=$years key=key item=item}-->
                 <option value="<!--{$key}-->"<!--{if $work.from_year==$key}--> selected<!--{/if}-->><!--{$item}--></option>
@@ -250,7 +240,7 @@
           <h3><span class="floatRight"><img src="<!--{$baseurl}-->/images/jia.gif" align="absmiddle" /> <a onclick="AddHtml('edu');" style="cursor:pointer;">Add education background</a></span>education background</h3>
           <!--{foreach from=$edus key=e item=edu}--><input type="hidden" name="einfo[<!--{$e}-->][id]" value="<!--{$edu.id|default:0}-->"/>
 		  <ul id="resume_edu_<!--{$e}-->">
-            <li><span class="glogintexteng">period：</span>
+		    <li id="li_edu_<!--{$e}-->"><span class="glogintexteng"><a id="close_edu_<!--{$e}-->" style="cursor:pointer;display:none;" onclick="closeIT(this);">delete</a> period：</span>
               <select name="einfo[<!--{$e}-->][from_year]" id="efrom_year_<!--{$e}-->">
                 <!--{foreach from=$years key=key item=item}-->
                 <option value="<!--{$key}-->"<!--{if $edu.from_year==$key}--> selected<!--{/if}-->><!--{$item}--></option>
@@ -288,19 +278,8 @@
               <input class="k" name="einfo[<!--{$e}-->][schoolname]" type="text" id="schoolname_<!--{$e}-->" value="<!--{$edu.schoolname}-->" alt="school:空/长度@4-50"/><span id="showResult_schoolname_<!--{$e}-->"></span>
             </li>
             <li><span class="glogintexteng">major：</span>
-              <select name="einfo[<!--{$e}-->][major_1]" id="major_o_<!--{$e}-->" onchange="setSubData(this,'major');" title="major:空">
-                <option value="">Select</option>
-				<!--{foreach from=$mjdatas key=key item=item}-->
-                <option value="<!--{$item.id}-->"<!--{if $edu.major_1==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-                <!--{/foreach}-->
-              </select>
-              <select name="einfo[<!--{$e}-->][major_2]" id="major_t_<!--{$e}-->"<!--{if !$edu.major}--> style="display:none;"<!--{/if}-->>
-                <!--{if $edu.major}-->
-				<!--{foreach from=$edu.major key=key item=item}-->
-                <option value="<!--{$item.id}-->"<!--{if $edu.major_2==$item.id}--> selected<!--{/if}-->><!--{$item.name}--></option>
-                <!--{/foreach}-->
-				<!--{/if}-->
-              </select><span id="showResult_major_o_<!--{$e}-->"></span>
+				<input name="einfo[<!--{$e}-->][major]" id="major_o_<!--{$e}-->" class="k" value="<!--{$edu.major}-->" title="major:空"/>
+				<span class="red bold">（必填）</span><span id="showResult_major_o_<!--{$e}-->"></span>
             </li>
             <li><span class="glogintexteng">degree：</span>
               <select name="einfo[<!--{$e}-->][degree]">
@@ -316,7 +295,7 @@
           <h3><span class="floatRight"><img src="<!--{$baseurl}-->/images/jia.gif" align="absmiddle" /> <a onclick="AddHtml('ctf');" style="cursor:pointer;">Add certificate</a></span>certificate</h3>
           <!--{foreach from=$ctfs key=e item=ctf}--><input type="hidden" name="cinfo[<!--{$e}-->][id]" value="<!--{$ctf.id|default:0}-->"/>
 		  <ul id="resume_ctf_<!--{$e}-->">
-            <li><span class="glogintexteng">issue date：</span>
+            <li id="li_ctf_<!--{$e}-->"><span class="glogintexteng"><a id="close_ctf_<!--{$e}-->" style="cursor:pointer;display:none;" onclick="closeIT(this);">delete</a> issue date：</span>
               <select name="cinfo[<!--{$e}-->][award_year]" id="award_year_<!--{$e}-->">
                 <!--{foreach from=$years key=key item=item}-->
                 <option value="<!--{$key}-->"<!--{if $ctf.award_year==$key}--> selected<!--{/if}-->><!--{$item}--></option>
@@ -346,7 +325,7 @@
           <h3><span class="floatRight"><img src="<!--{$baseurl}-->/images/jia.gif" align="absmiddle" /> <a onclick="AddHtml('lang');" style="cursor:pointer;">Add language skill</a></span>language skill</h3>
           <!--{foreach from=$langs key=e item=lang}--><input type="hidden" name="linfo[<!--{$e}-->][id]" value="<!--{$lang.id|default:0}-->"/>
 		  <ul id="resume_lang_<!--{$e}-->">
-            <li><span class="glogintexteng">language：</span>
+              <li id="li_lang_<!--{$e}-->"><span class="glogintexteng"><a id="close_lang_<!--{$e}-->" style="cursor:pointer;display:none;" onclick="closeIT(this);">delete</a> language：</span>
               <select name="linfo[<!--{$e}-->][language]">
                 <!--{foreach from=$languages key=key item=item}-->
                 <option value="<!--{$key}-->"<!--{if $lang.language==$key}--> selected<!--{/if}-->><!--{$item}--></option>
@@ -374,7 +353,7 @@
           <h3><span class="floatRight"><img src="<!--{$baseurl}-->/images/jia.gif" align="absmiddle" /> <a onclick="AddHtml('it');" style="cursor:pointer;">Add computer skill</a></span>computer skill</h3>
           <!--{foreach from=$its key=e item=it}--><input type="hidden" name="itinfo[<!--{$e}-->][id]" value="<!--{$it.id|default:0}-->"/>
 		  <ul id="resume_it_<!--{$e}-->">
-            <li><span class="glogintexteng">skill：</span>
+            <li id="li_it_<!--{$e}-->"><span class="glogintexteng"><a id="close_it_<!--{$e}-->" style="cursor:pointer;display:none;" onclick="closeIT(this);">delete</a> skill：</span>
               <input class="k" name="itinfo[<!--{$e}-->][skillname]" type="text" value="<!--{$it.skillname}-->" id="skillname_<!--{$e}-->" alt="skill:长度@2-20"/><span id="showResult_skillname_<!--{$e}-->"></span>
             </li>
             <li><span class="glogintexteng">proficiency：</span>
@@ -433,7 +412,7 @@ function setZhiweileibie(_val){
 	tobj.options.add(new Option("Select",""));
 	$.ajax({
 		type:"POST",
-		url:"/ajax/getZhiweileibie.do",
+		url:"/ajax/getZhiweileibieEn.do",
 		dataType:"html",
 		data:'zhiweishuxin='+$("#zhiweishuxin").val(),
 		success:function(msg)
@@ -533,6 +512,20 @@ function setSubData(_o,_t){
 		});
 	}
 }
+
+function closeIT(ab){
+	var delID = ab.id.replace('close','li');
+	var idID = ab.id.replace('close','id');
+	var ob = document.getElementById(delID);
+	if(confirm("are you sure to delete?")){
+		if($('#'+idID).val() > 0){
+			var tmp = idID.split('_');
+			var delvalue = $('#delid_'+tmp[1]).val();
+			$('#delid_'+tmp[1]).val(delvalue+','+$('#'+idID).val())
+		}
+		ob.parentNode.parentNode.removeChild(ob.parentNode);
+	}
+}
 function checkday(_obj){
 	var _m = _obj.value;
 	var _y = $("#" + _obj.id.replace('month','year')).val();
@@ -567,7 +560,7 @@ function checkdate(_obj){
 
 function AddHtml(_t){
 	var i = getIvalue(_t);
-	var bi = i-1;
+	var bi = getBI(i,_t);//i-1;
 	var bHtmlid = 'resume_'+_t+'_' + bi;
 	var bObj = document.getElementById(bHtmlid);
 	var bHtml = bObj.innerHTML;
@@ -588,7 +581,20 @@ function AddHtml(_t){
 			textareas[j].value = '';
 		}
 	}
+	$('#close_'+_t+'_' + i).show();
 	fm_ini();
+}
+
+function getBI(i,_t){
+	var bi = i-1;
+	var bHtmlid = '';
+	//var bObj = document.getElementById(bHtmlid);
+	for(bi;bi>=0;bi--){
+		bHtmlid = 'resume_'+_t+'_' + bi;
+		if(document.getElementById(bHtmlid)){
+			return bi;
+		}
+	}
 }
 
 function getIvalue(_t){

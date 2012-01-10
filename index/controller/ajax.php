@@ -33,6 +33,19 @@ class ajax_Controller extends Controller{
 		$this->ajaxmsg(implode(":",$html));
 	}
 	
+	//add by penn for get en zhiweileibie name
+	function getZhiweileibieEnAction(){
+		$zhiweishuxin = intval($this->_get('zhiweishuxin',0));
+		$this->zhiweileibie=Load::model('funtype');
+		$rows = $this->zhiweileibie->fetchAll("parent_id=$zhiweishuxin and parent_id<>0");
+		if(!empty($rows)){
+			foreach($rows as $k1=>$v1){
+				$html[] = $v1['id'].'|'.$v1['enname'];
+			}
+		}
+		$this->ajaxmsg(implode(":",$html));
+	}
+	
 		function getZhiweileibieWithEnAction(){
 		$zhiweishuxin = intval($this->_get('zhiweishuxin',0));
 		$this->zhiweileibie=Load::model('funtype');
