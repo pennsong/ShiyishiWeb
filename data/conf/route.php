@@ -33,7 +33,8 @@ return array(
 	'admin' => array(
 		'rule' => array(
 			array("^(login|logout)(.*)", "index/$1$2"),
-			array("^admin\/(qz|mdr|ylq)resume(.*)", "admin/txtresume$2"),
+			array("^admin\/(qz|mdr|ylq)resume\/(.*)", "admin/txtresume/$2"),
+			array("^admin\/(qz|mdr|ylq)resume\.do$", "admin/txtresume/list-con-$1"),
 			array("^admin\/(hdp|homerank|hotyugao|hotshow|tjhd)(_city|)(.*)", "admin/$1$3"),
 			array("^admin\/mail(user|task)summary(.*)", "admin/mailsummary$2")
 		),

@@ -3,6 +3,8 @@
 class txtresume_Controller extends Controller{
 
 	function init(){
+		$this->conf_db = Load::conf('db');
+		$this->dbpre = $this->conf_db['default']['prefix'];
 		$this->resume = Load::model('resume');
 		$this->area = Load::model('area');
 		$this->conf = Load::conf('conf');
@@ -33,6 +35,21 @@ class txtresume_Controller extends Controller{
 		$s['e_date'] = $this->_get('e_date');
 		$page = $this->_get('page',1);
 		$urls = $wheres = array();
+		//get filter condition
+		$con = $this->_get('con');
+		if ($con == 'qz')
+		{
+			$wheres[] = "a.status = 1";
+		}
+		else if ($con == 'mdr')
+		{
+			$wheres[] = "a.status = 0";			
+		}
+		else if ($con == 'ylq')
+		{
+			$wheres[] = "exists (select * from ".$this->dbpre."enrolllog c where c.status = 1 and uid = a.uid)";
+		}
+		
 		$sdate = 'a.modifydate';
 		$orderby = 'a.id DESC';
 		foreach($s as $key=>$val){
