@@ -78,11 +78,9 @@
 
                                     <tr class="list2">
                                       <td colspan="11" class="tdCheckbox"> <div align="center">
-										<input value="下载简历"  type="submit" />
                                         <input value=""  type="hidden" name="type" id="type" />
 										<input value="1"  type="hidden" name="tmp" id="tmp" />
-                                        <input value="删除" onclick="$('#type').val('box');document.forms[1].action='/enterp/resume/del.do';
-" type="submit" /></div>
+                                </div>
                                        </td>
                                       </tr>
                                     

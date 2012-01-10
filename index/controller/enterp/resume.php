@@ -604,6 +604,14 @@ class resume_Controller extends Controller{
 					$info['createdate'] = $rows[0]['createdate'];
 				}
 				$rows = $this->resume_tmp->save($info);
+				//add by penn remove the record from resume_box
+				$tmpSql = "select * from ".$this->dbpre."resume_box where cid = ".$info['cid']." and rid = ".$info['rid'];
+				$tmpRows = $this->resume_box->queryAll($tmpSql);
+				print_r($tmpRows);
+				foreach($tmpRows as $key => $val)
+				{
+					$this->resume_box->remove($val['id']);
+				}
 			}
 			$str = "该简历暂存成功";
 		}else{
@@ -821,15 +829,6 @@ class resume_Controller extends Controller{
 
 		$orderby = " createdate desc ";
 		$where .= "  t.status = 1 and t.cid = ".$this->uid ;
-
-		$resume_download = $this->resume_download->fetchAll(" cid='".$this->uid."' and  status = 1 ");
-		if($resume_download){
-			foreach($resume_download as $key => $val){
-				$resume = $this->resume_tmp->fetchRow(" cid='".$this->uid."' and rid = ".$val['rid'] );
-				$resume['status'] = 0;
-				$rows = $this->resume_tmp->save($resume);
-			}
-		}
 		
 		$sql = "select r.* from ".$this->dbpre."resume_tmp t left join ".$this->dbpre."resume r on r.id=t.rid where ".$where." ".$select."  order by ".$orderby;
 		$total = count($this->resume_tmp->queryAll($sql));
