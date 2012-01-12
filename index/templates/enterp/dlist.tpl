@@ -6,7 +6,7 @@
 	<th width="32" class="blankTd"></th>
 	<th width="43">编号</th>
 	<th width="152">姓名</th>
-	<th width="124" nowrap="" class=" centerAlign">应聘职位</th>
+	<th width="124" nowrap="" class=" centerAlign">期望职位</th>
 	<th width="56" nowrap="" class=" centerAlign">性别</th>
 	<th width="69" nowrap="">工作年限</th>
 	<th width="113" nowrap="" class="centerAlign">毕业院校</th>
