@@ -98,7 +98,7 @@
                       <tbody>
                         <tr>
                           <td width="81%">ID:<!--{$info.uid}--></td>
-                          <td width="19%"><a href="/enterp/resume/view.html?uid=<!--{$info.uid}-->&t=en">查看其英文简历</a></td>
+                          <td width="19%"><a href="/enterp/resume/view.html?uid=<!--{$info.uid}-->&t=en">English cv</a></td>
                         </tr>
                         <tr>
                           <td colspan="2" style="border:1px solid #ccc"><div align="right">

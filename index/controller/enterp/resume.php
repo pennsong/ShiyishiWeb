@@ -1083,6 +1083,7 @@ class resume_Controller extends Controller{
 			}
 		}else{
 			$str = "参数错误";
+			echo "No English CV";
 		}
 	}
 

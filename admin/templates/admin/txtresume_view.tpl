@@ -31,7 +31,7 @@
 	  <td colspan="2"><table border="0" cellspacing="0" cellpadding="0" width="600">
 		<tbody>
 		  <tr>
-			<td><strong>简历名称:<!--{$info.funtype_2_name}--> <!--{$info.live_gnd_name}--></strong></td>
+			<td><strong>申请职位:<!--{$info.funtype_2_name}--> <!--{$info.live_gnd_name}--></strong></td>
 			<td align="right" class="font14px bold">视一视招聘网</td>
 		</tr>
 	  </tbody>
