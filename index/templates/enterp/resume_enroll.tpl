@@ -30,7 +30,7 @@
 											<tr class="tabHead">
 											<th width="50">编号</th>
 											<th width="165">姓名</th>
-											<th width="146" nowrap="" class=" centerAlign">录取职位</th>
+											<th width="146" nowrap="" class=" centerAlign">期望职位</th>
 											<th width="62" nowrap="" class=" centerAlign">性别</th>
 											<th width="70" nowrap="">工作年限</th>
 											<th width="124" nowrap="" class="centerAlign">毕业院校</th>
