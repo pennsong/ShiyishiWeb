@@ -33,7 +33,7 @@ class index_Controller extends Controller{
 			foreach($zdcitys as $k=>$c){
 				$where = $c['parent_id']<0 ? "live_gnd LIKE '".$c['id'].",%'" : "live_gnd LIKE '%,".$c['id']."%'";
 				$c['rnum'] = $this->resume->count($where);
-				$c['jnum'] = $this->job->count("live_gnd_p=".$c['id']);
+				$c['jnum'] = $this->job->count("status=1 AND live_gnd_p=".$c['id']);
 				$zdcitys[$k] = $c;
 			}
 			$cityid = 0;
