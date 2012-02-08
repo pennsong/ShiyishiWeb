@@ -132,14 +132,14 @@ class company_Controller extends Controller{
 		if($PositionID){
 			$info['id'] = $PositionID;
 			$info['cid'] = $this->uid;
-			$info['createdate'] = '';
+//			$info['createdate'] = null;
 			$info['name'] = $name;
 			$rows = $this->subcompany->save($info);
 			$str = "该分支修改成功";
 		}else{
 			if($name){
 				$info['cid'] = $this->uid;
-				$info['createdate'] = '';
+//				$info['createdate'] = null;
 				$info['name'] = $name;
 				$rows = $this->subcompany->save($info);
 				$str = "该分支添加成功";
