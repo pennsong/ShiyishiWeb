@@ -31,7 +31,7 @@
 	<td class="tal"><span class="fourm_name"><!--{$item.email}--></span></td>
     <td class="tal"><!--{$item.usercard}--></td>
 	<td class="tal"><!--{$item.createdate}--></td>
-	<td class="tal"><!--{if $item.status==1}--><a class="fourm-two" href="<!--{$pageurl}-->/enroll.do?opt=cancel&id=<!--{$item.id}-->" onclick="return confirm('确定驳回改人员录用吗？')" target="post_main">驳回</a><!--{else}-->已驳回<!--{/if}--></td>
+	<td class="tal"><!--{if $item.status==1}--><a class="fourm-two" href="<!--{$pageurl}-->/enroll.do?opt=cancel&id=<!--{$item.id}-->" onclick="return confirm('确定驳回该人员录用吗？')" target="post_main">驳回</a><!--{else}-->已驳回<!--{/if}--></td>
   </tr>
   <!--{/foreach}-->
 </table>
