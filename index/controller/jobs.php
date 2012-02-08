@@ -142,6 +142,10 @@ class jobs_Controller extends Controller{
 	}
 
 	function viewAction(){
+		if ($this->_get('apply', false))
+		{
+			$this->logincheck();
+		}
 		$id=(int)$this->_get('id',0);
 		if($id<=0){
 			$this->showmsg("非法的URL",1);
