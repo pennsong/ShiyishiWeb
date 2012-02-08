@@ -14,7 +14,7 @@
           <h3>基本信息</h3>
           <ul>
             <li><span class="glogintext">姓名：</span>
-              <input class="k" name="info[uname]" id="uname" type="text" value="<!--{$info.uname}-->" alt="姓名:空/长度@4-20/怪字符"/><span class="red bold">（必填）</span><span id="showResult_uname"></span>
+              <input class="k" name="info[uname]" id="uname" type="text" value="<!--{$info.uname}-->" alt="姓名:空"/><span class="red bold">（必填）</span><span id="showResult_uname"></span>
             </li>
             <li><span class="glogintext">性别：</span>
               <input name="info[gender]" type="radio" value="1"<!--{if $info.gender!=2}--> checked<!--{/if}-->/>

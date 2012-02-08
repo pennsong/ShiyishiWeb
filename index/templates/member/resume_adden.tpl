@@ -14,7 +14,7 @@
           <h3>personal info.</h3>
           <ul>
             <li><span class="glogintexteng">name：</span>
-              <input class="k" name="info[uname]" id="uname" type="text" value="<!--{$info.uname}-->" alt="name:空/长度@4-20/怪字符"/><span id="showResult_uname"></span>
+              <input class="k" name="info[uname]" id="uname" type="text" value="<!--{$info.uname}-->" alt="name:空"/><span id="showResult_uname"></span>
             </li>
             <li><span class="glogintexteng">gender：</span>
               <input name="info[gender]" type="radio" value="1"<!--{if $info.gender!=2}--> checked<!--{/if}-->/>
