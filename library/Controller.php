@@ -151,7 +151,7 @@ abstract class Controller
 		exit;
 	}
 
-	function showmsg($msg, $type = null, $w=null, $msg2=null){
+	function showmsg($msg, $type = null, $w=null, $msg2=null, $close="no"){
 		if($type === null){
 			$this->assign('jumpurl', $_SERVER['HTTP_REFERER']);
 		}elseif(substr($type, 0 ,1) === '/'){
@@ -166,6 +166,7 @@ abstract class Controller
 		$this->assign('msg2', $msg2);
 		$this->assign('type', (int) $type);
 		$this->assign('w', $w);
+		$this->assign('close', $close);
 		$this->display('message.tpl');
 		exit;
 	}

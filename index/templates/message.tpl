@@ -1,4 +1,5 @@
 <!--{include file="include/header.tpl"}-->
+<input type="hidden" name="close" id="close" value="<!--{$close}-->"></input>
 <div id="content" class="container_24">
 <div class="grid_24">
   <div id="glogin2">
@@ -23,6 +24,13 @@
 	    <script>
 var t = 3;
 var timeInterval;
+
+function closeWin()
+{
+	window.opener = null; //for Ie6
+	window.open("","_self");  //for ie7-8 
+	window.close();
+}
 function checktime(){
 	t--;
 	if(t==0){
@@ -30,7 +38,14 @@ function checktime(){
 		window.location.href="<!--{$jumpurl}-->";
 	}
 }
-timeInterval = setInterval("checktime()",1000);
+if ($("#close").val() == "yes")
+{
+	timeInterval = setInterval("closeWin()",1000);	
+}
+else
+{
+	timeInterval = setInterval("checktime()",1000);
+}
         </script><!--{/if}-->
       <!--{/if}-->
 	  </div>

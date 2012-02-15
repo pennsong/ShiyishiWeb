@@ -551,7 +551,7 @@ class resume_Controller extends Controller{
 				}
 			}
 			if($str){
-				$this->showmsg($str,BASE_URL."/enterp/resume/downlist.html");
+				$this->showmsg($str,BASE_URL."/enterp/resume/downlist.html", null, null, "yes");
 			}else{
 				$this->showmsg('您没有购买下载权限',BASE_URL."/enterp/resume/downlist.html");
 			}
@@ -614,10 +614,12 @@ class resume_Controller extends Controller{
 				}
 			}
 			$str = "该简历暂存成功";
+			$this->showmsg($str,BASE_URL."/enterp/resume/tmplist.html",null,null,"yes");
 		}else{
 			$str = "参数错误";
+			$this->showmsg($str,BASE_URL."/enterp/resume/tmplist.html");
 		}
-		$this->showmsg($str,BASE_URL."/enterp/resume/tmplist.html");
+
 	}
 
 

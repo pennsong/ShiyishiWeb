@@ -381,7 +381,7 @@ class do_Controller extends Controller{
 			$this->showmsg($myjobmodel->getError(),1);
 		}
 		
-		$this->showmsg("职位“".$info['title']."”申请成功",$backurl);
+		$this->showmsg("职位“".$info['title']."”申请成功",$backurl,null,null,"yes");
 	}
 
 	function setresumestatusAction(){
