@@ -487,9 +487,9 @@ class resume_Controller extends Controller{
 				//print_r($rows);exit;
 				if($type=='doc'){
 					$info['rtype'] = 1;
-					$contract = $this->contract->fetchAll(" uid = ".$this->uid." and enddate >= ".time()." and word>10 ", " enddate asc");
+					$contract = $this->contract->fetchAll(" uid = ".$this->uid." and enddate >= ".time()." and word>=10 ", " enddate asc");
 					if(!isset($rows['rtype'])){
-						if(count($contract) && $contract[0]['word']>10){
+						if(count($contract) && $contract[0]['word']>=10){
 							$contract = $contract[0];
 							$contract['word'] = $contract['word']-10;
 							$this->contract->save($contract);
@@ -502,7 +502,7 @@ class resume_Controller extends Controller{
 						else if($rows['rtype']==2)
 						{
 							$info['rtype'] = 3;
-							if(count($contract) && $contract[0]['word']>10){
+							if(count($contract) && $contract[0]['word']>=10){
 								$contract = $contract[0];
 								$contract['word'] = $contract['word']-10;
 								$this->contract->save($contract);
@@ -512,9 +512,9 @@ class resume_Controller extends Controller{
 					}
 				}else if ($type=='vod'){
 					$info['rtype'] = 2;
-					$contract = $this->contract->fetchAll(" uid = ".$this->uid." and enddate >= ".time()." and  word>20 ", " enddate asc");
+					$contract = $this->contract->fetchAll(" uid = ".$this->uid." and enddate >= ".time()." and  word>=20 ", " enddate asc");
 					if(!isset($rows['rtype'])){
-						if(count($contract) && $contract[0]['word']>20){
+						if(count($contract) && $contract[0]['word']>=20){
 							$contract = $contract[0];
 							$contract['word'] = $contract['word']-20;
 							$this->contract->save($contract);
@@ -525,7 +525,7 @@ class resume_Controller extends Controller{
 							$is_contract = 1;
 						}else if($rows['rtype']==1){
 							$info['rtype'] = 3;
-							if(count($contract) && $contract[0]['word']>20){
+							if(count($contract) && $contract[0]['word']>=20){
 								$contract = $contract[0];
 								$contract['word'] = $contract['word']-20;
 								$this->contract->save($contract);
