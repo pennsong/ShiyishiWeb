@@ -15,8 +15,8 @@
                             </div>
                         	<div id="hrindex2">
                             	<ul>
-                                	<li><img src="/images/Icon1.gif" /> 最近3天简历数：<a href="/enterp/resume/boxlist.html"><span class="red bold"><!--{$rnum|default:0}--></span></a> 份</li>
-                                	<li><img src="/images/Icon1.gif" /> 共收到的简历：<a href="/enterp/resume/boxlist.html"><span class="red bold"><!--{$rnumall|default:0}--></span></a> 份</li>
+                                	<li><img src="/images/Icon1.gif" /> 今日更新简历：<a href="/enterp/resume/boxlist.html"><span class="red bold"><!--{$rnum|default:0}--></span></a> 份</li>
+                                	<li><img src="/images/Icon1.gif" /> 总简历数：<a href="/enterp/resume/boxlist.html"><span class="red bold"><!--{$rnumall|default:0}--></span></a> 份</li>
                                     <li><a href="/enterp/resume/boxlist.html" class="hrindexbutton2"></a></li>
                                 </ul>
                             </div>

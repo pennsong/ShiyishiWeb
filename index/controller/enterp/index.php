@@ -17,10 +17,13 @@ class index_Controller extends Controller{
 		$currentTime = time();
 		$jnum = $this->jobs->count("status = 1 and startdate <= $currentTime and enddate >= $currentTime and cid = ".$this->uid);
 
-		$rnum = $this->resume_box->count("posttime >= '".strtotime("-3 day")."' and cid = ".$this->uid);
-
-		$rnumall = $this->resume_box->count(" cid = ".$this->uid. " and status = 1");
-
+		//$rnum = $this->resume_box->count("posttime >= '".strtotime("-1 day")."' and cid = ".$this->uid);
+		$rnumArray = $this->resume_box->queryAll("select count(*) as num from zp_resume_box as a where cid = ".$this->uid." and posttime >= '".strtotime("-1 day")."' and not exists (select * from zp_resume_download as b where a.rid = b.rid);");
+		$rnum = $rnumArray[0][num];
+		
+		//$rnumall = $this->resume_box->count(" cid = ".$this->uid. " and status = 1");
+		$rnumallArray = $this->resume_box->queryAll("select count(*) as num from zp_resume_box as a where cid = ".$this->uid." and not exists (select * from zp_resume_download as b where a.rid = b.rid);");
+		$rnumall = $rnumallArray[0][num];
 		$cnum = $this->contract->count("enddate > ".time()." and uid = ".$this->uid);
 
 		$contract_time = $this->contract->fetchRow("enddate > ".time()." and uid = ".$this->uid," enddate desc");
