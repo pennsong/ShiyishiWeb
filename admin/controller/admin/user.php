@@ -114,6 +114,7 @@ class user_Controller extends Controller{
 		if($uinfo['puid']>0){
 			$puinfo = $this->user->find($puid);
 		}
+		$this->assign('uinfo', $uinfo);
 		$this->assign('puinfo', $puinfo);
 		//$this->assign('allmoney',$row['allmoney']);
 		$this->assign('rows',$rows);

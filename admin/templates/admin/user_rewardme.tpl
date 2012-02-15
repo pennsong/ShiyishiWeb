@@ -1,7 +1,7 @@
 <!--{include file=header.tpl}-->
 <div style="float:left;">
   <ul class="nav3">
-    <li><a href="#" class="btn1"><span>查看自己的录入记录</span></a> 上线为：<!--{if $puinfo}--><!--{$puinfo.username|default:$puinfo.email}--><!--{else}-->无上线<!--{/if}--></li>
+    <li><a href="#" class="btn1"><span>查看<!--{$uinfo.email}-->的录入记录</span></a> 上线为：<!--{if $puinfo}--><!--{$puinfo.username|default:$puinfo.email}--><!--{else}-->无上线<!--{/if}--></li>
 	<li><a href="<!--{$pageurl}-->/list.do?status=1" class="btn2"><span>返回会员列表</span></a></li>
   </ul>
 </div>
