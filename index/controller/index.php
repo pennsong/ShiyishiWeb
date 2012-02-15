@@ -19,8 +19,10 @@ class index_Controller extends Controller{
 		if($this->cityinfo){
 			$cityid = $this->cityinfo['id'];
 			$where = $this->cityinfo['parent_id']<0 ? "live_gnd LIKE '".$cityid.",%'" : "live_gnd LIKE '%,".$cityid."%'";
-			$resumenum = $this->resume->count($where);
-//			$resumenum_t = $this->resume->count($where." AND modifydate>'".$today_s."' AND modifydate<='".$today_e."'");
+//			$resumenum = $this->resume->count($where);
+			$resumenumArray = $this->resume->queryAll("select count(distinct uid) as num from zp_resume where $where");
+			$resumenum = $resumenumArray[0][num];			
+			//			$resumenum_t = $this->resume->count($where." AND modifydate>'".$today_s."' AND modifydate<='".$today_e."'");
 			$resumenum_t = $this->resume->count($where." AND createdate > FROM_UNIXTIME($today_s) AND createdate < FROM_UNIXTIME($today_e)");
 			$where = $this->cityinfo['parent_id']<0 ? "live_gnd_p = '".$cityid."'" : "live_gnd_c = '".$cityid."'";
 			$jobnum = $this->job->count($where."AND status=1 AND enddate > $today_e");
@@ -32,14 +34,18 @@ class index_Controller extends Controller{
 			$zdcitys = $this->area->fetchAll("type=1","order_id ASC",null,6);
 			foreach($zdcitys as $k=>$c){
 				$where = $c['parent_id']<0 ? "live_gnd LIKE '".$c['id'].",%'" : "live_gnd LIKE '%,".$c['id']."%'";
-				$c['rnum'] = $this->resume->count($where);
+				$tmpArray = $this->resume->queryAll("select count(distinct uid) as num from zp_resume where $where");
+//				$c['rnum'] = $this->resume->count($where);
+				$c['rnum'] = $tmpArray[0][num];
 				$c['jnum'] = $this->job->count("status=1 AND live_gnd_p=".$c['id']);
 				$zdcitys[$k] = $c;
 			}
 			$cityid = 0;
 			//$resumenum_t = $this->resume->count("modifydate>'".$today_s."' AND modifydate<='".$today_e."'");
 			$resumenum_t = $this->resume->count("createdate > FROM_UNIXTIME($today_s) AND createdate < FROM_UNIXTIME($today_e)");
-			$resumenum = $this->resume->count();
+			//$resumenum = $this->resume->count();
+			$resumenumArray = $this->resume->queryAll("select count(distinct uid) as num from zp_resume");
+			$resumenum = $resumenumArray[0][num];
 			$jobnum = $this->job->count("status=1 AND enddate > $today_e");
 			$jobnum_t = $this->job->count("createtime>'".$today_s."' AND createtime<='".$today_e."'"." AND status=1 AND enddate > $today_e");
 			$this->assign('zdcitys',$zdcitys);
