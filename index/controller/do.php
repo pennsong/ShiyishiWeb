@@ -130,20 +130,34 @@ class do_Controller extends Controller{
 		if(!$loginpassword){
 			exit ("登录密码不能为空");
 		}
-		//判断填写的用户名 email 还是会员卡
+		//判断填写的用户名是个人还是企业
 		if(!strpos($loginusername,'@')){
-			exit ("登录账号为您注册时填写的Email");
+			//企业
+			$this->user = Load::model('e_user');
+			$userinfo = $this->user->fetchRow("username= '".$loginusername."'");
+			if(empty($userinfo) || $userinfo['status'] != 2){
+				exit ("您的用户名填写错误或不存在！");
+			}
+			if($userinfo['password']!=md5($loginpassword)){
+				exit ("您的密码输入错误！");
+			}
+			echo "登录成功";
+		}
+		else
+		{
+			//个人
+			$userinfo = $this->user->checkuserinfo(array('email'=>$loginusername));
+	
+			if(empty($userinfo)){
+				exit ("您的用户名填写错误或不存在！");
+			}
+			if($userinfo['password']!=md5($loginpassword)){
+				exit ("您的密码输入错误！");
+			}
+			echo "登录成功";			
 		}
 
-		$userinfo = $this->user->checkuserinfo(array('email'=>$loginusername));
 
-		if(empty($userinfo)){
-			exit ("您的用户名填写错误或不存在！");
-		}
-		if($userinfo['password']!=md5($loginpassword)){
-			exit ("您的密码输入错误！");
-		}
-		echo "登录成功";
 	}	
 
 	//视频工具上传视频
