@@ -176,6 +176,11 @@ abstract class Controller
 		echo "<script>self.parent.".$fun."('".$msg."','".$s."');</script>";
 		exit();
 	}
+	
+	function wajaxmsg2($msg,$s=0,$fun='msg'){//伪ajax
+		@header('Content-Type:text/html;charset=utf-8');
+		echo "<script>alert(\"".$msg."\")</script>";
+	}
 
 	function show404($msg=null){
 		header("HTTP/1.0 404 Not Found");

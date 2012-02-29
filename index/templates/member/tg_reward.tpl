@@ -42,7 +42,7 @@
 		  <!--{foreach from=$slrows item=item}-->
 		  <tr>
 		    <td><!--{$item.createdate}--></td>
-		    <td>您的申请领款<!--{if $item.status==0}--><span class="red bold">未</span><!--{else}-->已经<!--{/if}-->审核通过！</td>
+		    <td><span class="red bold">您的申请领款<!--{if $item.status==0}-->被驳回<!--{elseif $item.status==1}-->正在审核中<!--{elseif $item.status==2}-->待发放<!--{elseif $item.status==3}-->已发放<!--{/if}--></span></td>
 		    <td><p><!--{$item.aclog}--></p></td>
 	      </tr>
 		  <!--{foreachelse}-->

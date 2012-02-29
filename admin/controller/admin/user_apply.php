@@ -60,29 +60,31 @@ class user_apply_Controller extends Controller{
 	function checkAction(){
 		$ids = $this->_get('ids');
 		$status = $this->_get('status');
+		$reason = $this->_get('reason', '');
 		if(empty($ids)){
-			$id = (int)$this->_get('id',0);
+			$id = (int)$this->_get('itemId',0);
 			if($id<=0){
-				$this->wajaxmsg('没有选择要操作的对象');
+				$this->wajaxmsg2('没有选择要操作的对象');
 			}
 			$ids = array($id);
 		}
-		if($status==2){
+		if($status==2 || $status==3){
 			$i=1;
-			$this->user_account->update(array('status'=>2),"id IN (".implode(',',$ids).")");
+			$this->user_account->update(array('status'=>$status),"id IN (".implode(',',$ids).")");
 		}else{
 			$status=0;
 			$i=0;
 			foreach($ids as $id){
 				$ainfo = $this->user_account->find($id);
-				$minfo = array('uid'=>$ainfo['uid'],'xid'=>0,'money'=>$ainfo['money'],'doact'=>1,'aclog'=>'驳回申领款项“&yen;'.$ainfo['money'].'元”','status'=>0);
+				$minfo = array('uid'=>$ainfo['uid'],'xid'=>0,'money'=>$ainfo['money'],'doact'=>1,'aclog'=>'驳回:'.$reason,'status'=>0);
 				if(!($this->user_account->save($minfo) === false)){
 					$this->user_account->update(array('status'=>0),"id = {$id}");
 					$i++;
 				}
 			}
 		}
-		$this->wajaxmsg(($i>0 ? '操作成功' : '操作失败'),1);
+		$this->wajaxmsg2(($i>0 ? '操作成功' : '操作失败'),1);
+//		$this->_forward('list');
 	}
 }
 ?>

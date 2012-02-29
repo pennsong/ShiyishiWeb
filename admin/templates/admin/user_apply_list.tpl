@@ -18,6 +18,7 @@
 </div>
 </form>
 <div style="clear:both;">
+<div id="lqselect" style="display:none;"><form action="<!--{$pageurl}-->/check.do?status=0"><div style="margin-top:6px;"><input type="hidden" id="itemId" name="itemId" /><input type="text" id="reason" name="reason"/><input type="submit" value="确定驳回"/></div></form></div>
 <table cellspacing="0" cellpadding="0" width="100%" id="ftable">
   <tr class="tr3 s3">
 	<td class="tal">用户ID</td>
@@ -38,12 +39,16 @@
 	<td class="tal"><a class="fourm-two" href="<!--{$baseurl}-->/admin/user/bank.do?uid=<!--{$item.uid}-->" title="查看银行账号">银行账号</a></td>
 	<td class="tal">
 	<!--{if $item.status==1}-->
-		<a class="fourm-two" href="<!--{$pageurl}-->/check.do?status=2&id=<!--{$item.id}-->" onclick="return confirm('确定已经向用户发放了该笔款项？')" target="post_main">已发放</a> 
+		<a class="fourm-two" href="<!--{$pageurl}-->/check.do?status=2&itemId=<!--{$item.id}-->" onclick="return confirm('确定通过用户该笔款项？')" target="post_main">通过</a> 
 		| 
-		<a class="fourm-two" href="<!--{$pageurl}-->/check.do?status=0&id=<!--{$item.id}-->" target="post_main">驳回</a>
+		<a class="fourm-two" href="#" onclick="rejectReason(<!--{$item.id}-->)" target="post_main">驳回</a>
 	<!--{elseif $item.status==2}-->
+		<a class="fourm-two" href="<!--{$pageurl}-->/check.do?status=3&itemId=<!--{$item.id}-->" onclick="return confirm('确定发放用户该笔款项？')" target="post_main">已发放</a> 
+		| 
+		<a class="fourm-two" href="#" onclick="rejectReason(<!--{$item.id}-->)" target="post_main">驳回</a>
+	<!--{elseif $item.status==3}-->	
 		已发放
-	<!--{else}-->
+	<!--{elseif $item.status==0}-->
 		已驳回
 	<!--{/if}-->
 	</td>
@@ -53,11 +58,17 @@
 <!--{include file=page.tpl}-->
 </div>
 </div>
+<script src="<!--{$baseurl}-->/js/box.js" type="text/javascript"></script>
 <script language="JavaScript">
 var turl = window.location.href;
 function msg(_m,_s){
 	alert(_m);
 	if(_s)window.location.href = turl;
+}
+function rejectReason(itemId){
+$("#itemId").val(itemId);
+var html = $('#lqselect').html();
+$.box.show('',html,200,100,2);
 }
 </script>
 <iframe id="post_main" name="post_main" style="display:none;"></iframe>
