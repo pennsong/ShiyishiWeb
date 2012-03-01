@@ -59,18 +59,19 @@ class user_apply_Controller extends Controller{
 
 	function checkAction(){
 		$ids = $this->_get('ids');
-		$status = $this->_get('status');
+		$status = $this->_get('status', 0);
 		$reason = $this->_get('reason', '');
 		if(empty($ids)){
 			$id = (int)$this->_get('itemId',0);
 			if($id<=0){
-				$this->wajaxmsg2('没有选择要操作的对象');
+				$this->wajaxmsg('没有选择要操作的对象');
 			}
 			$ids = array($id);
 		}
 		if($status==2 || $status==3){
 			$i=1;
 			$this->user_account->update(array('status'=>$status),"id IN (".implode(',',$ids).")");
+			$this->wajaxmsg(($i>0 ? '操作成功' : '操作失败'),1);
 		}else{
 			$status=0;
 			$i=0;
@@ -82,9 +83,10 @@ class user_apply_Controller extends Controller{
 					$i++;
 				}
 			}
+			$this->wajaxmsg2(($i>0 ? '操作成功' : '操作失败'),1);
+			$this->_forward('list');
 		}
-		$this->wajaxmsg2(($i>0 ? '操作成功' : '操作失败'),1);
-//		$this->_forward('list');
+
 	}
 }
 ?>
