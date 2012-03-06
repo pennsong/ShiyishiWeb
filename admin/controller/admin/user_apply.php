@@ -58,9 +58,16 @@ class user_apply_Controller extends Controller{
 	}
 
 	function checkAction(){
-		$ids = $this->_get('ids');
+		$ids = $this->_get('operationList');
 		$status = $this->_get('status', 0);
 		$reason = $this->_get('reason', '');
+		if($ids){
+				$ids = explode(",",$ids);
+		}
+		else
+		{
+			$ids = array();
+		}
 		if(empty($ids)){
 			$id = (int)$this->_get('itemId',0);
 			if($id<=0){

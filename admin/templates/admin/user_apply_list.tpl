@@ -1,5 +1,70 @@
 <!--{include file=header.tpl}-->
 <script src="<!--{$baseurl}-->/DatePicker/WdatePicker.js" type="text/javascript"></script>
+<script>
+var array=[<!--{$dids}-->];
+function selectbox(obj){
+	if(obj.checked==true){
+		addarray(obj.value);
+	}else{
+		delarray(obj.value);
+	}
+}
+function addarray(v){
+	var is=0;
+	for(i=0;i<array.length;i++){
+		if(array[i]==v){
+			is=1;
+			break;
+		}else{
+			is=0;
+		}
+	}
+	if(is==0){
+		array.push(v);
+	}
+	setOperationList();
+}
+
+function delarray(v){
+	for(i=0;i<array.length;i++){
+		if(array[i]==v){
+			array.splice(i,1);
+		}
+	}
+	var is=0;
+	for(i=0;i<larray.length;i++){
+		if(larray[i]==v){
+			is=1;
+			break;
+		}else{
+			is=0;
+		}
+	}
+	setOperationList();
+}
+
+function setOperationList(){
+	str=array.join(",");
+	$('#operationList').val(str);
+}
+function unChkSelectAll(){
+	if($("#chkall").attr("checked") != ""){
+		$(".checkList").attr("checked",true);
+		for(var i=0;i<larray.length;i++){
+			addarray(larray[i]);
+		}
+	}else{
+		$(".checkList").attr("checked",false);
+		for(var i=0;i<larray.length;i++){
+			delarray(larray[i]);
+		}
+	}
+}
+function batSubmit()
+{
+	$("#batSubmit").attr('href', "<!--{$pageurl}-->/check.do?status=2&operationList="+$('#operationList').val());
+}
+</script>
 <form id="searchForm" name="searchForm" action="<!--{$pageurl}-->/list.do" method="get">
 <div style="float:left;">
   <ul class="nav3">
@@ -17,10 +82,14 @@
 	<input type="submit" name="search" value="搜索" />
 </div>
 </form>
+<script type="text/javascript">
+	var larray=[];
+</script>
 <div style="clear:both;">
 <div id="lqselect" style="display:none;"><form action="<!--{$pageurl}-->/check.do?status=0"><div style="margin-top:6px;"><input type="hidden" id="itemId" name="itemId" /><input type="text" id="reason" name="reason"/><input type="submit" value="确定驳回"/></div></form></div>
 <table cellspacing="0" cellpadding="0" width="100%" id="ftable">
   <tr class="tr3 s3">
+	<td class="tal"></td>  
 	<td class="tal">用户ID</td>
 	<td class="tal">EMAIL</td>
 	<td class="tal">申领金额</td>
@@ -30,7 +99,11 @@
 	<td class="tal">操作</td>
   </tr>
   <!--{foreach from=$rows item=item}-->
+  <script type="text/javascript">
+	larray.push(<!--{$item.id}-->);
+	</script>
   <tr class="tr3">
+	<td class="tdCheckbox"><input class="checkList" type="checkbox" onclick="selectbox(this)" id="box_<!--{$item.id}-->" value="<!--{$item.id}-->" name="PositionID[]"></td>
 	<td><!--{$item.uid}--></td>
 	<td class="tal"><span class="fourm_name"><!--{$item.email}--></span></td>
     <td class="tal">&yen;<!--{$item.money/10}--> 元</td>
@@ -54,6 +127,16 @@
 	</td>
   </tr>
   <!--{/foreach}-->
+
+  <tr>
+
+
+	  	<td><input type="checkbox" onclick="unChkSelectAll()" id="chkall" value="CC000427542J90250041000" name="PositionID2" /></td>
+	    <td>全选</td>
+		<input  type="hidden" name="operationList" id="operationList" value=""/>
+		<td><a id="batSubmit" class="fourm-two" href="#" onclick="batSubmit()" target="post_main">通过</a></td>
+
+  </tr>
 </table>
 <!--{include file=page.tpl}-->
 </div>
