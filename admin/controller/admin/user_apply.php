@@ -90,8 +90,8 @@ class user_apply_Controller extends Controller{
 					$i++;
 				}
 			}
-			$this->wajaxmsg2(($i>0 ? '操作成功' : '操作失败'),1);
-			$this->_forward('list');
+			$this->wajaxmsg(($i>0 ? '操作成功' : '操作失败'),1);
+//			$this->_forward('list');
 		}
 
 	}

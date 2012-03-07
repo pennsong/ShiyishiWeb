@@ -64,6 +64,10 @@ function batSubmit()
 {
 	$("#batSubmit").attr('href', "<!--{$pageurl}-->/check.do?status=2&operationList="+$('#operationList').val());
 }
+function batReject()
+{
+	$("#batReject").attr('href', "<!--{$pageurl}-->/check.do?status=0&operationList="+$('#operationList').val()+"&reason="+$('#batReason').val());
+}
 </script>
 <form id="searchForm" name="searchForm" action="<!--{$pageurl}-->/list.do" method="get">
 <div style="float:left;">
@@ -134,7 +138,16 @@ function batSubmit()
 	  	<td><input type="checkbox" onclick="unChkSelectAll()" id="chkall" value="CC000427542J90250041000" name="PositionID2" /></td>
 	    <td>全选</td>
 		<input  type="hidden" name="operationList" id="operationList" value=""/>
+		<td></td>
+		<td></td>
 		<td><a id="batSubmit" class="fourm-two" href="#" onclick="batSubmit()" target="post_main">通过</a></td>
+		</tr>
+		<tr>
+		<td></td>
+		<td></td>
+		<td>驳回原因:</td>
+		<td><input type="text" id="batReason" name="batReason"/></td>
+		<td><a id="batReject" class="fourm-two" href="#" onclick="batReject()" target="post_main">驳回</a></td>
 
   </tr>
 </table>
