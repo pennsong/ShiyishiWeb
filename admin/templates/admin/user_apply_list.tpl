@@ -100,7 +100,7 @@ function batReject()
 	<td class="tal">申领时间</td>
 	<td class="tal">推广数据</td>
 	<td class="tal">银行账号</td>
-	<td class="tal">操作</td>
+	<td class="tal">操作&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp驳回原因</td>
   </tr>
   <!--{foreach from=$rows item=item}-->
   <script type="text/javascript">
@@ -118,11 +118,15 @@ function batReject()
 	<!--{if $item.status==1}-->
 		<a class="fourm-two" href="<!--{$pageurl}-->/check.do?status=2&itemId=<!--{$item.id}-->" onclick="return confirm('确定通过用户该笔款项？')" target="post_main">通过</a> 
 		| 
-		<a class="fourm-two" href="#" onclick="rejectReason(<!--{$item.id}-->)" target="post_main">驳回</a>
+		<a id="rejectLink<!--{$item.id}-->" class="fourm-two" href="#" onclick="reject(<!--{$item.id}-->)" target="post_main">驳回</a>
+		|
+		<input type="text" id="reason<!--{$item.id}-->" name="reason<!--{$item.id}-->" />
 	<!--{elseif $item.status==2}-->
 		<a class="fourm-two" href="<!--{$pageurl}-->/check.do?status=3&itemId=<!--{$item.id}-->" onclick="return confirm('确定发放用户该笔款项？')" target="post_main">已发放</a> 
 		| 
-		<a class="fourm-two" href="#" onclick="rejectReason(<!--{$item.id}-->)" target="post_main">驳回</a>
+		<a id="rejectLink<!--{$item.id}-->" class="fourm-two" href="#" onclick="reject(<!--{$item.id}-->)" target="post_main">驳回</a>
+		|
+		<input type="text" id="reason<!--{$item.id}-->" name="reason<!--{$item.id}-->" />
 	<!--{elseif $item.status==3}-->	
 		已发放
 	<!--{elseif $item.status==0}-->
@@ -165,6 +169,10 @@ function rejectReason(itemId){
 $("#itemId").val(itemId);
 var html = $('#lqselect').html();
 $.box.show('',html,200,100,2);
+}
+function reject(itemId)
+{
+	$("#rejectLink"+itemId).attr('href', "<!--{$pageurl}-->/check.do?status=0&itemId="+itemId+"&reason="+$('#reason'+itemId).val());	
 }
 </script>
 <iframe id="post_main" name="post_main" style="display:none;"></iframe>
