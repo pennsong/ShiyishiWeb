@@ -31,7 +31,7 @@
                         </div>
                     	<div id="hrcenterrightc" style="padding:15px 10px 0 10px;">
 							
-                            <h2 style="line-height:180%;">您如需下载求职者的联系方式及视频简历，请与本网站客服人员联系获得下载额度。<br>联系方式：电话：010-51316156
+                            <h2 style="line-height:180%;">您如需下载求职者的联系方式及视频简历，请与本网站客服人员联系获得下载额度。<br>联系方式：电话：010-51316183
                                                                        邮件：<span style="font-size:15pt; border-bottom-style:hidden;">zhaopin@shiyishi.cn</span></h2>
                             </div>
                     	<div id="hrcenterrightc">
@@ -44,7 +44,7 @@
                             <div class="topmargin10px"></div>
                             <h2>服务热线 </h2>
                             <ul class="num">
-                                <li><img src="/images/Icon1.gif" /> 电话：010-51316156</li>
+                                <li><img src="/images/Icon1.gif" /> 电话：010-51316183</li>
                                 <li><img src="/images/Icon1.gif" /> E-mail：zhaopin@shiyishi.cn</li>
                             </ul>
                             <div class="topmargin10px"></div>

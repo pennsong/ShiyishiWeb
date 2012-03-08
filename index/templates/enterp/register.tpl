@@ -7,7 +7,7 @@
             	<div id="hrlogin">
                 	<div id="hrloginleft">
                     	<ul>
-                        	<li>联系我们请拨打:<br />010-51316156</li>
+                        	<li>联系我们请拨打:<br />010-51316183</li>
                         </ul>
                     </div>
                     <div id="hrloginright">

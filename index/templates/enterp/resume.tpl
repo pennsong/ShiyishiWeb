@@ -25,7 +25,7 @@
 				  您目前的下载积分余额:<span class="red"><!--{$wordnum}--></span>分。<br />请联系我们的销售人员获得新的下载积分，联系方式如下：
 				  </p>
                               <ul class="num">
-                                <li><img src="/images/Icon1.gif" /> 电话：010-51316156</li>
+                                <li><img src="/images/Icon1.gif" /> 电话：010-51316183</li>
                                 <li><img src="/images/Icon1.gif" /> E-mail：zhaopin@shiyishi.cn</li>
                             </ul>
 
