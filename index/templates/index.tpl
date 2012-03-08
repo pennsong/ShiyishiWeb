@@ -43,7 +43,7 @@
 		<!--{else}-->
 		<li><span class="floatLeft">城&nbsp;&nbsp;市：</span><a onclick="OpenW('city');" style="cursor:pointer;" class="indexinputbg2" id="s_city"><!--{$cityinfo.area_name}--></a><input type="hidden" value="<!--{$cityinfo.id}-->" name="cid" id="s_cityid"/></li>
 		<!--{/if}-->
-        <li><span class="floatLeft">行&nbsp;&nbsp;业：</span><a onclick="OpenW('dustrytype');" style="cursor:pointer;" class="indexinputbg2" id="s_dustrytype">请选择行业</a><input type="hidden" name="dt" id="s_dustrytypeid"/></li>
+
         <li><span class="floatLeft">岗&nbsp;&nbsp;位：</span><a onclick="OpenW('funtype');" style="cursor:pointer;" class="indexinputbg2" id="s_funtype">请选择岗位</a><input type="hidden" name="ft" id="s_funtypeid"/></li>
         <li>时&nbsp;&nbsp;间：<input type="tetx" name="jd" class="Wdate" onClick="WdatePicker()" style="width:147px;" /></li>
         <li>

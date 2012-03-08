@@ -10,8 +10,8 @@
   <div class="blue_center_box x_main_width bg_ffffff">
     <div class="x_k">
       <div class="title"><span><!--{$type.1}--></span><a onclick="parent.$.box.close();" class="close"></a></div>
-	  <div class="x_info"><!--{if $zxs}--> <p><b>直辖市：</b><!--{foreach from=$zxs item=v}--><a onclick="parent.checkOK('<!--{$type.0}-->',<!--{$v.id}-->,'<!--{$v.name}-->');"><!--{$v.name}--></a>&nbsp;<!--{/foreach}--></p><!--{/if}-->
-	  <!--{foreach from=$datas item=p}--><p><b><!--{$p.name}-->：</b><!--{foreach from=$p.child item=c}--><a onclick="parent.checkOK('<!--{$type.0}-->',<!--{$c.id}-->,'<!--{$c.name}-->');"><!--{$c.name}--></a>&nbsp;<!--{/foreach}--></p><!--{/foreach}-->
+	  <div class="x_info"><!--{if $zxs}--> <p><b>直辖市：</b><!--{foreach from=$zxs item=v}--><a style="text-decoration: underline;" onclick="parent.checkOK('<!--{$type.0}-->',<!--{$v.id}-->,'<!--{$v.name}-->');"><!--{$v.name}--></a>&nbsp;<!--{/foreach}--></p><!--{/if}-->
+	  <!--{foreach from=$datas item=p}--><p><b><!--{$p.name}-->：</b><!--{foreach from=$p.child item=c}--><a style="text-decoration: underline;" onclick="parent.checkOK('<!--{$type.0}-->',<!--{$c.id}-->,'<!--{$c.name}-->');"><!--{$c.name}--></a>&nbsp;<!--{/foreach}--></p><!--{/foreach}-->
 	  </div>
 	  <div class="all_width"><span class="btn"><a onclick="parent.close();">取 消</a></span></div>
     </div>
