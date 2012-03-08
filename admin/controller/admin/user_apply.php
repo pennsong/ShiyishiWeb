@@ -9,21 +9,22 @@ class user_apply_Controller extends Controller{
 		$this->_forward('list');
 	}
 
-	function listAction(){
+	function listAction($statusFilter=1){
 		$url = $this->getPageUrl().'/list.do';
 		$s['uid'] = (int)$this->_get('uid');
 		$s['s_date'] = $this->_get('s_date');
 		$s['e_date'] = $this->_get('e_date');
 		$page = $this->_get('page',1);
 		$urls = $wheres = array();
-		$wheres[] = $s['uid']>0 ? 'a.status>0 and doact=-1' : 'a.status=1 and doact=-1';
+//		$wheres[] = $s['uid']>0 ? 'a.status>0 and doact=-1' : 'a.status=1 and doact=-1';
+		$wheres[] = "a.status = $statusFilter and (doact = 0 or doact = -1)";
 		foreach($s as $key=>$val){
 			if(!$val)continue;
 			$urls[] = $key.'='.$val;
 			if($key=='s_date'){
-				$wheres[] = "a.createdate >= ".strtotime($val.' 00:00:00');
+				$wheres[] = "a.createdate >= '".$val.' 00:00:00'."'";
 			}elseif($key=='e_date'){
-				$wheres[] = "a.createdate <= ".strtotime($val.' 23:59:59');
+				$wheres[] = "a.createdate <= '".$val.' 23:59:59'."'";
 			}else{
 				$wheres[] = "a.{$key} = '$val'";
 			}
@@ -84,9 +85,11 @@ class user_apply_Controller extends Controller{
 			$i=0;
 			foreach($ids as $id){
 				$ainfo = $this->user_account->find($id);
+				$tmpReason = $ainfo['aclog'];
 				$minfo = array('uid'=>$ainfo['uid'],'xid'=>0,'money'=>$ainfo['money'],'doact'=>1,'aclog'=>'驳回:'.$reason,'status'=>0);
-				if(!($this->user_account->save($minfo) === false)){
-					$this->user_account->update(array('status'=>0),"id = {$id}");
+//				if(!($this->user_account->save($minfo) === false)){
+				if (true){
+					$this->user_account->update(array('status'=>0, 'doact'=>0, 'aclog'=>$tmpReason.'-驳回:'.$reason),"id = {$id}");
 					$i++;
 				}
 			}

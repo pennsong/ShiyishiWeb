@@ -91,8 +91,10 @@ class tg_Controller extends Controller{
 		$user_account_model = Load::model('user_account');
 		$row = $user_account_model->fetchRow("uid='".$this->uid."'",null,"sum(`money`*`doact`) as allmoney");
 		//获取领款后的新增记录
-		//获取最后领取的记录
-		$row1 = $user_account_model->fetchRow("uid='".$this->uid."' and xid=0 and doact=-1 and status>0","id desc");
+		//获取最后非驳回的领取的记录
+		$row1 = $user_account_model->fetchRow("uid='".$this->uid."' and xid=0 and eid=0 and status<>0","id desc");
+		//获取最后申请纪录
+		$row2 = $user_account_model->fetchRow("uid='".$this->uid."' and xid=0 and eid=0","id desc");	
 		$where[] = "uid='".$this->uid."'";
 		if($row1){
 			$where[] = "id > ".$row1['id'];
@@ -100,12 +102,13 @@ class tg_Controller extends Controller{
 		$where[] = "status = 1 and doact=1 ";
 		$rows = $user_account_model->pageAll($page, 15, $url,$where,'id desc');
 		//获取 申领记录
-		$slrows = $user_account_model->fetchAll("uid='".$this->uid."' and xid=0 and eid=0 and doact=-1","id desc");
+		$slrows = $user_account_model->fetchAll("uid='".$this->uid."' and xid=0 and eid=0","id desc");
 
 		$this->assign('allmoney',$row['allmoney']);
 		$this->assign('rows',$rows);
 		$this->assign('slrows',$slrows);
 		$this->assign('pagetitle','我的推广奖励');
+		$this->assign('lastApply',$row2[status]==null?3:$row2[status]);
 		$this->display();
 	}
 
