@@ -60,6 +60,10 @@ function unChkSelectAll(){
 		}
 	}
 }
+function batGiveMoney()
+{
+	$("#batGiveMoney").attr('href', "<!--{$pageurl}-->/check.do?status=3&operationList="+$('#operationList').val());
+}
 function batSubmit()
 {
 	$("#batSubmit").attr('href', "<!--{$pageurl}-->/check.do?status=2&operationList="+$('#operationList').val());
@@ -70,10 +74,13 @@ function batReject()
 }
 </script>
 <form id="searchForm" name="searchForm" action="<!--{$pageurl}-->/list.do" method="get">
+<input type="hidden" name="statusFilter" value="<!--{$statusFilter}-->"/>
 <div style="float:left;">
   <ul class="nav3">
     <li><a href="<!--{$pageurl}-->/list.do" class="btn1"><span>会员推广奖励申领记录</span></a></li>
+	<!--{if $statusFilter == 2}-->	    
 	<li><a href="<!--{$pageurl}-->/excel.do" class="btn2"><span>导出银行账号及金额</span></a></li>
+	<!--{/if}-->
   </ul>
 </div>
 <div style="float:right;margin:0px 0 0 0;#margin:0px 0 0 0;_margin:-30px 0 0 0;">
@@ -100,7 +107,14 @@ function batReject()
 	<td class="tal">申领时间</td>
 	<td class="tal">推广数据</td>
 	<td class="tal">银行账号</td>
+	<!--{if $statusFilter == 1 or $statusFilter == 2}-->		
 	<td class="tal">操作&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp驳回原因</td>
+	<!--{elseif $statusFilter==0}-->	
+	<td class="tal">操作</td>
+	<td class="tal">驳回原因</td>
+	<!--{elseif $statusFilter==3}-->
+	<td class="tal">操作</td>		
+	<!--{/if}-->
   </tr>
   <!--{foreach from=$rows item=item}-->
   <script type="text/javascript">
@@ -133,9 +147,13 @@ function batReject()
 		已驳回
 	<!--{/if}-->
 	</td>
+	<!--{if $statusFilter==0}-->
+	<td><!--{$item.aclog}--></td>
+	<!--{/if}-->
   </tr>
   <!--{/foreach}-->
 
+  <!--{if $statusFilter == 1 or $statusFilter == 2}-->	
   <tr>
 
 
@@ -144,9 +162,13 @@ function batReject()
 		<input  type="hidden" name="operationList" id="operationList" value=""/>
 		<td></td>
 		<td></td>
+		<!--{if $statusFilter==1}-->		
 		<td><a id="batSubmit" class="fourm-two" href="#" onclick="batSubmit()" target="post_main">通过</a></td>
-		</tr>
-		<tr>
+		<!--{elseif $statusFilter==2}-->		
+		<td><a id="batGiveMoney" class="fourm-two" href="#" onclick="batGiveMoney()" target="post_main">已发放</a></td>
+		<!--{/if}-->		
+	</tr>
+	<tr>
 		<td></td>
 		<td></td>
 		<td>驳回原因:</td>
@@ -154,6 +176,7 @@ function batReject()
 		<td><a id="batReject" class="fourm-two" href="#" onclick="batReject()" target="post_main">驳回</a></td>
 
   </tr>
+ 	<!--{/if}--> 
 </table>
 <!--{include file=page.tpl}-->
 </div>
