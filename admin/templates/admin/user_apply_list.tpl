@@ -77,9 +77,15 @@ function batReject()
 <input type="hidden" name="statusFilter" value="<!--{$statusFilter}-->"/>
 <div style="float:left;">
   <ul class="nav3">
-    <li><a href="<!--{$pageurl}-->/list.do" class="btn1"><span>会员推广奖励申领记录</span></a></li>
-	<!--{if $statusFilter == 2}-->	    
+  	<!--{if $statusFilter == 0}-->	
+    <li><a href="#" class="btn1"><span>会员推广奖励驳回列表</span></a></li>  
+  	<!--{elseif $statusFilter == 1}-->	
+    <li><a href="#" class="btn1"><span>会员推广奖励申请列表</span></a></li>   
+	<!--{elseif $statusFilter == 2}-->
+	<li><a href="#" class="btn1"><span>会员推广奖励发放列表</span></a></li>       
 	<li><a href="<!--{$pageurl}-->/excel.do" class="btn2"><span>导出银行账号及金额</span></a></li>
+	<!--{elseif $statusFilter == 3}-->
+	<li><a href="#" class="btn1"><span>会员推广奖励已发放详细列表</span></a></li>   
 	<!--{/if}-->
   </ul>
 </div>

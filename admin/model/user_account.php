@@ -35,5 +35,10 @@ class user_account_Model extends Model{
 	function insert($info){
 		return $this->user_account->save($info);
 	}
+	
+	function queryAll($sql)
+	{
+		return $this->user_account->queryAll($sql);		
+	}
 }
 ?>

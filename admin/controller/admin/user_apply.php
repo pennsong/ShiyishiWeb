@@ -10,34 +10,53 @@ class user_apply_Controller extends Controller{
 	}
 
 	function listAction(){
-		$url = $this->getPageUrl().'/list.do';
 		$statusFilter = $this->_get('statusFilter', 0);
-		$s['uid'] = (int)$this->_get('uid');
-		$s['s_date'] = $this->_get('s_date');
-		$s['e_date'] = $this->_get('e_date');
-		$page = $this->_get('page',1);
-		$urls = $wheres = array();
-//		$wheres[] = $s['uid']>0 ? 'a.status>0 and doact=-1' : 'a.status=1 and doact=-1';
-		$wheres[] = "a.status = $statusFilter and (doact = 0 or doact = -1)";
-		foreach($s as $key=>$val){
-			if(!$val)continue;
-			$urls[] = $key.'='.$val;
-			if($key=='s_date'){
-				$wheres[] = "a.createdate >= '".$val.' 00:00:00'."'";
-			}elseif($key=='e_date'){
-				$wheres[] = "a.createdate <= '".$val.' 23:59:59'."'";
-			}else{
-				$wheres[] = "a.{$key} = '$val'";
-			}
+		$summary = $this->_get('summary', 0);
+		if ($statusFilter == 3 && $summary == 1)
+		{
+			$sql = "SELECT SUM(money) totalMoney, COUNT(*) totalTime FROM zp_user_account WHERE status=3;";
+			$totalRow = $this->user_account->queryAll($sql);
+						
+			$sql = 	"SELECT DATE( createdate ) dateOnly, SUM(money) dayMoney, COUNT(*) times";
+			$sql .=	" FROM zp_user_account";
+			$sql .=	" WHERE status = 3";
+			$sql .=	" GROUP BY dateOnly;";
+			$rows = $this->user_account->queryAll($sql);
+
+			$this->assign('totalRow', $totalRow);
+			$this->assign('rows', $rows);
+			$this->display("user_apply_list_finished.tpl");
 		}
-		$url .= empty($urls) ? '' : '?'.implode('&',$urls);
-		$rows = $this->user_account->pageUnionAll($page, 100, $url,'user','a.uid=b.id',$wheres,'a.id desc','a.*,b.email');
-		if($s['uid']<=0)$s['uid']='';
-		$this->assign('statusFilter', $statusFilter);
-		$this->assign('page',$page);
-		$this->assign('s',$s);
-		$this->assign('rows', $rows);
-		$this->display();
+		else
+		{
+			$url = $this->getPageUrl().'/list.do?statusFilter='.$statusFilter;
+			$s['uid'] = (int)$this->_get('uid');
+			$s['s_date'] = $this->_get('s_date');
+			$s['e_date'] = $this->_get('e_date');
+			$page = $this->_get('page',1);
+			$urls = $wheres = array();
+	//		$wheres[] = $s['uid']>0 ? 'a.status>0 and doact=-1' : 'a.status=1 and doact=-1';
+			$wheres[] = "a.status = $statusFilter and (doact = 0 or doact = -1)";
+			foreach($s as $key=>$val){
+				if(!$val)continue;
+				$urls[] = $key.'='.$val;
+				if($key=='s_date'){
+					$wheres[] = "a.createdate >= '".$val.' 00:00:00'."'";
+				}elseif($key=='e_date'){
+					$wheres[] = "a.createdate <= '".$val.' 23:59:59'."'";
+				}else{
+					$wheres[] = "a.{$key} = '$val'";
+				}
+			}
+			$url .= empty($urls) ? '' : '?'.implode('&',$urls);
+			$rows = $this->user_account->pageUnionAll($page, 100, $url,'user','a.uid=b.id',$wheres,'a.id desc','a.*,b.email');
+			if($s['uid']<=0)$s['uid']='';
+			$this->assign('statusFilter', $statusFilter);
+			$this->assign('page',$page);
+			$this->assign('s',$s);
+			$this->assign('rows', $rows);
+			$this->display();
+		}
 	}
 
 	function excelAction(){
