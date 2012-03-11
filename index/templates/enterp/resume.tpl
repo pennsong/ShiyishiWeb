@@ -26,7 +26,7 @@
 				  </p>
                               <ul class="num">
                                 <li><img src="/images/Icon1.gif" /> 电话：010-51316183</li>
-                                <li><img src="/images/Icon1.gif" /> E-mail：zhaopin@shiyishi.cn</li>
+                                <li><img src="/images/Icon1.gif" /> E-mail：admin@shiyishi.cn</li>
                             </ul>
 
 				  </td>

@@ -46,7 +46,7 @@
           <br />
           1</strong><strong>、版权</strong><strong> </strong><br />
           （1）Shiyishi.cn的所有内容和图表受《中华人民共和国著作权法》及相关法律法规和中国加入的所有知识产权方面的国际条约的保护。Shiyishi.cn对网站内容享有完整的著作权，未经其允许，不得以任何形式复制和采用。在内容和图表不作任何修改、保留性内容未做修改以及得到shiyishi.cn许可的情况下，shiyishi.cn的网上材料可作为网外信息方面其他非商业性的用途。 <br />
-          （2）申请使用shiyishi.cn内容的许可按特别批准原则进行；shiyishi.cn欢迎各方的申请；<a href="mailto:请把请求直接提交给zhaopin@shiyishi.cn">请把请求直接提交给zhaopin@shiyishi.cn</a>。<br />
+          （2）申请使用shiyishi.cn内容的许可按特别批准原则进行；shiyishi.cn欢迎各方的申请；<a href="mailto:请把请求直接提交给admin@shiyishi.cn">请把请求直接提交给admin@shiyishi.cn</a>。<br />
           （3）请勿擅自复制或采用shiyishi.cn所创造的用以制成网页的HTML。Shiyishi.cn对其html享有著作权。同时 shiyishi.cn对其网址上的所有图标、图饰、图表、色彩、文字表述及其组合、版面设计、数据库均享有完全的著作权，对发布的信息均享有专有的发布和使用权，未经shiyishi.cn同意，不得擅自复制、使用或转载。 </p>
         <p><strong>2</strong><strong>、商标</strong><strong> </strong><br />
           （1）、Shiyishi.cn的商标属于shiyishi.cn所有。<br />
