@@ -53,7 +53,7 @@
           <input name="" type="checkbox" value="" />
         </div>-->
         <div id="jobppname"><a href="<!--{$baseurl}-->/jobs/view.php?id=<!--{$item.id}-->"><!--{$item.title}--></a></div>
-        <div id="jobcom"><a href="<!--{$baseurl}-->/company/view/<!--{$item.cid}-->.html"><!--{$item.ename}--></a></div>
+        <div id="jobcom"><a title="<!--{$item.ename}-->" href="<!--{$baseurl}-->/company/view/<!--{$item.cid}-->.html"><!--{$item.ename|substr:12}--></a></div>
         <div id="jobsubcompany"><!--{$item.subcompany}--></div>        
         <div id="jobadd"><!--{$item.proname}-->-<!--{$item.cityname}--></div>
         <div id="jobgold"><!--{$item.money}--></div>
