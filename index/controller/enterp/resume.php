@@ -898,7 +898,7 @@ class resume_Controller extends Controller{
 			$resume = array();
 		}
 		if(!empty($resume) && $resume['uid']>0){
-			$works = $this->resume_work->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
+			$works = $this->resume_work->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'", "fromdate DESC");
 			$edus = $this->resume_edu->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
 			$langs = $this->resume_lang->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
 			$its = $this->resume_it->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
@@ -986,11 +986,11 @@ class resume_Controller extends Controller{
 					//$row['fromdate']." - ".$row['todate']."  ".$row['company']." ".$row['position']." ".$this->companytypes[$rtype][$row['companytype']]." ".$this->salarys[$rtype][$row['income']]." ".$row['responsiblity'];
 					if ($rtype=='en')
 					{
-						$tmp[] = '<tr><td width=100px>'.$row['fromdate'].' - '.$row['todate'].' </td><td>'.$row['company'].'</td></tr><tr><td>The Nature of Firm：</td><td>'.$this->companytypes[$rtype][$row['companytype']].'</td></tr><tr><td>Position：</td><td>'.$row['position'].'</td></tr><tr><td>working description：</td><td>'.$row['responsiblity'].'</td></tr><tr><td colspan="2" align="center">&nbsp;</td></tr>';
+						$tmp[] = '<tr><td width=150px>'.$row['fromdate'].' - '.$row['todate'].' </td><td>'.$row['company'].'</td></tr><tr><td>The Nature of Firm：</td><td>'.$this->companytypes[$rtype][$row['companytype']].'</td></tr><tr><td>Position：</td><td>'.$row['position'].'</td></tr><tr><td>working description：</td><td>'.$row['responsiblity'].'</td></tr><tr><td colspan="2" align="center">&nbsp;</td></tr>';
 					}
 					else
 					{
-						$tmp[] = '<tr><td width=100px>'.$row['fromdate'].' - '.$row['todate'].' </td><td>'.$row['company'].'</td></tr><tr><td>企业性质：</td><td>'.$this->companytypes[$rtype][$row['companytype']].'</td></tr><tr><td>职位：</td><td>'.$row['position'].'</td></tr><tr><td>工作描述：</td><td>'.$row['responsiblity'].'</td></tr><tr><td colspan="2" align="center">&nbsp;</td></tr>';
+						$tmp[] = '<tr><td width=150px>'.$row['fromdate'].' - '.$row['todate'].' </td><td>'.$row['company'].'</td></tr><tr><td>企业性质：</td><td>'.$this->companytypes[$rtype][$row['companytype']].'</td></tr><tr><td>职位：</td><td>'.$row['position'].'</td></tr><tr><td>工作描述：</td><td>'.$row['responsiblity'].'</td></tr><tr><td colspan="2" align="center">&nbsp;</td></tr>';
 					}
 				}
 				$works = $tmp;
