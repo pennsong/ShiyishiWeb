@@ -768,7 +768,8 @@ class resume_Controller extends Controller{
 				}
 //				$tmp = explode(",",$val['dustrytype']);
 //				$rows[$key]['d2'] = $subdtdatasall[$tmp[1]];
-				$rows[$key]['age'] = date("Y") - $val['birth_year'];
+//				$rows[$key]['age'] = date("Y") - $val['birth_year'];
+				$rows[$key]['age'] = $val['birth_month']>=date('n')?(date('Y')-$val['birth_year']-1):(date('Y')-$val['birth_year']);
 
 				$query = "select min(fromdate) as f from ".$this->dbpre."resume_work  
 				where uid= ".$val['uid'];
