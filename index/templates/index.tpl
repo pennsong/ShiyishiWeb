@@ -55,12 +55,16 @@
     </div>
 	<!--{if !$cityinfo}-->
     <div id="index_diqu">
+    <div id="divdiqu" style="overflow:hidden;height:160px;width:188px">
       <ul>
         <!--{foreach from=$zdcitys key=key item=item}-->
+        <!--{if ($item.jnum > 0) && ($item.rnum > 0)}-->
         <li><a href="http://<!--{$item.area_en}--><!--{$webdomain}-->/"><!--{$item.area_name}--></a><span class="index_diqu_zhiwei">(职位:<span class="index_diqu_shuzi"><!--{$item.jnum}--></span>个,简历:<span class="index_diqu_shuzi"><!--{$item.rnum}--></span>份)</span></li>
+        <!--{/if}-->
         <!--{/foreach}-->
         <div class="clearfix"></div>
       </ul>
+     </div>
     </div>
 	<!--{/if}-->
     <div <!--{if !$cityinfo}-->id="index_news"<!--{else}-->id="city_news"<!--{/if}-->>
@@ -73,6 +77,16 @@
   </div>
 </div>
 <script type="text/javascript">
+$(document).ready(function(){
+  $('#divdiqu').mouseover(function(){
+      $(this).css({"overflow":"scroll"});
+   });
+  $('#divdiqu').mouseout(function(){
+      $(this).css({"overflow":"hidden"});
+   });
+
+});
+
 function checkLogin(){
 	var e = $("#uemail").val();
 	var p = $("#upassword").val();

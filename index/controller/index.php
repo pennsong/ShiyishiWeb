@@ -31,7 +31,7 @@ class index_Controller extends Controller{
 			$hotjobs = $this->job->fetchAll($where." AND status=1 AND enddate > $today_e",'createtime DESC','id,title',6);
 		}else{
 			unset($_COOKIE['sys_cookie_city']);
-			$zdcitys = $this->area->fetchAll("type=1","order_id ASC",null,6);
+			$zdcitys = $this->area->fetchAll("parent_id <= 0","order_id ASC",null,null);
 			foreach($zdcitys as $k=>$c){
 				$where = $c['parent_id']<0 ? "live_gnd LIKE '".$c['id'].",%'" : "live_gnd LIKE '%,".$c['id']."%'";
 				$tmpArray = $this->resume->queryAll("select count(distinct uid) as num from zp_resume where $where");

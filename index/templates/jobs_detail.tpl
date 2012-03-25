@@ -2,19 +2,12 @@
 <div id="content" class="container_24">
   <div class="grid_24">
     <div id="jobtitle"><!--{$item.ename}-->
-      <div id="jobxxtitle">
-        <ul>
-		 <!--{if !$is_company}-->
-				  <li onclick="window.open('/company/view/<!--{$item.cid}-->.html');" style=" cursor: pointer;">公司简介</li>
-				  <li class="on">招聘职位</li>
-		<!--{/if}-->
-        </ul>
-      </div>
+ 
     </div>
   </div>
   <div class="grid_5">
     <div id="jobjob">
-      <h2><!--{if $is_company==1}-->公司简介<!--{else}-->招聘职位<!--{/if}--></h2>
+      <h2>招聘职位</h2>
       <ul>
 		<!--{foreach from=$news key=key item=sitem}-->
         <li>·<a href="/jobs/view/<!--{$sitem.id}-->.html" target="_blank"><!--{$sitem.title}--></a></li>

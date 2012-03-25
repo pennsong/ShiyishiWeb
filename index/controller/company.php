@@ -57,10 +57,12 @@ class company_Controller extends Controller{
 		$info['company_scale'] = $this->companyscales[$info['company_scale']];
 		$info['company_properties'] = $this->companyproperties[$info['company_properties']];
 
-		if (isset($this->logininfo['company']))
-		{
-			$rows = $this->jobs->pageAll(1, 10, ''," status=1 and cid = ".$this->logininfo['uid']." ",'modifydate desc');
-		}
+//		if (isset($this->logininfo['company']))
+//		{
+//			$rows = $this->jobs->pageAll(1, 10, ''," status=1 and cid = ".$this->logininfo['uid']." ",'modifydate desc');
+//		}
+		$rows = $this->jobs->pageAll(1, 10, ''," status=1 and cid = ".$info['id']." ",'modifydate desc');
+		
 		$this->assign('item',$info);
 		$this->assign('news',$rows);
 		$this->assign('j',$j);
