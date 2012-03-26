@@ -57,9 +57,7 @@
         </div>-->
         <div id="jobcom" style="left:40px"><a title="<!--{$item.ename}-->" href="<!--{$baseurl}-->/company/view/<!--{$item.cid}-->.html"><!--{$item.ename|substr:60}--></a></div>
         <div id="jobdate"><!--{$item.modifydate|date_format:"%Y-%m-%d"}--></div>
-
-        <div id="jobbutton2"><a href="<!--{$baseurl}-->/jobs/view.php?id=<!--{$item.id}-->&apply=true" target="_blank"><img src="<!--{$baseurl}-->/images/Button_Apply.gif" /></a></div>
-      </div>
+    </div>
       <!--{/foreach}-->
     </div>
     <!--{include file="pagejob.tpl"}-->
