@@ -13,6 +13,10 @@ class jobs_Model extends Model{
 		return $this->jobs->pageUnionAll($page, $count, $url,$rtable,$on, $where, $order,$field);
 	}
 	
+	function pageUnionAll2($page, $count, $url,$rtable,$on, $where = null, $order = null,$field=null, $groupby = null){
+		return $this->jobs->pageUnionAll($page, $count, $url,$rtable,$on, $where, $order,$field,$groupby);
+	}
+	
 	function find($id){
 		return $this->jobs->find($id);
 	}
@@ -66,7 +70,7 @@ class jobs_Model extends Model{
 		return $this->jobs->fetchAll($where, $order, $fields, $limit,$groupby);
 	}
 
-	//获取热门职位
+	//锟斤拷取锟斤拷锟斤拷职位
 	function getHotJobs($num=10){
 		$posmodel = Load::model('myjob_pos');
 		//$where = null, $order = null,$fields=null,$limit=null,$groupby=null

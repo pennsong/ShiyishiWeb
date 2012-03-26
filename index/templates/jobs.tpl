@@ -38,11 +38,14 @@
     <!--{include file="pagejob.tpl"}-->
     <div id="joblisttitle">
       <ul>
-        <li class="name">职位名称</li>
-        <li class="company">公司名称</li>
-        <li class="subcompany">所属部门</li>
-        <li class="add">工作地点</li>
-        <li class="gold">职位月薪</li>
+        <li class="name">公司名称</li>
+        <li class="company"></li>
+        <li class="subcompany"></li>
+        <li class="add"></li>
+        <li class="gold"></li>
+        <li class="add"></li>
+        <li class="gold"></li>
+        <li class="gold">&nbsp&nbsp&nbsp&nbsp&nbsp</li>
         <li class="date">更新日期</li>
       </ul>
     </div>
@@ -52,11 +55,7 @@
         <!--<div id="jobbutton">
           <input name="" type="checkbox" value="" />
         </div>-->
-        <div id="jobppname"><a href="<!--{$baseurl}-->/jobs/view.php?id=<!--{$item.id}-->"><!--{$item.title}--></a></div>
-        <div id="jobcom"><a title="<!--{$item.ename}-->" href="<!--{$baseurl}-->/company/view/<!--{$item.cid}-->.html"><!--{$item.ename|substr:12}--></a></div>
-        <div id="jobsubcompany"><!--{$item.subcompany}--></div>        
-        <div id="jobadd"><!--{$item.proname}-->-<!--{$item.cityname}--></div>
-        <div id="jobgold"><!--{$item.money}--></div>
+        <div id="jobcom" style="left:40px"><a title="<!--{$item.ename}-->" href="<!--{$baseurl}-->/company/view/<!--{$item.cid}-->.html"><!--{$item.ename|substr:60}--></a></div>
         <div id="jobdate"><!--{$item.modifydate|date_format:"%Y-%m-%d"}--></div>
 
         <div id="jobbutton2"><a href="<!--{$baseurl}-->/jobs/view.php?id=<!--{$item.id}-->&apply=true" target="_blank"><img src="<!--{$baseurl}-->/images/Button_Apply.gif" /></a></div>

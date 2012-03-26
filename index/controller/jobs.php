@@ -94,19 +94,25 @@ class jobs_Controller extends Controller{
 		$wheres[] = "a.status=1";
 		$wheres[] = "b.status=2";
 		$url .= empty($urls) ? '' : '?'.implode('&',$urls);
-		$rows = $this->jobs->pageUnionAll($page, 20, $url,'e_user','a.cid=b.id',$wheres,'a.id desc','a.*');
+		$rows = $this->jobs->pageUnionAll2($page, 20, $url,'e_user','a.cid=b.id',$wheres,'modifydate desc','a.cid, max(modifydate) modifydate', 'a.cid');
 		foreach($rows as $k=>$v){
-			$v['subcompany'] = $this->subcompany->getName($v['scid']);
 			$v['ename'] = $this->e_user->getCompanyName($v['cid']);
-			$v['proname'] = $this->area->getName($v['live_gnd_p']);
-			$v['company_properties'] = $this->companyproperties[$v['company_properties']];
-			$v['company_scale'] = $this->companyscales[$v['company_scale']];
-			$v['cityname'] = $this->area->getName($v['live_gnd_c']);
-			$v['money'] = $this->salarys[$v['money']];
-			$v['degree'] = $this->degrees[$v['degree']];
-			$v['jtext'] = F::getstr(str_replace(array("　",' '),"",strip_tags($v['jtext'])),190,'..');
 			$rows[$k] = $v;
 		}
+
+//		$rows = $this->jobs->pageUnionAll($page, 20, $url,'e_user','a.cid=b.id',$wheres,'a.id desc','a.*');
+//		foreach($rows as $k=>$v){
+//			$v['subcompany'] = $this->subcompany->getName($v['scid']);
+//			$v['ename'] = $this->e_user->getCompanyName($v['cid']);
+//			$v['proname'] = $this->area->getName($v['live_gnd_p']);
+//			$v['company_properties'] = $this->companyproperties[$v['company_properties']];
+//			$v['company_scale'] = $this->companyscales[$v['company_scale']];
+//			$v['cityname'] = $this->area->getName($v['live_gnd_c']);
+//			$v['money'] = $this->salarys[$v['money']];
+//			$v['degree'] = $this->degrees[$v['degree']];
+//			$v['jtext'] = F::getstr(str_replace(array("　",' '),"",strip_tags($v['jtext'])),190,'..');
+//			$rows[$k] = $v;
+//		}
 
 		if($cid){
 			$c = trim($this->_get('s_city'));

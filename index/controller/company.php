@@ -61,7 +61,7 @@ class company_Controller extends Controller{
 //		{
 //			$rows = $this->jobs->pageAll(1, 10, ''," status=1 and cid = ".$this->logininfo['uid']." ",'modifydate desc');
 //		}
-		$rows = $this->jobs->pageAll(1, 10, ''," status=1 and cid = ".$info['id']." ",'modifydate desc');
+		$rows = $this->jobs->fetchAll(" status=1 and cid = ".$info['id']." ",'modifydate desc');
 		
 		$this->assign('item',$info);
 		$this->assign('news',$rows);
