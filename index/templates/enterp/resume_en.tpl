@@ -137,6 +137,10 @@
     	                        <td width="1%" nowrap="nowrap" align="right">Working Situation：</td>
     	       	                <td><!--{$info.nowzt}--></td>
   	                        </tr>
+  	                        <tr>
+    	                        <td width="1%" nowrap="nowrap" align="right">期望薪资：</td>
+    	                        <td><!--{$salarys[$info.salary]}--></td>
+  	                        </tr>
   	                      </tbody>
   	                    </table>
   	                  </div>

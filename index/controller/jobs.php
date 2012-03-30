@@ -131,7 +131,7 @@ class jobs_Controller extends Controller{
 			$f = htmlspecialchars($f, ENT_QUOTES);
 			$this->assign('f',$f);
 		}
-		$news = $this->jobs->fetchAll(" status=1 ",'modifydate desc', '' , 10);
+		$news = $this->jobs->fetchAll(" status=1 ",'modifydate desc', '');
 		$funtype = $this->funtype->fetchAll('parent_id = 0');
 		$this->assign('funtype', $funtype);
 		$this->assign('news',$news);
@@ -218,8 +218,8 @@ class jobs_Controller extends Controller{
 
 		//$v['jtext'] = F::getstr(str_replace(array("　",' '),"",strip_tags($v['jtext'])),268,'..');
 
-		$rows = $this->jobs->pageAll(1, 10, ''," status=1 and cid = ".$info['cid']." ",'modifydate desc');
-
+//		$rows = $this->jobs->pageAll(1, 10, ''," status=1 and cid = ".$info['cid']." ",'modifydate desc');
+		$rows = $this->jobs->fetchAll(" status=1 and cid = ".$info['cid']." ",'modifydate desc');
 
 		$this->assign('euser',$euser);
 		$this->assign('item',$info);

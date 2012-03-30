@@ -51,7 +51,7 @@ class index_Controller extends Controller{
 			$this->assign('zdcitys',$zdcitys);
 			//热点招聘
 			//$hotjobs = $this->job->getHotJobs(6);
-			$hotjobs = $this->job->fetchAll("status=1 AND enddate > $today_e",'createtime DESC','id,title',6);
+			$hotjobs = $this->job->fetchAll("status=1 AND enddate > $today_e",'createtime DESC','id,title');
 		}
 		$relinks =$this->relinks->pageAll(1,8,'','',' orid');
 		foreach ($relinks as &$item) {

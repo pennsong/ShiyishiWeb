@@ -68,11 +68,13 @@
     </div>
 	<!--{/if}-->
     <div <!--{if !$cityinfo}-->id="index_news"<!--{else}-->id="city_news"<!--{/if}-->>
+    <div id="div_news" style="overflow:hidden;height:160px;width:210px">
       <ul>
         <!--{foreach from=$hotjobs key=key item=item}-->
         <li>·<a href="<!--{$weburl}-->/jobs/view/<!--{$item.id}-->.html" target="_blank"><!--{$item.title}--></a></li>
         <!--{/foreach}-->
       </ul>
+    </div>
     </div>
   </div>
 </div>
@@ -82,6 +84,12 @@ $(document).ready(function(){
       $(this).css({"overflow":"scroll"});
    });
   $('#divdiqu').mouseout(function(){
+      $(this).css({"overflow":"hidden"});
+   });
+  $('#div_news').mouseover(function(){
+      $(this).css({"overflow":"scroll"});
+   });
+  $('#div_news').mouseout(function(){
       $(this).css({"overflow":"hidden"});
    });
 

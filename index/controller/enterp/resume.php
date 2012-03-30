@@ -39,6 +39,7 @@ class resume_Controller extends Controller{
 		$this->adata = $this->cache->getAreaDatas('area_province');//省份
 		$this->languages = $this->conf['languages'];
 		$this->companytypes = $this->conf['companytypes'];
+		$this->salarys = $this->conf['salarys'];
 	}
 	
 	function indexAction(){

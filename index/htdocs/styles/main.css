@@ -145,7 +145,7 @@ li{list-style:none;}
 
 #joblist{}
 
-#joblistmain{ position:relative;height:100px;border-bottom:2px solid #CCCCCC;}
+#joblistmain{ position:relative;height:30px;border-bottom:1px solid #CCCCCC;}
 	#jobppname{ position:absolute;top:10px;left:40px;}
 	#jobppname a{color:#f00;font-weight:bold;}
 	#jobcom{position:absolute;top:10px;left:170px;}

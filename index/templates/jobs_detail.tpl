@@ -8,11 +8,13 @@
   <div class="grid_5">
     <div id="jobjob">
       <h2>招聘职位</h2>
+      <div id="div_news" style="overflow:hidden;height:210px;width:180px">
       <ul>
 		<!--{foreach from=$news key=key item=sitem}-->
         <li>·<a href="/jobs/view/<!--{$sitem.id}-->.html" target="_blank"><!--{$sitem.title}--></a></li>
 		<!--{/foreach}-->
       </ul>
+    </div>
     </div>
   </div>
 <!--{if $is_company==1}-->
@@ -200,3 +202,14 @@
 <!--{/if}-->
 </div>
 <!--{include file="include/footer.tpl"}-->
+<script type="text/javascript">
+$(document).ready(function(){
+	  $('#div_news').mouseover(function(){
+	      $(this).css({"overflow":"scroll"});
+	   });
+	  $('#div_news').mouseout(function(){
+	      $(this).css({"overflow":"hidden"});
+	   });
+
+});
+</script>
