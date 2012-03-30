@@ -33,7 +33,7 @@ class index_Controller extends Controller{
 			unset($_COOKIE['sys_cookie_city']);
 			$zdcitys = $this->area->fetchAll("parent_id <= 0","order_id ASC",null,null);
 			foreach($zdcitys as $k=>$c){
-				$where = $c['parent_id']<0 ? "live_gnd LIKE '".$c['id'].",%'" : "live_gnd LIKE '%,".$c['id']."%'";
+				$where = $c['parent_id']<0 ? "live_gnd LIKE '".$c['id'].",%'" : "live_gnd LIKE '".$c['id'].",%'";
 				$tmpArray = $this->resume->queryAll("select count(distinct uid) as num from zp_resume where $where");
 //				$c['rnum'] = $this->resume->count($where);
 				$c['rnum'] = $tmpArray[0][num];
