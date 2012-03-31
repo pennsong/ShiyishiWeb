@@ -18,7 +18,7 @@ class index_Controller extends Controller{
 		$today_e = $today_s+86400;
 		if($this->cityinfo){
 			$cityid = $this->cityinfo['id'];
-			$where = $this->cityinfo['parent_id']<0 ? "live_gnd LIKE '".$cityid.",%'" : "live_gnd LIKE '%,".$cityid."%'";
+			$where = $this->cityinfo['parent_id']<0 ? "work_gnd LIKE '".$cityid.",%'" : "work_gnd LIKE '%,".$cityid."%'";
 //			$resumenum = $this->resume->count($where);
 			$resumenumArray = $this->resume->queryAll("select count(distinct uid) as num from zp_resume where $where");
 			$resumenum = $resumenumArray[0][num];			
@@ -33,7 +33,7 @@ class index_Controller extends Controller{
 			unset($_COOKIE['sys_cookie_city']);
 			$zdcitys = $this->area->fetchAll("parent_id <= 0","order_id ASC",null,null);
 			foreach($zdcitys as $k=>$c){
-				$where = $c['parent_id']<0 ? "live_gnd LIKE '".$c['id'].",%'" : "live_gnd LIKE '".$c['id'].",%'";
+				$where = $c['parent_id']<0 ? "work_gnd LIKE '".$c['id'].",%'" : "work_gnd LIKE '".$c['id'].",%'";
 				$tmpArray = $this->resume->queryAll("select count(distinct uid) as num from zp_resume where $where");
 //				$c['rnum'] = $this->resume->count($where);
 				$c['rnum'] = $tmpArray[0][num];
