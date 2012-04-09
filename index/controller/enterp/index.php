@@ -22,7 +22,8 @@ class index_Controller extends Controller{
 		$rnum = $rnumArray[0][num];
 		
 		//$rnumall = $this->resume_box->count(" cid = ".$this->uid. " and status = 1");
-		$rnumallArray = $this->resume_box->queryAll("select count(*) as num from zp_resume_box as a where cid = ".$this->uid." and not exists (select * from zp_resume_download as b where a.rid = b.rid);");
+//		$rnumallArray = $this->resume_box->queryAll("select count(*) as num from zp_resume_box as a where cid = ".$this->uid." and not exists (select * from zp_resume_download as b where a.rid = b.rid);");
+		$rnumallArray = $this->resume_box->queryAll("select count(distinct rid) as num from zp_resume_box as a where cid = ".$this->uid.";");
 		$rnumall = $rnumallArray[0][num];
 		$cnum = $this->contract->count("enddate > ".time()." and uid = ".$this->uid);
 
