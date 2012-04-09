@@ -102,7 +102,7 @@
                         </tr>
                         <tr>
                           <td colspan="2" style="border:1px solid #ccc"><div align="right">
-						  <!--{if $down}--><!--{$info.uname}-->  身份证号：<!--{$info.idcard}-->  <!--{/if}--><!--{if $info.gender==1}-->男<!--{else}-->女<!--{/if}--> | <!--{$info.age}-->岁 | 身高：<!--{$info.stature}-->CM | 体重：<!--{$info.weight}-->KG <br/><br/> 现居住于：<!--{$info.live_gnd_name}--><!--{$info.live_address}--> 
+						  <!--{if $down}--><!--{$info.uname}-->  身份证号：<!--{$info.idcard}-->  <!--{/if}--><!--{if $info.gender==1}-->男<!--{else}-->女<!--{/if}--> | <!--{$info.age}-->岁 | 身高：<!--{$info.stature}-->CM | 体重：<!--{$info.weight}-->KG <br/><br/> 现居住于：<!--{$info.live_gnd_name}--><!--{$info.live_address}--> | 户籍所在地：<!--{$info.birth_gnd_name}--> 
 						  </div></td>
                         </tr>
                       </tbody>

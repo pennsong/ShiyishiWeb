@@ -971,12 +971,13 @@ class resume_Controller extends Controller{
 						$resume['dustrytype_2_name'] = $v['name'];
 				}
 			}
-
+			$resume['birth_gnd_name'] = $this->area->getNameByIds($resume['birth_gnd']);
 			$resume['live_gnd_name'] = $this->area->getNameByIds($resume['live_gnd']);
 
 			$resume['work_gnd_name'] = $this->area->getNameByIds($resume['work_gnd']);
 			if ($rtype=='en')
 			{
+				$resume['birth_gnd_name'] = $this->area->getNameByIdsEn($resume['birth_gnd']);
 				$resume['live_gnd_name'] = $this->area->getNameByIdsEn($resume['live_gnd']);				
 				$resume['work_gnd_name'] = $this->area->getNameByIdsEn($resume['work_gnd']);
 			}			

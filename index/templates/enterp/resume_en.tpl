@@ -102,7 +102,7 @@
                         </tr>
                         <tr>
                           <td colspan="2" style="border:1px solid #ccc"><div align="right">
-						  <!--{if $down}--><!--{$info.uname}-->  id no：<!--{$info.idcard}-->  <!--{/if}--><!--{if $info.gender==1}-->male<!--{else}-->female<!--{/if}--> | <!--{$info.age}-->years old | height：<!--{$info.stature}-->CM | weight：<!--{$info.weight}-->KG <br/><br/> live add：<!--{$info.live_gnd_name}--><!--{$info.live_address}--> 
+						  <!--{if $down}--><!--{$info.uname}-->  id no：<!--{$info.idcard}-->  <!--{/if}--><!--{if $info.gender==1}-->male<!--{else}-->female<!--{/if}--> | <!--{$info.age}-->years old | height：<!--{$info.stature}-->CM | weight：<!--{$info.weight}-->KG <br/><br/> live add：<!--{$info.live_gnd_name}--><!--{$info.live_address}--> | birth add：<!--{$info.birth_gnd_name}--> 
 						  </div></td>
                         </tr>
                       </tbody>
