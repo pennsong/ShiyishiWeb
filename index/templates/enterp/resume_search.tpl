@@ -120,12 +120,6 @@
                                         </div>
                                       </td>
                                       </tr>
-                                    <tr class="list2">
-                                      <td colspan="11" class="tdCheckbox"> <div align="center">
-                                         <input value="下载简历"  type="submit" />
-                                      </div> 
-                                      </td>
-                                      </tr>
                                     </form>
                                     </tbody>
                                 </table>
