@@ -155,7 +155,7 @@ class area_Model extends Model{
 		$this->cache->set('area_citys' ,$newdata['area_citys']);
 		if($return) return $newdata[$memkey];
 	}
-	
+	//add by penn copy from index/model/area.php's getNameByIdsEn to replace getNameByIds	
 	function getNameByIds($ids,$limit=2){
 		if(!$ids)return null;
 		$tmparr = array_unique(explode(',',trim($ids,",")));
