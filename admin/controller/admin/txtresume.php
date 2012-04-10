@@ -159,6 +159,7 @@ class txtresume_Controller extends Controller{
 				}
 			}
 
+			$resume['birth_gnd_name'] = $this->area->getNameByIds($resume['birth_gnd']);
 			$resume['live_gnd_name'] = $this->area->getNameByIds($resume['live_gnd']);
 
 			$resume['work_gnd_name'] = $this->area->getNameByIds($resume['work_gnd']);

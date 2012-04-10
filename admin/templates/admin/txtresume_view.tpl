@@ -42,7 +42,7 @@
 			  <td width="81%">ID:<!--{$info.uid}--></td>
 			</tr>
 			<tr>
-			  <td colspan="2" style="border:1px solid #ccc"><div align="right"><!--{$info.uname}--> <!--{if $info.gender==1}-->男<!--{else}-->女<!--{/if}--> | <!--{$info.birth_year}-->年<!--{$info.birth_month}-->月生 | 现居住于：<!--{$info.live_gnd_name}--> </div></td>
+			  <td colspan="2" style="border:1px solid #ccc"><div align="right"><!--{$info.uname}--> <!--{if $info.gender==1}-->男<!--{else}-->女<!--{/if}--> | <!--{$info.birth_year}-->年<!--{$info.birth_month}-->月生 | 现居住于：<!--{$info.live_gnd_name}--> | 户籍所在地：<!--{$info.birth_gnd_name}--> </div></td>
 			</tr>
 		  </tbody>
 	  </table></td>

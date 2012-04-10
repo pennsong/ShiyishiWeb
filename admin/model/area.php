@@ -160,12 +160,13 @@ class area_Model extends Model{
 		if(!$ids)return null;
 		$tmparr = array_unique(explode(',',trim($ids,",")));
 		$names = array();
-		$vdatas = $this->getcache();
 		$i=1;
 		foreach($tmparr as $vid){
 			if($i>$limit)break;
-			if(isset($vdatas[$vid]['name']))
-				$names[] = $vdatas[$vid]['name'];
+			if($vid<=0)continue;
+			$name = $this->getName($vid);
+			if($name)
+				$names[] = $name;
 			$i++;
 		}
 		return implode("，",$names);

@@ -73,6 +73,7 @@ class area_Model extends Model{
 		return implode("，",$names);
 	}
 	
+	//add by penn copy from index/model/area.php's getNameByIdsEn to replace getNameByIds
 	function getNameByIdsEn($ids,$limit=2){
 		if(!$ids)return null;
 		$tmparr = array_unique(explode(',',trim($ids,",")));
