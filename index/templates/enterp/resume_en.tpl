@@ -15,6 +15,7 @@
     	  <table border="0" cellspacing="5" cellpadding="0" width="640" align="center">
     	    <form method="post" name="form1" id="form1" action="/enterp/send_interview/">
 				<input value="" type="hidden" name="type" id="type" />
+				<input value="<!--{$from}-->" type="hidden" name="from" id="from" />
 				<input value="<!--{$info.id}-->" type="hidden" name="PositionID[]"/>
     	      <tbody>
 			  <!--{if !$down || $rtype}-->
@@ -71,7 +72,7 @@
     	        <tr>
     	          <td> </td>
     	          <td>
-    	            <input value=" 确 定 " type="submit"  onclick="$('#type').val('tmp');document.forms[0].action='/enterp/resume/tmp.do';" />
+    	            <input value=" 确 定 " type="submit"  onclick="document.forms[0].action='/enterp/resume/tmp.do';" />
   	          </tr>
 				<!--{/if}-->
     	        <tr>

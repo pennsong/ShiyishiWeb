@@ -38,7 +38,7 @@
 	<a target="frame_main" href="javascript:;" onclick="lquser('<!--{$item.uid}-->','<!--{$item.resumetype|default:'cn'}-->')">录用</a>
 <!--{else}-->已录取
 <!--{/if}--> 
-<a  target="_blank" href="/enterp/resume/view.html?id=<!--{$item.id}-->&t=cn">查看</a> <a href="/enterp/resume/del.do?PositionID=<!--{$item.id}-->&type=down" onclick="if(confirm('确定删除?')==false){return false}else{ return true;}">删除</a><br/>
+<a  target="_blank" href="/enterp/resume/view.html?id=<!--{$item.id}-->&t=cn&from=downlist">查看</a> <a href="/enterp/resume/del.do?PositionID=<!--{$item.id}-->&type=down" onclick="if(confirm('确定删除?')==false){return false}else{ return true;}">删除</a><br/>
 <!--{if $item.rtype==3 || $item.rtype==2}-->
 		<a  href="/enterp/resume/video.html?id=<!--{$item.id}-->" target="_blank" title="目前网络繁忙，建议下载到本地观看。">在线观看</a>
 		<!--{if $item.video}-->

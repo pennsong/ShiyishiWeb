@@ -474,7 +474,8 @@ class resume_Controller extends Controller{
 		//error_reporting(E_ALL);
 		$PositionID = $this->_get('PositionID');
 		$type = $this->_get('type',"all");
-		$vtmp = $this->_get('tmp',0);
+		$from = $this->_get('from',"boxlist");
+		$newUrl = BASE_URL."/enterp/resume/".$from.".html";
 		if(is_array($PositionID)){
 			foreach($PositionID as $key => $val){
 				$info['cid'] = $this->uid;
@@ -541,25 +542,23 @@ class resume_Controller extends Controller{
 						//$info['posttime'] = $rows['posttime'];
 					}
 					$rows = $this->resume_download->save($info); 
-					//resume_tmp
-					if($vtmp==1){
-						$sql="update ".$this->dbpre."resume_tmp set  status=0 where  rid=".$val." and cid=".$this->uid." ";
-						$this->resume_tmp->queryAll($sql);
-					}
+					//set the record status to 0 from resume_tmp if exists
+					$sql="update ".$this->dbpre."resume_tmp set  status=0 where  rid=".$val." and cid=".$this->uid." ";
+					$this->resume_tmp->queryAll($sql);
 					$str = "该简历下载成功";
 				}else{
 					$str = "";
 				}
 			}
 			if($str){
-				$this->showmsg($str,BASE_URL."/enterp/resume/downlist.html", null, null, "yes");
+				$this->showmsg($str,$newUrl, null, null, "no");
 			}else{
-				$this->showmsg('您没有购买下载权限',BASE_URL."/enterp/resume/downlist.html");
+				$this->showmsg('您没有购买下载权限',$newUrl);
 			}
 		}else{
 			$str = "参数错误";
 		}
-		$this->showmsg($str,BASE_URL."/enterp/resume/downlist.html");
+		$this->showmsg($str,$newUrl);
 	}
 
 	function delAction(){
@@ -590,7 +589,8 @@ class resume_Controller extends Controller{
 
 	function tmpAction(){
 		$PositionID = $this->_get('PositionID');
-		$type = $this->_get('type',"tmp");
+		$from = $this->_get('from',"boxlist");
+		$newUrl = BASE_URL."/enterp/resume/".$from.".html";
 		if(is_array($PositionID)){
 			foreach($PositionID as $key => $val){
 				$info['cid'] = $this->uid;
@@ -615,10 +615,10 @@ class resume_Controller extends Controller{
 				}
 			}
 			$str = "该简历暂存成功";
-			$this->showmsg($str,BASE_URL."/enterp/resume/tmplist.html",null,null,"yes");
+			$this->showmsg($str,$newUrl,null,null,"no");
 		}else{
 			$str = "参数错误";
-			$this->showmsg($str,BASE_URL."/enterp/resume/tmplist.html");
+			$this->showmsg($str,$newUrl);
 		}
 
 	}
@@ -892,6 +892,7 @@ class resume_Controller extends Controller{
 		$id = (int)$this->_get('id',0);
 		$uid = (int)$this->_get('uid',0);
 		$rtype = $this->_get('t','cn');
+		$from= $this->_get('from', 'boxlist');
 		if($id>0){
 			$resume = $this->resume->fetchRow(" rtype='".$rtype."' and id = ".$id );
 		}elseif($uid>0){
@@ -1078,6 +1079,7 @@ class resume_Controller extends Controller{
 			$this->assign('itnum',count($its));
 			$this->assign('ctfnum',count($ctfs));
 			$this->assign('langnum',count($langs));
+			$this->assign('from', $from);
 			if ($rtype=='en')
 			{
 				$this->display('resume_en.tpl');				

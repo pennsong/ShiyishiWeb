@@ -78,7 +78,7 @@
 										</td>
                                         <td class=" centerAlign"><!--{$item.area}--></td>
                                         <td class=" centerAlign"><!--{$item.posttime|date_format:"%y-%m-%d"}--></td>
-                                        <td nowrap="" class="action centerAlign"><a target="_blank" href="/enterp/resume/view.html?id=<!--{$item.id}-->&t=cn">查看</a> <a href="/enterp/resume/del.do?PositionID=<!--{$item.id}-->&type=box" onclick="if(confirm('确定删除?')==false){return false}else{ return true;}">删除</a></td>
+                                        <td nowrap="" class="action centerAlign"><a target="_blank" href="/enterp/resume/view.html?id=<!--{$item.id}-->&t=cn&from=boxlist">查看</a> <a href="/enterp/resume/del.do?PositionID=<!--{$item.id}-->&type=box" onclick="if(confirm('确定删除?')==false){return false}else{ return true;}">删除</a></td>
                                         </tr>
 
                                     <!--{/foreach}-->
