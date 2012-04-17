@@ -3,6 +3,7 @@
 class do_Controller extends Controller{
 	
 	function init(){
+		$this->logincheck('enterp');
 		$this->user = Load::model('e_user');
 	}
 	
