@@ -3,7 +3,6 @@
 class do_Controller extends Controller{
 	
 	function init(){
-		$this->logincheck('enterp');
 		$this->user = Load::model('e_user');
 	}
 	
@@ -13,6 +12,7 @@ class do_Controller extends Controller{
 
 	//信息修改
 	function profileAction(){
+		$this->logincheck('enterp');
 		$this->postCheck($_POST);
 		$info = $this->_get('info');
 		$this->logincheck();
@@ -26,6 +26,7 @@ class do_Controller extends Controller{
 
 	//上传头像
 	function userpicAction(){
+		$this->logincheck('enterp');
 		$uploadmodel = Load::lib('upload');
 		if($uploadmodel->run('file')){
 			$filedata = $uploadmodel->data();
@@ -70,6 +71,7 @@ class do_Controller extends Controller{
 
 	//登录
 	function vloginAction(){
+		$this->logincheck('enterp');
 		$loginusername = $this->_get('n');
 		$loginpassword = $this->_get('p');
 		if(!$loginusername){
@@ -93,6 +95,7 @@ class do_Controller extends Controller{
 	}
 
 	function enrollAction(){
+		$this->logincheck('enterp');
 		$uid = (int)$this->_get('uid',0);
 		$jobid = (int)$this->_get('jobid',0);
 		$rtype = $this->_get('t','cn');
