@@ -35,7 +35,7 @@
       <h2><span class="floatRight mszd"><img src="<!--{$baseurl}-->/images/msleftzd.jpg" /></span>系统广播</h2>
       <div id="msmessmain">
         <ul>
-          <li>欢迎大家来到视一视在线视频面试大厅系统！</li>
+          <li>欢迎大家来视一视在线视频面试大厅系统！</li>
         </ul>
       </div>
     </div>
