@@ -1,5 +1,19 @@
 <!--{include file="include/header.tpl"}-->
-<script type="text/javascript" src="<!--{$baseurl}-->/js/swfobject.js"></script>
+        <style type="text/css" media="screen"> 
+            html, body  { height:100%; }
+            body { margin:0; padding:0; overflow:auto; text-align:center; 
+                   background-color: #ffffff; }   
+            object:focus { outline:none; }
+            #flashContent { display:none; }
+        </style>
+        
+        <!-- Enable Browser History by replacing useBrowserHistory tokens with two hyphens -->
+        <!-- BEGIN Browser History required section -->
+        <link rel="stylesheet" type="text/css" href="<!--{$baseurl}-->/history/history.css" />
+        <script type="text/javascript" src="<!--{$baseurl}-->/history/history.js"></script>
+        <!-- END Browser History required section -->  
+            
+        <script type="text/javascript" src="<!--{$baseurl}-->/history/swfobject.js"></script>
 <div id="content" class="container_24">
 <div id="msindex">
   <h1><span class="floatRight"><!--{$user}--></span>视一视在线视频面试大厅系统-企业端</h1>
@@ -26,8 +40,46 @@
       </div>
     </div>
   </div>
-  <div id="msright"><div style="margin-left:85px;margin-top:130px;">请等待面试官邀请您进入面试......</br><img src="<!--{$baseurl}-->/images/msdatu.jpg" align="absmiddle"/></div> </div>
-</div>
+        <div id="flashContent">
+            <p>
+                To view this page ensure that Adobe Flash Player version 
+                10.2.0 or greater is installed. 
+            </p>
+            <script type="text/javascript"> 
+                var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
+                document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+                                + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+            </script> 
+        </div>
+        
+        <noscript>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="520" height="630" id="TL">
+                <param name="movie" value="TL.swf" />
+                <param name="quality" value="high" />
+                <param name="bgcolor" value="#ffffff" />
+                <param name="allowScriptAccess" value="sameDomain" />
+                <param name="allowFullScreen" value="true" />
+                <!--[if !IE]>-->
+                <object type="application/x-shockwave-flash" data="TL.swf" width="520" height="630">
+                    <param name="quality" value="high" />
+                    <param name="bgcolor" value="#ffffff" />
+                    <param name="allowScriptAccess" value="sameDomain" />
+                    <param name="allowFullScreen" value="true" />
+                <!--<![endif]-->
+                <!--[if gte IE 6]>-->
+                    <p> 
+                        Either scripts and active content are not permitted to run or Adobe Flash Player version
+                        10.2.0 or greater is not installed.
+                    </p>
+                <!--<![endif]-->
+                    <a href="http://www.adobe.com/go/getflashplayer">
+                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
+                    </a>
+                <!--[if !IE]>-->
+                </object>
+                <!--<![endif]-->
+            </object>
+        </noscript>  </div>
 <script type="text/javascript">
 var timeoutid = timeoutUid = null;
 var curroomid = <!--{$introomid|default:0}-->;
@@ -149,40 +201,29 @@ function getPlayerName(){
 }
 
 function loadswf(roomid,room){
-	if(!roomid||!room){
-		alert('参数错误！');
-	}
-	var isIE = false;
-	if (window.ActiveXObject){
-		isIE = true;
-	}
-	if(isIE){
-		var musicStr="";
-		musicStr+='<object id="radioplayer"  classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="736" height="672" name="interviewonline">';
-		musicStr+='<param name="movie" value="/images/interview0507.swf?id=<!--{$user|default:"user"}-->&role=0&userid=<!--{$uid|default:0}-->&roomid='+roomid+'&apurl=rtmp://www.shiyishi.cn:8008/'+room+'" />';
-		musicStr+='<param name="allowScriptAccess" value="always" />';
-		musicStr+='<param name="quality" value="high" />';
-		musicStr+='<embed name="interviewonline" src="/images/interview0507.swf?id=<!--{$user|default:"user"}-->&role=0&userid=<!--{$uid|default:0}-->&roomid='+roomid+'&apurl=rtmp://www.shiyishi.cn:8008/'+room+'" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" allowScriptAccess="always" width="736" height="672"></embed>';
-		musicStr+='</object>';
-		document.getElementById("msright").innerHTML=musicStr;
-	}else{
-		var swfVersionStr = "10.0.0";
-		var xiSwfUrlStr = "/images/playerProductInstall.swf";
-		var flashvars = {};
-		flashvars.id = '<!--{$user|default:"user"}-->';
-		flashvars.role = '<!--{$roleid|default:1}-->';
-		flashvars.userid = '<!--{$uid|default:0}-->';
-		flashvars.roomid = ''+roomid+'';
-		flashvars.apurl = 'rtmp://www.shiyishi.cn:8008/'+room+'" />';
-		var params = {};
-		params.quality = "high";
-		params.allowscriptaccess = "always";
-		params.allowfullscreen = "true";
-		var attributes = {};
-		attributes.id = "interviewonline";
-		attributes.name = "interviewonline";
-		swfobject.embedSWF("/images/interview0507.swf", "msright",  "736", "672", swfVersionStr, xiSwfUrlStr,  flashvars, params, attributes);
-	}
+    // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
+    var swfVersionStr = "10.2.0";
+    // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
+    var xiSwfUrlStr = "playerProductInstall.swf";
+    var flashvars = {};
+    flashvars.username='manager';
+    flashvars.talent='talent';
+    var params = {};
+    params.quality = "high";
+    params.bgcolor = "#ffffff";
+    params.allowscriptaccess = "sameDomain";
+    params.allowfullscreen = "true";
+    var attributes = {};
+    attributes.id = "VP";
+    attributes.name = "VP";
+    attributes.align = "middle";
+    swfobject.embedSWF(
+        "<!--{$baseurl}-->/images/TL.swf", "flashContent", 
+        "520", "630", 
+        swfVersionStr, xiSwfUrlStr, 
+        flashvars, params, attributes);
+    // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+    swfobject.createCSS("#flashContent", "display:block;text-align:left;");
 }
 window.onload = function(){
 	<!--{if $introomid>0&&$introom}-->
