@@ -13,9 +13,9 @@ class reg_Controller extends Controller
 		 * $host, $user, $pass, $dbname for my mysql connection
 		 * are located within this file, you can just declare those vars here for the mysql_connect() method
 		 */
-		$host = 'localhost';
+		$host = '127.0.0.1';
 		$user = 'root';
-		$pass = 'tcltcl';
+		$pass = 'tcltcltcltcl';
 		$dbname = 'shiyishi';
 		// lets grab the variables from the URL
 		/**
