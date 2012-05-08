@@ -90,6 +90,7 @@ class interview_Controller extends Controller{
 		$this->assign('room',$room['room']);
 		$this->assign('user',$room['ename'] ? $room['ename'] : '人力经理');
 		$this->assign('pagetitle','在线视频面试大厅');
+		$this->assign('uid2',$eid);
 		$this->display();
 	}
 

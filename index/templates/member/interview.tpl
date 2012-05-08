@@ -13,33 +13,40 @@
         <script type="text/javascript" src="<!--{$baseurl}-->/history/history.js"></script>
         <!-- END Browser History required section -->  
             
-        <script type="text/javascript" src="<!--{$baseurl}-->/history/swfobject.js"></script>
+       <script type="text/javascript" src="<!--{$baseurl}-->/history/swfobject.js"></script>
+        <script type="text/javascript">
+            // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
+            var swfVersionStr = "10.2.0";
+            // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
+            var xiSwfUrlStr = "playerProductInstall.swf";
+            var flashvars = {};
+            flashvars.userId = <!--{$uid}-->;
+            flashvars.userRole = 'talent';
+            flashvars.userName = '<!--{$user}-->';
+            flashvars.version = new Date();
+            var v = new Date();
+            var params = {};
+            params.quality = "high";
+            params.bgcolor = "#ffffff";
+            params.allowscriptaccess = "sameDomain";
+            params.allowfullscreen = "true";
+            var attributes = {};
+            attributes.id = "VP";
+            attributes.name = "VP";
+            attributes.align = "middle";
+            swfobject.embedSWF(
+                "<!--{$baseurl}-->/images/VP.swf?v="+v, "flashContent", 
+                "520", "630", 
+                swfVersionStr, xiSwfUrlStr, 
+                flashvars, params, attributes);
+            // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+        </script>
+ 
 <div id="content" class="container_24">
 <div id="msindex">
   <h1><span class="floatRight"><!--{$user}--></span>视一视在线视频面试大厅系统-企业端</h1>
-  <div id="msleft">
-    <div id="msmingdan">
-      <h2><span class="floatRight mszd"><img src="<!--{$baseurl}-->/images/msleftzd.jpg" /></span>应聘企业名单</h2>
-      <div id="msmingdanmain">
-        <ul id="intusers_list">
-		  <!--{foreach from=$goin item=item}-->
-		  <!--{if $item.vodroom}-->
-		  <li> <a href="<!--{$baseurl}-->/jobs/view/<!--{$item.jobid}-->.html"><!--{$item.ename}--></a><span id="hold_<!--{$item.roomid}-->_<!--{$item.room}-->"><!--{if $item.msstatus==1}--><img src="<!--{$baseurl}-->/images/msing.jpg" align="absmiddle" /><!--{elseif $item.msstatus==2}--><img src="<!--{$baseurl}-->/images/msyging.jpg" align="absmiddle" /><!--{elseif $item.msstatus==-1}--><img src="<!--{$baseurl}-->/images/msover.jpg" align="absmiddle" /><!--{else}-->（<!--{$item.roomstatus}-->：<!--{$item.holdnums}-->）<!--{/if}--></span></li>
-		  <!--{/if}-->
-		  <!--{/foreach}-->
-        </ul>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-    <div id="msmess">
-      <h2><span class="floatRight mszd"><img src="<!--{$baseurl}-->/images/msleftzd.jpg" /></span>系统广播</h2>
-      <div id="msmessmain">
-        <ul>
-          <li>欢迎大家来视一视在线视频面试大厅系统！</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+
         <div id="flashContent">
             <p>
                 To view this page ensure that Adobe Flash Player version 
@@ -52,34 +59,8 @@
             </script> 
         </div>
         
-        <noscript>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="520" height="630" id="TL">
-                <param name="movie" value="TL.swf" />
-                <param name="quality" value="high" />
-                <param name="bgcolor" value="#ffffff" />
-                <param name="allowScriptAccess" value="sameDomain" />
-                <param name="allowFullScreen" value="true" />
-                <!--[if !IE]>-->
-                <object type="application/x-shockwave-flash" data="TL.swf" width="520" height="630">
-                    <param name="quality" value="high" />
-                    <param name="bgcolor" value="#ffffff" />
-                    <param name="allowScriptAccess" value="sameDomain" />
-                    <param name="allowFullScreen" value="true" />
-                <!--<![endif]-->
-                <!--[if gte IE 6]>-->
-                    <p> 
-                        Either scripts and active content are not permitted to run or Adobe Flash Player version
-                        10.2.0 or greater is not installed.
-                    </p>
-                <!--<![endif]-->
-                    <a href="http://www.adobe.com/go/getflashplayer">
-                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
-                    </a>
-                <!--[if !IE]>-->
-                </object>
-                <!--<![endif]-->
-            </object>
-        </noscript>  </div>
+		<noscript>Your browser does not support JavaScript!</noscript>
+  </div>
 <script type="text/javascript">
 var timeoutid = timeoutUid = null;
 var curroomid = <!--{$introomid|default:0}-->;
@@ -226,11 +207,11 @@ function loadswf(roomid,room){
     swfobject.createCSS("#flashContent", "display:block;text-align:left;");
 }
 window.onload = function(){
-	<!--{if $introomid>0&&$introom}-->
-	loadswf(<!--{$introomid}-->,'<!--{$introom}-->');
-	timeoutUid = setInterval("checkCurUser()",3000);
-	<!--{/if}-->
-	timeoutid = setInterval("checkHoldStatus()",10000);
+//	<!--{if $introomid>0&&$introom}-->
+//	loadswf(<!--{$introomid}-->,'<!--{$introom}-->');
+//	timeoutUid = setInterval("checkCurUser()",3000);
+//	<!--{/if}-->
+//	timeoutid = setInterval("checkHoldStatus()",10000);
 }
 window.onbeforeunload = function(e){
 	e = e || event;   // IE 或 FF 的事件对象
