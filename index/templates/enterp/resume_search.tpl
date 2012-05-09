@@ -104,7 +104,7 @@
                                         <td nowrap="" class=" centerAlign"><!--{$degrees[$item.degree]}--></td>
                                         <td class=" centerAlign"><!--{$item.area}--></td>
                                         <td class=" centerAlign"><!--{$item.modifydate|date_format:"%y-%m-%d"}--></td>
-                                        <td nowrap="nowrap" class="action centerAlign"><a  target="_blank"  href="/enterp/resume/view.html?id=<!--{$item.id}-->&t=cn&from=search">查看</a> <a href="#"></a></td>
+                                        <td nowrap="nowrap" class="action centerAlign"><a class="songDefA" target="_blank"  href="/enterp/resume/view.html?id=<!--{$item.id}-->&t=cn&from=search">查看</a> <a href="#"></a></td>
                                     </tr>
                                     <!--{/foreach}-->
 
