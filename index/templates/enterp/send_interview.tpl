@@ -148,8 +148,8 @@ function resettime(str){
 	var oldtimes=oldtime.getTime();
 	var nowtime=new Date(arr1[0],arr1[1],arr1[2]);
 	var nowtimes=nowtime.getTime();
-	if(nowtimes>=oldtimes){
-		alert('申请时间只能由明天开始！');
+	if(nowtimes>oldtimes){
+		alert('申请时间只能由今天开始！');
 		$('#'+str).val('');
 	}
 }
