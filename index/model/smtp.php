@@ -58,6 +58,8 @@ class smtp_Model extends Model{
 		if(isset($data['passwd'])) $str = str_replace('{密码}',$data['passwd'],$str);
 		if(isset($data['url'])) $str = str_replace('{网址}',$data['url'],$str);
 		if(isset($data['ent_reg_name'])) $str = str_replace('{企业注册名}',$data['ent_reg_name'],$str);
+		if(isset($data['datetime'])) $str = str_replace('{时间}',$data['datetime'],$str);
+		if(isset($data['company'])) $str = str_replace('{企业}',$data['company'],$str);
 		return $str;
 	}
 }

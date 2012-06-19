@@ -14,12 +14,15 @@ class send_interview_Controller extends Controller{
 		$this->jobs = Load::model('jobs');
 		$this->resume_box = Load::model('resume_box');
 		$this->resume_download = Load::model('resume_download');
+		$this->contract = Load::model('contract');
 		//uname
 		$this->uid = $this->logininfo['uid'];
 		$this->conf_db = Load::conf('db');
 		$this->dbpre = $this->conf_db['default']['prefix'];
 		$this->conf = Load::conf('conf');
 		$this->vodrooms = $this->conf['vodrooms'];
+		$this->resume = Load::model('resume');
+		$this->mtsms = Load::model('mtsms');
 	}
 	
 
@@ -127,6 +130,78 @@ class send_interview_Controller extends Controller{
 		}
 	}
 
+	//copied from admin/interview.php then modified it
+	function edit2Action($ids, $status=1){
+		if(!is_array($ids)){
+			$x[] = intval($ids);
+			$ids = $x;
+		}
+		if($ids){
+			foreach($ids as $key => $val){
+				$info = $this->app_video_interview->find(intval($val));
+				$info['status'] = $status;
+				if($status == 1){
+					$okrooms = array();
+					//验证是否还有空闲房间
+					$arows = $this->app_video_interview->fetchAll($info['endtime'].' > starttime and endtime > '.$info['starttime']." and status = 1 ");
+					if(!empty($arows)){
+						foreach($arows as $ar){
+							$okrooms[] = $ar['room'];
+						}
+					}
+					if($okrooms){
+						$vodrooms = array_diff($this->vodrooms,$okrooms);
+					}else{
+						$vodrooms = $this->vodrooms;
+					}
+					//print_r($vodrooms);
+					if(!empty($vodrooms)){
+						$info['room'] = array_pop($vodrooms);
+						$info['passtime'] = date("Y-m-d H:i:s");
+						$person = $this->app_person_interview->fetchAll(' aid = '.$info['id']);
+						foreach($person as $k => $v){
+							$app_video_interview = $this->app_video_interview->fetchRow('id='.$v['aid']);
+							$e_user = $this->e_user->fetchRow('id='.$app_video_interview['cid']);
+							$str = $e_user['company']."邀请您 ".date('Y-m-d H:i',$v['starttime']).'至'.date('Y-m-d H:i',$v['endtime']).'参加在线面试 http://www.shiyishi.cn/';
+							$resume = $this->resume->fetchRow('uid='.$v['uid']);
+							/*
+							$str = iconv('UTF-8','GBK',$str);
+							$str = urlencode($str);
+							$content = file_get_contents('http://3tong.cn:8082/ema_new/http/SendSms?Account=88010110&Password=cbff36039c3d0212b3e34c23dcde1456&SubCode=&Phone='.$resume['phone'].'&Content='.$str);
+							if($content!=''){
+								$v['status'] = 1;
+								$this->app_person_interview->save($v);
+							}
+							*/
+							
+							//发短信
+							$content = $this->mtsms->send($resume['phone'],$str);
+							//$content = $this->mtsms->httpsend($resume['phone'],$str);
+							$v['status'] = 1;
+							$this->app_person_interview->save($v);
+							$myjobint = Load::model('myjob_int');
+							$myjobint->update(array('status'=>1),'aid='.$info['id']);
+							//发邮件
+							$m = Load::model('smtp');
+							$m->sendmail('invite',array('username'=>$resume['uname'],'email'=>$resume['email'],'datetime'=>date('Y-m-d H:i:s',$v['starttime']).'至'.date('Y-m-d H:i:s',$v['endtime']),'company'=>$e_user['company']));
+						}
+					}else{
+						//$this->showmsg('无空闲房间，不能通过申请','list.do');
+						return false;
+					}
+				}else{
+					$info['room'] = "";
+					$info['nopasstime'] = date("Y-m-d H:i:s");
+				}
+				//print_r($info);exit;
+				$this->app_video_interview->save($info);
+			}
+		}
+		//$this->showmsg('操作成功','list.do');
+		return true;
+		//$this->wajaxmsg('操作成功',1);
+	}
+	
 	function saveAction(){
 		//error_reporting(E_ALL);
 		$info = $this->_get('info');
@@ -138,6 +213,20 @@ class send_interview_Controller extends Controller{
 		$interview['starttime'] = strtotime($startdate." ".$starttime.":00");
 		$interview['endtime'] = strtotime($enddate." ".$endtime.":00");
 		$info['interview_enddate'] = $interview['endtime'];
+		//计算费用不足一小时按1小时算，1小时100积分
+		$needPoint = ceil(($interview['endtime'] - $interview['starttime']) / 3600) * 100;
+		$leftPoint = 0;
+		$contract = $this->contract->fetchAll(" uid = ".$this->uid." and enddate >= ".time(), " enddate asc");
+		foreach($contract as $item)
+		{
+			$leftPoint += $item['word'];
+		}
+
+		if ($leftPoint < $needPoint)
+		{
+			$str = "积分不足，请购买!";
+			$this->showmsg($str,BASE_URL."/enterp/resume/downlist.html");
+		}			
 
 		if($interview['endtime'] > $interview['starttime']){
 			$interview['cid'] = $this->uid;
@@ -191,6 +280,7 @@ class send_interview_Controller extends Controller{
 					if(($aid=$this->app_video_interview->save($interview)) === false){
 						$this->showmsg($this->user->getError(),1);
 					}
+					$video_interview_id=$aid;
 					$pidrows = array();
 					if(isset($interview['id'])){
 						$aid = $interview['id'];
@@ -210,7 +300,6 @@ class send_interview_Controller extends Controller{
 					$uid = $this->_get('uid','');
 					$uid = substr($info['uid'],0,-1);
 					$uids = explode(',',$uid);
-					print_r($_POST);
 					$starttime_p = $this->_get('starttime_p');
 					$endtime_p = $this->_get('endtime_p');
 					$startdate_p = $this->_get('startdate_p');
@@ -243,7 +332,26 @@ class send_interview_Controller extends Controller{
 							}
 						}
 					}
-					$str = "申请已提交，请耐心等待";
+					//扣除积分
+					$executePoint = 0;
+					$i = 0;
+					while ($executePoint < $needPoint)
+					{
+						$curContract = $contract[$i++];
+						if ($curContract['word'] >= $needPoint)
+						{
+							$curContract['word'] = $curContract['word']-$needPoint;
+							$this->contract->save($curContract);
+							break;							
+						}
+						else {
+								$needPoint -= $curContract['word'];								
+								$curContract['word'] = 0;								
+								$this->contract->save($curContract);						
+						}
+					}
+					$str = "预约成功！";
+					$this->edit2Action($video_interview_id, 1);
 				}else{
 					$str = "该时间段已无空闲视频房间";
 				}

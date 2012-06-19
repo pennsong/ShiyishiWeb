@@ -176,7 +176,20 @@ function check_time(){
 		$('#error').show();
 		return false;
 	}
-	return true;
+	var start = Date.parse(sd+"T"+st+":00");
+	var end = Date.parse(ed+"T"+et+":00");	
+	var hour = Math.ceil(((end - start)/1000)/3600);
+	var r=confirm("您预约了"+hour+"小时的视频面试时间，需扣除您的下载积分"+(hour*100)+"分，是否继续?");
+	
+	if (r==true)
+	{
+		return true;
+	}
+	else
+	{
+	  return false;
+	}
 }
+
 </script>
 <!--{include file="include/footer.tpl"}-->
