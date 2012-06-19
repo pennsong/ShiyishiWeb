@@ -22,7 +22,7 @@ class interview_Controller extends Controller{
 		$intdate = (int)date("Ymd");
 		$cachekey1 = 'interview_room_eid_'.$eid.'_date_'.$intdate;
 		if(!($room = $this->mem->get($cachekey1))){
-			$room = $this->vodroom->fetchRow("cid=".$eid." AND starttime <= ".($nowtime+1200)." AND endtime > ".$nowtime);
+			$room = $this->vodroom->fetchRow("cid=".$eid." AND (starttime-1200) <= ".$nowtime." AND (endtime+1200) > ".$nowtime);
 			
 			if(empty($room)){
 				$this->showmsg('抱歉，您还没有申请该时间段内的视频面试室。',BASE_URL."/enterp/resume/downlist.html");

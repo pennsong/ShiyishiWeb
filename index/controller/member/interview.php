@@ -17,7 +17,7 @@ class interview_Controller extends Controller{
 		$nowtime = time();
 		$intdate = (int)date("Ymd");
 		//1 验证该用户是否有被邀请视频面试
-		$myjobints = $this->myjob_int->fetchAll("uid=".$uid." AND status=1 AND interview_type=2 AND interview_date<=".($nowtime+1200));
+		$myjobints = $this->myjob_int->fetchAll("uid=".$uid." AND status=1 AND interview_type=2 AND (interview_date-1200) <= ".$nowtime." AND (interview_enddate+1200) > ".$nowtime);
 		if(empty($myjobints)){
 			$this->showmsg('抱歉，您暂时没有被任何公司邀请参加视频面试。',BASE_URL."/member/");
 		}
@@ -27,7 +27,7 @@ class interview_Controller extends Controller{
 		$introom = '';
 		foreach($myjobints as $int){  
 			$gocheck = false;
-			$room = $this->vodroom->fetchRow("cid=".$int['eid']." AND status=1 AND intend=0 AND starttime <= ".($nowtime+1200)." AND endtime >= ".$nowtime);
+			$room = $this->vodroom->fetchRow("cid=".$int['eid']." AND status=1 AND intend=0 AND (starttime-1200) <= ".$nowtime." AND (endtime+1200) >= ".$nowtime);
 			if($room){
 				if($int['interview_date']>=$room['starttime'] && $int['interview_date']<=$room['endtime']){
 					$int['vodroom'] = $room;

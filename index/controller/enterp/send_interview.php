@@ -210,6 +210,7 @@ class send_interview_Controller extends Controller{
 					$uid = $this->_get('uid','');
 					$uid = substr($info['uid'],0,-1);
 					$uids = explode(',',$uid);
+					print_r($_POST);
 					$starttime_p = $this->_get('starttime_p');
 					$endtime_p = $this->_get('endtime_p');
 					$startdate_p = $this->_get('startdate_p');
@@ -221,6 +222,8 @@ class send_interview_Controller extends Controller{
 						$info['aid'] = $aid;
 						$info['status'] = -1;
 						$info['gender'] = $genders[$k];
+						$info['interview_date'] = strtotime($startdate_p[$k]." ".$starttime_p[$k].":00");
+						$info['interview_enddate'] = strtotime($enddate_p[$k]." ".$endtime_p[$k].":00");
 						if(($uid = $this->myjob_int->save($info)) === false){
 							$this->showmsg($this->myjob_int->getError(),1);
 						}
