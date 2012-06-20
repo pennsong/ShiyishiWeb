@@ -45,7 +45,7 @@
  
 <div id="content" class="container_24">
 <div id="msindex">
-  <h1><span class="floatRight"><!--{$user}--></span>视一视在线视频面试大厅系统-企业端</h1>
+  <h1><span class="floatRight"><!--{$user}--></span>视一视在线视频面试大厅系统-个人端</h1>
 
         <div id="flashContent">
             <p>

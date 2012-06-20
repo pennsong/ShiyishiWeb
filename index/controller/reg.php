@@ -15,7 +15,7 @@ class reg_Controller extends Controller
 		 */
 		$host = '127.0.0.1';
 		$user = 'root';
-		$pass = 'tcltcltcltcl';
+		$pass = 'tcltcl';
 		$dbname = 'shiyishi';
 		// lets grab the variables from the URL
 		/**
@@ -209,7 +209,7 @@ class reg_Controller extends Controller
 					$sql .= " 	AND";
 					$sql .= " 		a.starttime < ($curTime + 1200)";
 					$sql .= " 	AND";
-					$sql .= " 		a.endtime > $curTime";
+					$sql .= " 		(a.endtime + 1200) > $curTime";
 					$sql .= " 	AND";
 					$sql .= " 		$curTime - UNIX_TIMESTAMP(d.updatetime) < 10";
 				}
@@ -241,7 +241,7 @@ class reg_Controller extends Controller
 					$sql .= " 	AND";
 					$sql .= " 		b.starttime < ($curTime + 1200)";
 					$sql .= " 	AND";
-					$sql .= " 		b.endtime > $curTime";
+					$sql .= " 		(b.endtime + 1200) > $curTime";
 					$sql .= " 	AND";
 					$sql .= " 		$curTime - UNIX_TIMESTAMP(c.updatetime) < 10";
 				}

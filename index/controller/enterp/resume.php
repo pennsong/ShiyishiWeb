@@ -1093,6 +1093,212 @@ class resume_Controller extends Controller{
 			echo "No English CV";
 		}
 	}
+		function viewSwfAction(){
+		//error_reporting(E_ALL);
+		$id = (int)$this->_get('id',0);
+		$uid = (int)$this->_get('uid',0);
+		$rtype = $this->_get('t','cn');
+		$from= $this->_get('from', 'boxlist');
+		if($id>0){
+			$resume = $this->resume->fetchRow(" rtype='".$rtype."' and id = ".$id );
+		}elseif($uid>0){
+			$resume = $this->resume->fetchRow(" rtype='".$rtype."' and uid = ".$uid );
+		}else{
+			$resume = array();
+		}
+		if(!empty($resume) && $resume['uid']>0){
+			$works = $this->resume_work->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'", "fromdate DESC");
+			$edus = $this->resume_edu->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
+			$langs = $this->resume_lang->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
+			$its = $this->resume_it->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
+			$ctfs = $this->resume_ctf->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
+
+			$myjob_rviewd = Load::model('myjob_rviewd');
+			$myjob_info['uid'] = $resume['uid'];
+			$myjob_info['eid'] = $this->uid;
+			$myjob_info['status'] = 1;
+			$myjob_rviewd->save($myjob_info);
+			$down = 0;
+			$resume_download = $this->resume_download->fetchRow(" cid='".$this->uid."' AND rid='".$resume['id']."' and  status = 1 ");
+			if(isset($resume_download['rtype']) && $resume_download['rtype'])
+				$down = count($resume_download);
+
+			$citydatas = $this->cache->getAreaDatas('area_citys');
+
+			if($resume['speciality']){
+//				$submjdatas = $this->cache->getMajorDatas('major_level2');
+//				$tmp = explode(",",$resume['speciality']);
+//				$resume['speciality_1_name'] = $this->mjdata[$tmp[0]]['name'];
+//				$resume['speciality_1'] = $tmp[0];
+//				$resume['speciality_2'] = $tmp[1];
+//				foreach($submjdatas[$tmp[0]] as $k => $v){
+//					if($v['id'] == $tmp[1])
+//						$resume['speciality_2_name'] = $v['name'];
+//				}
+				$resume['speciality_1_name'] = $resume['speciality'];
+				$resume['speciality_2_name'] = '';
+			}
+
+			if($resume['funtype']){
+				//$resume['funtype_name'] = $this->funtype->getNameByIds($resume['funtype']);
+				$subftdatas = $this->cache->getFuntypeDatas('funtype_level2');
+				$tmp = explode(",",$resume['funtype']);
+				$resume['funtype_1'] = $tmp[0];
+				$resume['funtype_2'] = $tmp[1];
+				$topftdatas = $this->cache->getFuntypeDatas('funtype_level1');
+				foreach($topftdatas as $k => $v){
+					if($v['id'] == $tmp[0])
+					{
+						$resume['funtype_1_name'] = $v['name'];
+						if ($rtype == 'en')
+						{
+							$resume['funtype_1_name'] = $v['en'];							
+						}
+					}
+				}				
+				foreach($subftdatas[$tmp[0]] as $k => $v){
+					if($v['id'] == $tmp[1])
+					{
+						$resume['funtype_2_name'] = $v['name'];
+						if ($rtype == 'en')
+						{
+							$resume['funtype_2_name'] = $v['en'];							
+						}
+					}
+				}
+			}
+			if($resume['dustrytype']){
+				$subdtdatas = $this->cache->getFuntypeDatas('dustrytype_level2');
+				$tmp = explode(",",$resume['dustrytype']);
+				$resume['dustrytype_1_name'] = $this->dtdata[$tmp[0]]['name'];
+				$resume['dustrytype_1'] = $tmp[0];
+				$resume['dustrytype_2'] = $tmp[1];
+				foreach($subdtdatas[$tmp[0]] as $k => $v){
+					if($v['id'] == $tmp[1])
+						$resume['dustrytype_2_name'] = $v['name'];
+				}
+			}
+			$resume['birth_gnd_name'] = $this->area->getNameByIds($resume['birth_gnd']);
+			$resume['live_gnd_name'] = $this->area->getNameByIds($resume['live_gnd']);
+
+			$resume['work_gnd_name'] = $this->area->getNameByIds($resume['work_gnd']);
+			if ($rtype=='en')
+			{
+				$resume['birth_gnd_name'] = $this->area->getNameByIdsEn($resume['birth_gnd']);
+				$resume['live_gnd_name'] = $this->area->getNameByIdsEn($resume['live_gnd']);				
+				$resume['work_gnd_name'] = $this->area->getNameByIdsEn($resume['work_gnd']);
+			}			
+			if(empty($works)){
+				$works = '';
+			}else{
+				$tmp = array();
+				foreach($works as $k=>$row){
+					//$row['fromdate']." - ".$row['todate']."  ".$row['company']." ".$row['position']." ".$this->companytypes[$rtype][$row['companytype']]." ".$this->salarys[$rtype][$row['income']]." ".$row['responsiblity'];
+					if ($rtype=='en')
+					{
+						$tmp[] = '<tr><td width=150px>'.$row['fromdate'].' - '.$row['todate'].' </td><td>'.$row['company'].'</td></tr><tr><td>The Nature of Firm：</td><td>'.$this->companytypes[$rtype][$row['companytype']].'</td></tr><tr><td>Position：</td><td>'.$row['position'].'</td></tr><tr><td>working description：</td><td>'.$row['responsiblity'].'</td></tr><tr><td colspan="2" align="center">&nbsp;</td></tr>';
+					}
+					else
+					{
+						$tmp[] = $row['fromdate'].' - '.$row['todate'].' '.$row['company'].' 企业性质：'.$this->companytypes[$rtype][$row['companytype']].' 职位：'.$row['position'].' 工作描述：'.$row['responsiblity'].'';
+					}
+				}
+				$works = $tmp;
+			}
+
+			if(empty($edus)){
+				$edus = '';
+			}else{
+				$tmp = array();
+				foreach($edus as $k=>$row){
+//					$tmp[] = $row['fromdate']." - ".$row['todate']."  ".$row['schoolname']." ".$this->major->getNameByIds($row['major'])." ".$this->degrees[$rtype][$row['degree']];
+					$tmp[] = $row['fromdate']." - ".$row['todate']."  ".$row['schoolname']." ".$row['major']." ".$this->degrees[$rtype][$row['degree']];
+
+				}
+				$edus = $tmp;
+			}
+
+			if(empty($langs)){
+				$langs = '';
+			}
+
+			if(empty($its)){
+				$its = '';
+			}else{
+				$tmp = array();
+				foreach($its as $k=>$row){
+					if ($rtype=='en')
+					{
+						$tmp[] = $row['skillname'] ." ".$row['ability']." ".$row['usetime']."months";						
+					}
+					else
+					{
+						$tmp[] = $row['skillname'] ." ".$row['ability']." ".$row['usetime']."月";
+					}
+				}
+				$its = $tmp;
+			}
+
+			if(empty($ctfs)){
+				$ctfs = '';
+			}else{
+				$tmp = array();
+				foreach($ctfs as $k=>$row){
+					$tmp[] = $row['awarddate'] ." ".$row['ctfname']." ".$row['awardorg'];
+				}
+				$ctfs = $tmp;
+			}
+			$video = $this->resume_vod->fetchRow(" uid = ".$resume['uid']." and status=1" );
+			if(isset($video['id']) && $video['id']){
+				$resume['video'] = 1;
+			}else{
+				$resume['video'] = 0;
+			}
+			$contract = $this->contract->fetchAll(" uid = ".$this->uid." and enddate >= ".time()."  ", " enddate asc"," sum(word) as w ,sum(video) as v ");
+			$resume['age'] = $resume['birth_month']>=date('n')?(date('Y')-$resume['birth_year']-1):(date('Y')-$resume['birth_year']);
+
+			$this->assign('years',F::getYears());//年
+			$this->assign('months',F::getMonths());//月
+			$this->assign('days',F::getDays());//日
+			$this->assign('adatas',$this->adata);//省份
+			$this->assign('ftdatas',$this->ftdata);//一级职位
+			$this->assign('dtdatas',$this->dtdata);//一级行业
+			$this->assign('mjdatas',$this->mjdata);//一级专业
+			$this->assign('degrees',$this->degrees[$rtype]);
+			$this->assign('entrytimes',$this->entrytimes[$rtype]);
+			$this->assign('salarys',$this->salarys[$rtype]);
+			$this->assign('companytypes',$this->companytypes[$rtype]);
+			$this->assign('languages',$this->languages[$rtype]);
+
+			$this->assign('wordnum',isset($contract[0]['w'])?$contract[0]['w']:0);
+			$this->assign('videonum',isset($contract[0]['v'])?$contract[0]['v']:0);		
+			$this->assign('rtype',isset($resume_download['rtype'])?$resume_download['rtype']:0);					
+			$this->assign('info',$resume);
+			$this->assign('works',$works);
+			$this->assign('edus',$edus);
+			$this->assign('its',$its);
+			$this->assign('ctfs',$ctfs);
+			$this->assign('langs',$langs);
+			$this->assign('down',$down);
+			$this->assign('worknum',count($works));
+			$this->assign('edunum',count($edus));
+			$this->assign('itnum',count($its));
+			$this->assign('ctfnum',count($ctfs));
+			$this->assign('langnum',count($langs));
+			$this->assign('from', $from);
+			if ($rtype=='en')
+			{
+				$this->display('resume_en_swf.tpl');				
+			}
+			else
+			{
+				$this->display('resume_swf.tpl');
+			}
+		}else{
+			$str = "参数错误";
+			echo "No English CV";
+		}
+	}
 
 	function videoAction(){
 		/*
