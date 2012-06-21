@@ -176,10 +176,13 @@ function check_time(){
 		$('#error').show();
 		return false;
 	}
-	var start = Date.parse(sd+"T"+st+":00");
-	var end = Date.parse(ed+"T"+et+":00");	
+	var startDateArray = sd.split("-");
+	var start = Date.parse(startDateArray[1]+"/"+startDateArray[2]+"/"+startDateArray[0]+" "+st);
+	var endDateArray = ed.split("-");
+	var end = Date.parse(endDateArray[1]+"/"+endDateArray[2]+"/"+endDateArray[0]+" "+et);	
 	var hour = Math.ceil(((end - start)/1000)/3600);
 	var r=confirm("您预约了"+hour+"小时的视频面试时间，需扣除您的下载积分"+(hour*100)+"分，是否继续?");
+
 	
 	if (r==true)
 	{
