@@ -50,15 +50,16 @@ class reg_Controller extends Controller
 			{
 				// first lets check to see if this exists....
 				$db = mysql_connect($host, $user, $pass) or die('<regist>false1</regist>');
+				mysql_query("set names 'utf8'");
 				mysql_select_db($dbname);
 				//get userName
 				if ($userRole == "talent")
 				{
-					$sql = "SELECT email as username FROM zp_user WHERE id = $userId";
+					$sql = "SELECT username as username FROM zp_user WHERE id = $userId";
 				}
 				else if ($userRole == "company")
 				{
-					$sql = "SELECT username FROM zp_e_user WHERE id = $userId";
+					$sql = "SELECT company as username FROM zp_e_user WHERE id = $userId";
 				}
 				else
 				{
@@ -111,6 +112,7 @@ class reg_Controller extends Controller
 			{
 				// first lets check to see if this exists....
 				$db = mysql_connect($host, $user, $pass) or die('<reflash>false1</reflash>');
+				mysql_query("set names 'utf8'");
 				mysql_select_db($dbname);
 				// query to check for the userId existence
 				$sql = "SELECT * FROM `registrations` WHERE identity = '".$identity."'";
@@ -148,6 +150,7 @@ class reg_Controller extends Controller
 			{
 				// first lets check to see if this exists....
 				$db = mysql_connect($host, $user, $pass) or die('<callFriend>false</callFriend>');
+				mysql_query("set names 'utf8'");
 				mysql_select_db($dbname);
 				// query to check for the userId existence
 				$sql = "SELECT * FROM `registrations` WHERE identity = '".$friendIdentity."'";
@@ -179,13 +182,14 @@ class reg_Controller extends Controller
 				$msg .= "<getFriendList>";
 				// first lets check to see if this exists....
 				$db = mysql_connect($host, $user, $pass) or die('<update>false1</update>');
+				mysql_query("set names 'utf8'");
 				mysql_select_db($dbname);
 				$curTime = time();
 				if ($userRole == 'talent')
 				{
 					//sql for talent
 					$sql .= " SELECT";
-					$sql .= " 	b.cid userId, c.username userName, d.identity";
+					$sql .= " 	b.cid userId, d.userName userName, d.identity";
 					$sql .= " FROM";
 					$sql .= " 		zp_app_person_interview a";
 					$sql .= " 	JOIN";
@@ -217,7 +221,7 @@ class reg_Controller extends Controller
 				{
 					//sql for company
 					$sql .= " SELECT";
-					$sql .= " 	b.uid userId, d.email userName, c.identity";
+					$sql .= " 	b.uid userId, c.userName userName, c.identity";
 					$sql .= " FROM";
 					$sql .= " 		zp_app_video_interview a";
 					$sql .= " 	JOIN";
