@@ -35,15 +35,9 @@
                         	<ul>
 								<li>&nbsp;</li>
 								<li>&nbsp;</li>
-								<li><span class="glogintext">招聘职位：</span>
-									<select name="info[jobid]"  id="jobid">
-										<option value="0">选择面试职位</option>
-									<!--{foreach from=$jobs key=key item=item}-->
-										<option value="<!--{$item.id}--> "<!--{if $info.jobid==$item.id}--> selected<!--{/if}-->><!--{$item.title}--></option>
-									<!--{/foreach}-->
-									</select>
-								</li>
                                 <li><span class="glogintext">申请时间：</span>
+                               	<span class="glogintext">&nbsp;</span>
+                                <span class="glogintext">&nbsp;</span>
 									开始时间：<input type="tetx" name="startdate" id="startdate" value="<!--{$app.startdate}-->" class="Wdate" onClick="WdatePicker();settime('startdate',1);$('#error').hide();" style="width:120px;" /> 
 									<select name="starttime"  id="starttime" class="Wdate" onchange="$('#error').hide();setOnetime('starttime_p',this.value);" style="width:80px;" >
 									<option value="">选择时间</option>
@@ -70,6 +64,13 @@
 								<!--{foreach from=$resume key=key item=items}-->
 								<li id="user_<!--{$interview_arr[$key]}-->">
 								<span class="glogintext"><!--{$items.uname}-->&nbsp;&nbsp;&nbsp;</span>
+								<span class="glogintext">招聘职位：</span>
+									<select name="info[jobid][]"  class="jobid">
+										<option value="0">选择面试职位</option>
+									<!--{foreach from=$jobs key=key2 item=item2}-->
+										<option value="<!--{$item2.id}--> "><!--{$item2.title}--></option>
+									<!--{/foreach}-->
+									</select>
 									开始时间：<input type="tetx" name="startdate_p[]"  value="<!--{$pidrows.$key.startdate_p}-->" class="Wdate startdate_p" style="width:120px;" onClick="WdatePicker();settime('startdate_p<!--{$items.id}-->',0);" id="startdate_p<!--{$items.id}-->"/> 
 									<select name="starttime_p[]" id= "starttime_p<!--{$key}-->" class="Wdate" style="width:80px;" >
 									<option value="">选择时间</option>
@@ -118,8 +119,8 @@ var gender = Array();
 
 $('#interview').val(interview.join(","));
 function deleteuser(i){
-	$('#user_'+i).html();
-	$('#user_'+i).hide();
+	$('#user_'+i).html('');
+
 	for(x=0;x<interview.length;x++){
 		if(interview[x]==i){
 			interview.splice(x,1);
@@ -163,13 +164,21 @@ function settime(str,i){
 }
 
 function check_time(){
+	var jobidEmpty=false;
 	var sd = $('#startdate').val();
 	var st = $('#starttime').val();
 	var ed = $('#enddate').val();
 	var et = $('#endtime').val();
-	var sc = $('#jobid').val();
-	if(sc==0){
-		alert('请选择职位');
+	$(".jobid").each(
+	function(){
+		if ($(this).val() == 0)
+		{
+			jobidEmpty=true;
+		}
+	});
+	if (jobidEmpty == true)
+	{
+		alert("请选择职位");
 		return false;
 	}
 	if(sd=='' || st=='' || ed=='' || et==''){

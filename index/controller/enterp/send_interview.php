@@ -205,6 +205,7 @@ class send_interview_Controller extends Controller{
 	function saveAction(){
 		//error_reporting(E_ALL);
 		$info = $this->_get('info');
+		$jobid = $info['jobid'];
 		$starttime = $this->_get('starttime');
 		$endtime = $this->_get('endtime');
 		$startdate = $this->_get('startdate');
@@ -305,7 +306,6 @@ class send_interview_Controller extends Controller{
 					$startdate_p = $this->_get('startdate_p');
 					$enddate_p = $this->_get('enddate_p');
 					//print_r($starttime_p);print_r($endtime_p);
-				
 					foreach($uids as $k => $v){
 						$info['uid'] = $uids[$k];
 						$info['aid'] = $aid;
@@ -313,6 +313,7 @@ class send_interview_Controller extends Controller{
 						$info['gender'] = $genders[$k];
 						$info['interview_date'] = strtotime($startdate_p[$k]." ".$starttime_p[$k].":00");
 						$info['interview_enddate'] = strtotime($enddate_p[$k]." ".$endtime_p[$k].":00");
+						$info['jobid'] = $jobid[$k];
 						if(($uid = $this->myjob_int->save($info)) === false){
 							$this->showmsg($this->myjob_int->getError(),1);
 						}
