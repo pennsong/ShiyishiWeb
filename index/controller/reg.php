@@ -29,6 +29,9 @@ class reg_Controller extends Controller
 		$identity = trim($_GET['identity']);
 		//friends = friend identity
 		$friendIdentity = strtolower(trim($_GET['friendIdentity']));
+		$hosterId = "'".$_GET['hosterId']."'";
+		$attenderId = "'".$_GET['attenderId']."'";
+		$inviteCode = trim($_GET['inviteCode']);
 		// start the response
 		$msg = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 		$msg .= "<result>";
@@ -275,6 +278,65 @@ class reg_Controller extends Controller
 			else
 			{
 				$msg .= "<getFriendList>false2</getFriendList>";
+			}
+		}
+		else if ($taskType == 'invitecode')
+		{
+			if (strlen($hosterId) == 66 && strlen($attenderId) == 66)
+			{
+				$msg .= "<inviteCode>";
+				// first lets check to see if this exists....
+				$db = mysql_connect($host, $user, $pass) or die('false1');
+				mysql_query("set names 'utf8'");
+				mysql_select_db($dbname);
+				$password = "'".substr(md5($hosterId.$attenderId), 0, 4)."'";
+				echo $password;
+				$sql = "INSERT INTO videoInterview (hoster, attender, password) VALUES($hosterId, $attenderId, $password)";
+				if (mysql_query($sql))
+				{
+					$msg .= substr($password, 1, 4)."_".mysql_insert_id();
+				}
+				else
+				{
+					$msg .= "false2";
+				}
+				$msg .= "</inviteCode>";
+			}
+			else
+			{
+				$msg .= "<inviteCode>false3</inviteCode>";
+			}
+		}
+		else if ($taskType == 'join')
+		{
+			// first lets check to see if this exists....
+			$db = mysql_connect($host, $user, $pass) or die('false1');
+			mysql_query("set names 'utf8'");
+			mysql_select_db($dbname);
+			if (strrpos($inviteCode, '_') === FALSE)
+			{
+				$msg .= "<talentId>false</talentId>";
+				$msg .= "<companyId>false</companyId>";
+			}
+			else
+			{
+				$tmpInviteCode = explode(_, $inviteCode);
+				$sql = "SELECT hoster, attender FROM videoInterview WHERE id=$tmpInviteCode[1] AND password='".$tmpInviteCode[0]."'";
+				echo $sql;
+				$res = mysql_query($sql) or die(mysql_error());
+				if (mysql_num_rows($res) > 0)
+				{
+					$row = mysql_fetch_assoc($res);
+					$talentId = $row['attender'];
+					$companyId = $row['hoster'];
+					$msg .= "<talentId>".$talentId."</talentId>";
+					$msg .= "<companyId>".$companyId."</companyId>";
+				}
+				else
+				{
+					$msg .= "<talentId>false</talentId>";
+					$msg .= "<companyId>false</companyId>";
+				}
 			}
 		}
 		$msg .= "</result>";

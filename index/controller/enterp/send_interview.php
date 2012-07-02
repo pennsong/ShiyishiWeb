@@ -31,6 +31,15 @@ class send_interview_Controller extends Controller{
 <li><span class="glogintext">联系电话：</span><!--{$e_user.tel}--></li>
 <li><span class="glogintext">地址：</span>><!--{$e_user.address}--></li>
 */
+	function sendInviteAction()
+	{
+		$mobile = $this->_get('mobile');
+		$invite = $this->_get('invite');
+		//发短信
+		$content = $this->mtsms->send($mobile,$invite);
+		echo "$content";		
+	}
+	
 	function indexAction(){
 		//error_reporting(E_ALL);
 		$id = $this->_get('id');
