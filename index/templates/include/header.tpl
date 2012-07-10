@@ -50,6 +50,7 @@ document.write(
           <li><a href="<!--{$weburl}-->/enterp/resume/search.html">招人才</a></li>
           <li><a href="<!--{$weburl}-->/interview.html">在线面试大厅</a></li>
           <li><a href="<!--{$weburl}-->/rule.html">奖励规则</a></li>
+          <li><a href="<!--{$weburl}-->/thirdPartInterview.html">观看面试</a></li>
         </ul>
       </div>
     </div>
