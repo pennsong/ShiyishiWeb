@@ -1,6 +1,7 @@
 .project
 .settings
 .buildpath
+.DS_Store
 test.php
 tmp/
 data/attachment
