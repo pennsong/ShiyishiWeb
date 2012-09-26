@@ -33,7 +33,7 @@
             attributes.align = "middle";
             swfobject.embedSWF(
                 "<!--{$baseurl}-->/images/VPInvite.swf?v="+v, "flashContent", 
-                "376", "293", 
+                "677", "293", 
                 swfVersionStr, xiSwfUrlStr, 
                 flashvars, params, attributes);
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
