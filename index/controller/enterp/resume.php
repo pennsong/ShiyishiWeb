@@ -58,7 +58,7 @@ class resume_Controller extends Controller{
 		$url = $this->getPageUrl().'/boxlist.html';
 		
 		$urls = array();
-		$orderby = " posttime asc ";
+		$orderby = " posttime desc ";
 		$where = " b.cid = ".$this->uid." and b.status = 1" ;
 		if($days == 3){
 			$where .= "  and b.posttime >= ".strtotime("-3 day");
