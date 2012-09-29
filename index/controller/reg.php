@@ -32,6 +32,10 @@ class reg_Controller extends Controller
 		$hosterId = "'".$_GET['hosterId']."'";
 		$attenderId = "'".$_GET['attenderId']."'";
 		$inviteCode = trim($_GET['inviteCode']);
+		$thirdPartyName = "'".$_GET['thirdPartyName']."'";
+		$thirdPartyIdentity = "'".$_GET['thirdPartyIdentity']."'";
+		$thirdPartyRoom = "'".$_GET['thirdPartyRoom']."'";
+		$heartBeatId = "'".$_GET['heartBeatId']."'";
 		// start the response
 		$msg = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 		$msg .= "<result>";
@@ -307,6 +311,65 @@ class reg_Controller extends Controller
 				$msg .= "<inviteCode>false3</inviteCode>";
 			}
 		}
+		else if ($taskType == 'regthirdparty')
+		{
+			$db = mysql_connect($host, $user, $pass) or die('false1');
+			mysql_query("set names 'utf8'");
+			mysql_select_db($dbname);
+			$sql = "INSERT INTO third_party(`videoInterview`, `username`, `identity`, `updatetime`) VALUES ($thirdPartyRoom, $thirdPartyName, $thirdPartyIdentity, now())";
+			$res = mysql_query($sql);
+			if ($res)
+			{
+				$msg .= mysql_insert_id();
+			}
+			else
+			{
+				$msg .= "false";
+			}
+		}
+		else if ($taskType == 'thirdpartyheartbeat')
+		{
+			$db = mysql_connect($host, $user, $pass) or die('false1');
+			mysql_query("set names 'utf8'");
+			mysql_select_db($dbname);
+			$sql = "UPDATE third_party SET updatetime = now() WHERE id = $heartBeatId";
+			$res = mysql_query($sql);
+			if ($res)
+			{
+				$msg .= "true";
+			}
+			else
+			{
+				$msg .= "false";
+			}
+		}
+		else if ($taskType == 'getthirdpartylist')
+		{
+			$db = mysql_connect($host, $user, $pass) or die('false1');
+			mysql_query("set names 'utf8'");
+			mysql_select_db($dbname);
+			$sql = "SELECT username FROM third_party WHERE updatetime > now() - 20";
+			$res = mysql_query($sql);
+			$msg .= "<user>";
+			$msg .= "<userName>所有</userName>";
+			$msg .= "</user>";
+			$msg .= "<user>";
+			$msg .= "<userName>主考官</userName>";
+			$msg .= "</user>";
+			if (mysql_num_rows($res) > 0)
+			{
+				while ($row = mysql_fetch_assoc($res))
+				{
+					$msg .= "<user>";
+					$msg .= "<userName>".$row['username']."</userName>";
+					$msg .= "</user>";
+				}
+			}
+			else
+			{
+			}
+			mysql_free_result($res);
+		}
 		else if ($taskType == 'join')
 		{
 			// first lets check to see if this exists....
@@ -322,7 +385,6 @@ class reg_Controller extends Controller
 			{
 				$tmpInviteCode = explode(_, $inviteCode);
 				$sql = "SELECT hoster, attender FROM videoInterview WHERE id=$tmpInviteCode[1] AND password='".$tmpInviteCode[0]."'";
-				echo $sql;
 				$res = mysql_query($sql) or die(mysql_error());
 				if (mysql_num_rows($res) > 0)
 				{
