@@ -97,9 +97,9 @@ class jobs_Controller extends Controller{
 		$rows = $this->jobs->pageUnionAll2($page, 20, $url,'e_user','a.cid=b.id',$wheres,'modifydate desc','a.cid, max(modifydate) modifydate', 'a.cid');
 		foreach($rows as $k=>$v){
 			$v['ename'] = $this->e_user->getCompanyName($v['cid']);
+			$v['jobList'] = $this->jobs->fetchAll(" status=1 and cid = ".$v['cid']." ",'modifydate desc');
 			$rows[$k] = $v;
 		}
-
 //		$rows = $this->jobs->pageUnionAll($page, 20, $url,'e_user','a.cid=b.id',$wheres,'a.id desc','a.*');
 //		foreach($rows as $k=>$v){
 //			$v['subcompany'] = $this->subcompany->getName($v['scid']);

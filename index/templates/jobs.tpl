@@ -1,6 +1,21 @@
 <!--{include file="include/header.tpl"}-->
 <script type="text/javascript" src="<!--{$baseurl}-->/js/box.js"></script>
 <script src="<!--{$weburl}-->/DatePicker/WdatePicker.js" type="text/javascript"></script>
+<script>
+	$(document).ready(function()
+	{
+		$(".jobListShow").hover(
+								function()
+								{
+									$('> div > .list', this).show();
+								},
+								function()
+								{
+									$('> div > .list', this).hide();
+								}
+		);
+	}); 
+</script>
 <div id="content" class="container_24">
   <div class="grid_19">
     <div id="joblistsearch">
@@ -51,12 +66,26 @@
     </div>
     <div id="joblist">
       <!--{foreach from=$rows item=item}-->
-	  <div id="joblistmain">
+	  <div id="joblistmain" class="jobListShow" style="position: static">
         <!--<div id="jobbutton">
           <input name="" type="checkbox" value="" />
         </div>-->
-        <div id="jobcom" style="left:40px"><a title="<!--{$item.ename}-->" href="<!--{$baseurl}-->/company/view/<!--{$item.cid}-->.html"><!--{$item.ename|substr:60}--></a></div>
-        <div id="jobdate"><!--{$item.modifydate|date_format:"%Y-%m-%d"}--></div>
+        <div id="jobcom" style="position: static">
+        	<a title="<!--{$item.ename}-->" href="<!--{$baseurl}-->/company/view/<!--{$item.cid}-->.html" style="width: 640px;display:inline-block"><!--{$item.ename|substr:60}--></a><!--{$item.modifydate|date_format:"%Y-%m-%d"}-->
+        </div>
+        <div style="position:relative; z-index: 3000">
+        	<div class="list" style="left:50px; top:0px; width:400px; height:200px; position:absolute; background-color: #FFF1A8; display:none; overflow: auto; z-index: 1000">
+        		<div style="z-index: 1">
+        		<!--{foreach from=$item item=item2 key=key2}-->      		
+        		<!--{if $key2 == 'jobList'}-->
+        		<!--{foreach from=$item2 item=item3}--> 
+        		<a href="<!--{$baseurl}-->/jobs/view/<!--{$item3.id}-->.html"><!--{$item3.title}--></a><br>
+        		<!--{/foreach}-->
+        		<!--{/if}-->
+        		<!--{/foreach}-->
+        		</div>
+        	</div>
+        </div>
     </div>
       <!--{/foreach}-->
     </div>
