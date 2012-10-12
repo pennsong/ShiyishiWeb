@@ -52,7 +52,7 @@
 										<td nowrap="" class=" centerAlign"> <!--{$degrees.cn[$item.degree]}--></td>
 										<td class=" centerAlign"><!--{$item.area}--></td>
 										<td class=" centerAlign"><!--{$item.posttime|date_format:"%y-%m-%d"}--></td>
-										<td nowrap="" class="action centerAlign"> <a  target="_blank" href="/enterp/resume/view.html?id=<!--{$item.id}-->&t=cn">查看</a> 
+										<td nowrap="" class="action centerAlign"> <a  target="_blank" href="/enterp/resume/view.html?id=<!--{$item.id}-->&t=cn">查看<!--{if $item.viewed == 1}-->(v)<!--{/if}--></a> 
 											<!--{if $item.rtype==3}-->
 												<a  href="/enterp/resume/video.html?id=<!--{$item.id}-->" target="_blank" >视频</a> 
 											<!--{/if}-->

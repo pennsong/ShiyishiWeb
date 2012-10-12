@@ -7,6 +7,7 @@ class resume_Controller extends Controller{
 //		session_unregister();
 //		session_destroy();
 		$this->logincheck("enterp");
+		$this->company_viewed_resume=Load::model('company_viewed_resume');
 		$this->funtype=Load::model('funtype');
 		$this->resume_box = Load::model('resume_box');
 		$this->resume = Load::model('resume');
@@ -146,6 +147,9 @@ class resume_Controller extends Controller{
 		$rows = $this->resume->queryAll($sql);
 		if($rows){
 			foreach($rows as $key => $val){
+				//check whether the company has view the resume
+				$tmpCount = $this->company_viewed_resume->count("cid = ".$this->uid." AND rid = ".$rows[$key]['id']);
+				$rows[$key]['viewed'] = $tmpCount > 0 ? 1 : 0;
 				$rows[$key]['area'] = $this->area->getNameByIds($val['live_gnd']);
 				$tmp = explode(",",$val['live_gnd']);
 				$rows[$key]['a2'] = $aldatasall[$tmp[1]];
@@ -223,6 +227,10 @@ class resume_Controller extends Controller{
 		$rows = $this->resume->queryAll($sql);
 		if($rows){
 			foreach($rows as $key => $val){
+				//check whether the company has view the resume
+				$tmpCount = $this->company_viewed_resume->count("cid = ".$this->uid." AND rid = ".$rows[$key]['id']);
+				$rows[$key]['viewed'] = $tmpCount > 0 ? 1 : 0;
+				
 				$rows[$key]['area'] = $this->area->getNameByIds($val['live_gnd']);
 				$tmp = explode(",",$val['live_gnd']);
 				$rows[$key]['a2'] = $aldatasall[$tmp[1]];
@@ -841,6 +849,10 @@ class resume_Controller extends Controller{
 		$rows = $this->resume_tmp->queryAll($sql);
 		if($rows){
 			foreach($rows as $key => $val){
+				//check whether the company has view the resume
+				$tmpCount = $this->company_viewed_resume->count("cid = ".$this->uid." AND rid = ".$rows[$key]['id']);
+				$rows[$key]['viewed'] = $tmpCount > 0 ? 1 : 0;
+				
 				$rows[$key]['area'] = $this->area->getNameByIds($val['live_gnd']);
 				$tmp = explode(",",$val['live_gnd']);
 				$rows[$key]['a2'] = $aldatasall[$tmp[1]];
@@ -1080,6 +1092,8 @@ class resume_Controller extends Controller{
 			$this->assign('ctfnum',count($ctfs));
 			$this->assign('langnum',count($langs));
 			$this->assign('from', $from);
+			//mark this resume has viewed
+			$this->company_viewed_resume->save(array('cid' => $this->uid, 'rid' => $resume['id']));
 			if ($rtype=='en')
 			{
 				$this->display('resume_en.tpl');				
@@ -1346,6 +1360,10 @@ class resume_Controller extends Controller{
 		$rows = $this->resume->queryAll($sql);
 		if($rows){
 			foreach($rows as $key => $val){
+				//check whether the company has view the resume
+				$tmpCount = $this->company_viewed_resume->count("cid = ".$this->uid." AND rid = ".$rows[$key]['id']);
+				$rows[$key]['viewed'] = $tmpCount > 0 ? 1 : 0;
+				
 				$rows[$key]['lqstat'] = 0;
 				if($enrolllogmodel->check($this->uid,$val['uid'])){
 					$rows[$key]['lqstat'] = 1;
@@ -1442,6 +1460,10 @@ class resume_Controller extends Controller{
 			$rows = $this->resume->queryAll($sql);
 			if($rows){
 				foreach($rows as $key => $val){
+					//check whether the company has view the resume
+					$tmpCount = $this->company_viewed_resume->count("cid = ".$this->uid." AND rid = ".$rows[$key]['id']);
+					$rows[$key]['viewed'] = $tmpCount > 0 ? 1 : 0;
+					
 					$rows[$key]['lqstat'] = 0;
 					if($enrolllogmodel->check($this->uid,$val['uid'])){
 						$rows[$key]['lqstat'] = 1;

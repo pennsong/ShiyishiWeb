@@ -59,7 +59,7 @@
 										</td>
                                         <td class=" centerAlign"><!--{$item.area}--></td>
                                         <td class=" centerAlign"><!--{$item.createdate|date_format:"%y-%m-%d"}--></td>
-                                        <td nowrap="" class="action centerAlign"><a class="songDefA" target="_blank"  href="/enterp/resume/view.html?id=<!--{$item.id}-->&t=cn&from=tmplist">查看</a> <a href="/enterp/resume/del.do?PositionID=<!--{$item.id}-->&type=tmp" onclick="if(confirm('确定删除?')==false){return false}else{ return true;}">删除</a></td>
+                                        <td nowrap="" class="action centerAlign"><a class="songDefA" target="_blank"  href="/enterp/resume/view.html?id=<!--{$item.id}-->&t=cn&from=tmplist">查看<!--{if $item.viewed == 1}-->(v)<!--{/if}--></a> <a href="/enterp/resume/del.do?PositionID=<!--{$item.id}-->&type=tmp" onclick="if(confirm('确定删除?')==false){return false}else{ return true;}">删除</a></td>
                                         </tr>
 
                                     <!--{/foreach}-->
