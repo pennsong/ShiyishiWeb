@@ -24,6 +24,7 @@
             flashvars.userRole = 'company';
             flashvars.userName = '<!--{$roominfo.ename}-->';
             flashvars.version = new Date();
+            flashvars.roomId = '<!--{$roominfo.id}-->';
             var v = new Date();
             var params = {};
             params.quality = "high";

@@ -1,19 +1,21 @@
 
+ID:<!--{$info.uid}-->
+<!--{if $down}--><!--{$info.uname}-->
+身份证号：<!--{$info.idcard}--><!--{/if}-->
+
+身高：<!--{$info.stature}-->CM
+体重：<!--{$info.weight}-->KG
+现居住于：<!--{$info.live_gnd_name}--><!--{$info.live_address}-->
+户籍所在地：<!--{$info.birth_gnd_name}--> 
 联系方式：
 <!--{if $rtype == 1 || $rtype == 3}-->
 <!--{$info.phone}--> 
 <!--{$info.email}-->
 <!--{/if}-->
 应聘职位:<!--{$info.funtype_2_name}-->
-ID:<!--{$info.uid}-->
-<!--{if $down}--><!--{$info.uname}-->
-身份证号：<!--{$info.idcard}--><!--{/if}-->
 <!--{if $info.gender==1}-->男<!--{else}-->女<!--{/if}-->
 <!--{$info.age}-->岁
-身高：<!--{$info.stature}-->CM
-体重：<!--{$info.weight}-->KG
-现居住于：<!--{$info.live_gnd_name}--><!--{$info.live_address}-->
-户籍所在地：<!--{$info.birth_gnd_name}--> 
+
 ==============
 求职意向
 期望工作性质：<!--{$info.jobterm}-->
