@@ -63,8 +63,6 @@ class register_Controller extends Controller{
 		if($this->user->save($info) === false){
 			$this->showmsg($this->user->getError(),1);
 		}else{
-			$m = Load::model('smtp');
-			$m->sendmail('inviteleader',array('username'=>$info['email'],'email'=>$info['email'], 'ent_reg_name'=>$info['company']));
 			$this->display('register_ok.tpl');
 		}
 	}

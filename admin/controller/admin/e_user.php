@@ -285,6 +285,9 @@ class e_user_Controller extends Controller{
 			if(($uid = $this->user->save($info)) === false){
 				$this->showmsg($this->user->getError(),1,"380");
 			}
+			$m = Load::model('smtp');
+			$m->sendmail('inviteleader',array('username'=>$info['username'],'email'=>$info['email'], 'ent_reg_name'=>$info['company']));
+			
 			$this->showmsg('审核成功','list.do');
 		}else{
 			$this->showmsg('您请求的数据不存在','list.do');
