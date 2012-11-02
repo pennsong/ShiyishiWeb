@@ -74,7 +74,7 @@
         	<a title="<!--{$item.ename}-->" href="<!--{$baseurl}-->/company/view/<!--{$item.cid}-->.html" style="width: 640px;display:inline-block"><!--{$item.ename|substr:60}--></a><!--{$item.modifydate|date_format:"%Y-%m-%d"}-->
         </div>
         <div style="position:relative; z-index: 3000">
-        	<div class="list" style="left:50px; top:0px; width:400px; height:200px; position:absolute; background-color: #FFF1A8; display:none; overflow: auto; z-index: 1000">
+        	<div class="list" style="border:1px solid #58ACFC; left:50px; top:0px; width:400px; height:200px; position:absolute; background-color: #FFFFFF; display:none; overflow: auto; z-index: 1000">
         		<div style="z-index: 1">
         		<!--{foreach from=$item item=item2 key=key2}-->      		
         		<!--{if $key2 == 'jobList'}-->
