@@ -155,7 +155,7 @@
                                 </li>
 
 								<li><span class="glogintext">有效期：</span>
-									<input type="tetx" name="info[startdate]" value="<!--{$info.startdate}-->" class="Wdate" onClick="WdatePicker()" style="width:120px;" />&nbsp;-&nbsp;<input type="tetx" name="info[enddate]" value="<!--{$info.enddate}-->"  class="Wdate" onClick="WdatePicker()" style="width:120px;"/>&nbsp;格式：2008-10-11，留空为长期有效。
+									<input type="tetx" name="info[startdate]" value="<!--{$info.startdate}-->" class="Wdate" onClick="WdatePicker()" style="width:120px;" />&nbsp;-&nbsp;<input type="tetx" name="info[enddate]" value="<!--{$info.enddate}-->"  class="Wdate" onClick="WdatePicker()" style="width:120px;"/>
 								</li>
 
                                 <li><span class="glogintext">职位描述：</span><!--{$info.content}--></li>
