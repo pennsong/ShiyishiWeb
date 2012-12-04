@@ -46,7 +46,8 @@ class index_Controller extends Controller{
 			//$resumenum = $this->resume->count();
 			$resumenumArray = $this->resume->queryAll("select count(distinct uid) as num from zp_resume");
 			$resumenum = $resumenumArray[0][num];
-			$jobnum = $this->job->count("status=1 AND enddate > $today_e");
+			//$jobnum = $this->job->count("status=1 AND enddate > $today_e");
+			$jobnum = $this->job->count("status=1");
 			$jobnum_t = $this->job->count("createtime>'".$today_s."' AND createtime<='".$today_e."'"." AND status=1 AND enddate > $today_e");
 			$this->assign('zdcitys',$zdcitys);
 			//热点招聘
