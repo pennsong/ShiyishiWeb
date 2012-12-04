@@ -252,7 +252,9 @@ class do_Controller extends Controller{
 				$this->user->save($uinfo);
 			}
 		}
-
+		$resumemodel = Load::model('resume');
+		$resumemodel->update(array('status'=>1),'uid='.$this->uid);
+		F::setlogininfo('resume_status',1);
 		$this->showmsg('恭喜，'.$tname.'简历'.($info['id']>0 ? '更新' : '新建').'成功',BASE_URL."/member/");
 	}
 	
