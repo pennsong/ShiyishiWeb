@@ -59,7 +59,7 @@
       <ul>
         <!--{foreach from=$zdcitys key=key item=item}-->
         <!--{if ($item.jnum > 0) || ($item.rnum > 0)}-->
-        <li><a href="http://<!--{$item.area_en}--><!--{$webdomain}-->/"><!--{$item.area_name}--></a><span class="index_diqu_zhiwei">(职位:<span class="index_diqu_shuzi"><a href="<!--{$weburl}-->/city_jobs.html?cid=<!--{$item.id}-->"><!--{$item.jnum}--></a></span>个,简历:<span class="index_diqu_shuzi"><!--{$item.rnum}--></span>份)</span></li>
+        <li><a href="#"><!--{$item.area_name}--></a><span class="index_diqu_zhiwei">(职位:<span class="index_diqu_shuzi"><a href="<!--{$weburl}-->/city_jobs.html?cid=<!--{$item.id}-->"><!--{$item.jnum}--></a></span>个,简历:<span class="index_diqu_shuzi"><!--{$item.rnum}--></span>份)</span></li>
         <!--{/if}-->
         <!--{/foreach}-->
         <div class="clearfix"></div>

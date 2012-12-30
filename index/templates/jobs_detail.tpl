@@ -81,7 +81,10 @@
 <!--{else}-->
   <div class="grid_19">
     <div id="jobxxmain">
-      <h2><!--{$item.title}--></h2>
+      <div>
+	      <div style="float:left"><h2><!--{$item.title}--></h2></div>
+	      <div style="float:right"><a href="/company/view/<!--{$sitem.cid}-->.html"><h2>公司简介</h2></a></div>
+      </div>
       <p>
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tbody>

@@ -34,13 +34,13 @@
 <a href="<!--{$page_arr.url}--><!--{if $page_arr.page-1>1}--><!--{$pext}--><!--{$page_arr.page-1}--><!--{$plast}--><!--{/if}-->">前页</a>
 <!--{/if}-->
 <!--{if $page_arr.page - $page_offset > 1}-->
-<a href="<!--{$page_arr.url}--><!--{$pext}--><!--{$plast}-->1">1 ...</a>
+<a class="underline" href="<!--{$page_arr.url}--><!--{$pext}--><!--{$plast}-->1">1 ...</a>
 <!--{/if}-->
 <!--{section name="loop" loop=$page_to+1 start=$page_from  max=$page_to-$page_from+1}-->
 <!--{if $page_arr.page == $smarty.section.loop.index}-->
-<!--{$smarty.section.loop.index}-->
+[<!--{$smarty.section.loop.index}-->]
 <!--{else}-->
-<a href="<!--{$page_arr.url}--><!--{$pext}--><!--{$smarty.section.loop.index}--><!--{$plast}-->"><!--{$smarty.section.loop.index}--></a>
+<a class="underline" href="<!--{$page_arr.url}--><!--{$pext}--><!--{$smarty.section.loop.index}--><!--{$plast}-->"><!--{$smarty.section.loop.index}--></a>
 <!--{/if}-->
 <!--{/section}-->
 <!--{if $page_arr.page < $page_arr.pagesize}-->
