@@ -18,7 +18,7 @@
         <div id="mod_logo"><span class="floatLeft"><a href="<!--{$baseurl}-->/"><img src="<!--{$baseurl}-->/images/logo.jpg" /></a></span></div>
         <div id="mod_banner"><img src="<!--{$baseurl}-->/images/banner.jpg" /></div>
         <div id="mod_topnav"><span><!--{if $islogin}--><a href="<!--{$baseurl}-->/member/"><!--{$logininfo.email|substr:'16':''}--></a> | <a href="<!--{$baseurl}-->/logout.html" class="">退出</a><!--{elseif $isloginp}--><a href="<!--{$baseurl}-->/enterp/"><!--{$logininfo.company|substr:"16":""}--></a> | <a href="<!--{$baseurl}-->/enterp/do/logout.do" class="">退出</a><!--{else}--><a href="<!--{$baseurl}-->/enterp/login.html" class="bold">企业登录</a> | <a href="<!--{$baseurl}-->/enterp/register.html" class="bold">企业注册</a><!--{/if}--></span></div>
-        <div id="mod_toptel"><span class="topteltext">视一视全国客服热线：</span><span class="toptelshuzi">010-51316183</span></div>
+        <div id="mod_toptel"><span class="topteltext">视一视全国客服热线：</span><span class="toptelshuzi">010-59181986</span></div>
       </div>
       <div id="mod_nav">
         <div id="toptime">今天是
