@@ -7,7 +7,7 @@
             	<div id="hrlogin">
                 	<div id="hrloginleft">
                     	<ul>
-                        	<li>联系我们请拨打:<br />010-51316183</li>
+                        	<li>联系我们请拨打:<br />010-59181986</li>
                         </ul>
                     </div>
                     <div id="hrloginright">
@@ -28,7 +28,7 @@
 								</span>
 							</li>
                         	<li style="clear:both;"><span class="hrlogintext">&nbsp;</span><span class="hui">企业法人营业执照副本（带年检章）、特殊行业的用户需加贴"特殊行业许可证书</span></li>
-                        	<li><span class="hrlogintext">&nbsp;</span>传真号码：010-51316162</li>
+                        	<li><span class="hrlogintext">&nbsp;</span>传真号码：010-59181984</li>
                         	<li><span class="hrlogintext">&nbsp;</span><span class="hui">企业法人营业执照副本（带年检章）、特殊行业的用户需加贴"特殊行业许可证书</span></li>
                         	<li><span class="hrlogintext">&nbsp;</span><input type="checkbox" checked="checked" id="termV"/>
           我已阅读并接受视一视<a onclick="showTerm();" style="cursor:pointer;">企业用户协议</a></li>
