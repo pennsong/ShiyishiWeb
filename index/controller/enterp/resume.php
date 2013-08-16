@@ -913,7 +913,7 @@ class resume_Controller extends Controller{
 			$resume = array();
 		}
 		if(!empty($resume) && $resume['uid']>0){
-			$works = $this->resume_work->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'", "fromdate DESC");
+			$works = $this->resume_work->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'", "STR_TO_DATE(fromdate, '%Y-%c-%e') desc");
 			$edus = $this->resume_edu->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
 			$langs = $this->resume_lang->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
 			$its = $this->resume_it->fetchAll("uid='".$resume['uid']."' AND rtype='".$rtype."'");
